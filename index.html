@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- DEMO: remover a linha noindex abaixo no go-live (domínio próprio) -->
+  <meta name="robots" content="noindex">
+  <title>Buffet Real — Buffet em Itabirito-MG | Doces, Salgados, Bolos e Ceias</title>
+  <meta name="description" content="Buffet em Itabirito-MG: doces finos, salgados, bolos e ceias artesanais para aniversários, casamentos e eventos. Peça seu orçamento direto pelo WhatsApp — aberto todos os dias, das 9h às 21h.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Buffet Real — Buffet em Itabirito-MG">
+  <meta property="og:description" content="Doces, salgados, bolos e ceias artesanais. Monte seu orçamento e receba tudo prontinho no WhatsApp.">
+  <meta property="og:site_name" content="Buffet Real">
+  <meta name="theme-color" content="#0d0a07">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "name": "Buffet Real",
+    "description": "Buffet artesanal em Itabirito-MG: doces, salgados, bolos, ceias e eventos.",
+    "telephone": "+5531980217336",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Itabirito",
+      "addressRegion": "MG",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    },
+    "sameAs": ["https://www.instagram.com/buffetreal_miriammarinho"],
+    "servesCuisine": "Doces, salgados, bolos, ceias e eventos"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --preto:#0d0a07;
+      --preto-2:#151009;
+      --preto-3:#1c150b;
+      --ouro:#c9a24b;
+      --ouro-claro:#e8cf8f;
+      --creme:#f3ead8;
+      --creme-suave:rgba(243,234,216,.78);
+      --borda-ouro:rgba(201,162,75,.28);
+      --whats:#25d366;
+      --fonte-marca:'Great Vibes', cursive;
+      --fonte-titulo:'Cormorant Garamond', Georgia, serif;
+      --fonte-texto:'Montserrat', Arial, sans-serif;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none!important;transition:none!important}
+    }
+
+    body{
+      background:var(--preto);
+      color:var(--creme);
+      font-family:var(--fonte-texto);
+      font-size:1rem;
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    ::selection{background:var(--ouro);color:var(--preto)}
+    a{color:var(--ouro-claro)}
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+      outline:2px solid var(--ouro-claro);
+      outline-offset:3px;
+    }
+
+    /* ===== Faixa de demonstração (remover na entrega final — ver README) ===== */
+    .faixa-demo{
+      background:#080604;
+      border-bottom:1px solid var(--borda-ouro);
+      color:var(--ouro);
+      font-size:.68rem;
+      font-weight:600;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      text-align:center;
+      padding:.65rem 1rem;
+    }
+
+    .container{width:min(1100px,92%);margin:0 auto}
+    section{padding:5.5rem 0}
+
+    /* ===== Ornamentos ===== */
+    .orn{display:block;width:min(340px,70%);height:auto;margin:0 auto}
+    .eyebrow{
+      display:block;
+      font-size:.72rem;
+      font-weight:600;
+      letter-spacing:.3em;
+      text-transform:uppercase;
+      color:var(--ouro);
+      text-align:center;
+      margin-bottom:1rem;
+    }
+    .titulo-secao{
+      font-family:var(--fonte-titulo);
+      font-weight:500;
+      font-size:clamp(2.1rem,5vw,3rem);
+      color:var(--ouro-claro);
+      text-align:center;
+      line-height:1.15;
+    }
+    .sub-secao{
+      max-width:560px;
+      margin:1.1rem auto 0;
+      text-align:center;
+      color:var(--creme-suave);
+      font-size:.95rem;
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      min-height:88vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:4.5rem 1rem 5rem;
+      position:relative;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(201,162,75,.13), transparent 60%),
+        var(--preto);
+    }
+    .hero .orn{margin-bottom:1.8rem}
+    .marca{
+      font-family:var(--fonte-marca);
+      font-weight:400;
+      font-size:clamp(3.6rem,13vw,7rem);
+      line-height:1.15;
+      background:linear-gradient(175deg,var(--ouro-claro) 30%,var(--ouro) 75%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      filter:drop-shadow(0 0 26px rgba(201,162,75,.35));
+      padding:0 .4em .12em; /* respiro para o traço do script não cortar */
+    }
+    .tagline{
+      font-family:var(--fonte-titulo);
+      font-style:italic;
+      font-size:clamp(1.15rem,3vw,1.5rem);
+      color:var(--creme);
+      max-width:34ch;
+      margin:.9rem auto 1.8rem;
+      line-height:1.5;
+    }
+    .badge-horario{
+      display:inline-block;
+      border:1px solid var(--borda-ouro);
+      border-radius:999px;
+      padding:.55rem 1.4rem;
+      font-size:.8rem;
+      font-weight:500;
+      letter-spacing:.08em;
+      color:var(--ouro-claro);
+      margin-bottom:2.4rem;
+    }
+    .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+
+    .btn{
+      display:inline-block;
+      font-family:var(--fonte-texto);
+      font-size:.92rem;
+      font-weight:700;
+      letter-spacing:.02em;
+      text-decoration:none;
+      border-radius:8px;
+      padding:1rem 1.9rem;
+      cursor:pointer;
+      border:0;
+      transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn:active{transform:translateY(0)}
+    .btn-whats{
+      background:var(--whats);
+      color:#06281a; /* contraste AA sobre o verde */
+      box-shadow:0 6px 24px rgba(37,211,102,.25);
+    }
+    .btn-whats:hover{background:#31e274;box-shadow:0 8px 30px rgba(37,211,102,.35)}
+    .btn-ouro{
+      background:transparent;
+      color:var(--ouro-claro);
+      border:1px solid var(--ouro);
+    }
+    .btn-ouro:hover{background:rgba(201,162,75,.1)}
+
+    /* ===== Cardápio ===== */
+    .grade-cardapio{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1.4rem;
+      margin-top:3rem;
+    }
+    .card-cardapio{
+      background:linear-gradient(180deg,var(--preto-2),var(--preto));
+      border:1px solid var(--borda-ouro);
+      border-radius:10px;
+      padding:1.9rem 1.6rem;
+    }
+    .card-cardapio h3{
+      font-family:var(--fonte-titulo);
+      font-weight:600;
+      font-size:1.5rem;
+      color:var(--ouro-claro);
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+    }
+    .card-cardapio .risco{
+      height:1px;
+      background:linear-gradient(90deg,var(--ouro),transparent);
+      margin:1rem 0 1.1rem;
+      border:0;
+    }
+    .card-cardapio ul{list-style:none}
+    .card-cardapio li{
+      color:var(--creme-suave);
+      font-size:.88rem;
+      padding:.34rem 0 .34rem 1.15rem;
+      position:relative;
+    }
+    .card-cardapio li::before{
+      content:"✦";
+      position:absolute;
+      left:0;
+      top:.34rem;
+      color:var(--ouro);
+      font-size:.7rem;
+    }
+    .nota-cardapio{
+      text-align:center;
+      margin-top:2.2rem;
+      font-family:var(--fonte-titulo);
+      font-style:italic;
+      font-size:1.05rem;
+      color:var(--creme-suave);
+    }
+
+    /* ===== Como funciona ===== */
+    .secao-passos{background:var(--preto-2);border-top:1px solid var(--borda-ouro);border-bottom:1px solid var(--borda-ouro)}
+    .grade-passos{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1.6rem;
+      margin-top:3rem;
+      text-align:center;
+    }
+    .passo .num{
+      font-family:var(--fonte-titulo);
+      font-size:2.6rem;
+      font-weight:500;
+      color:var(--ouro);
+      line-height:1;
+      display:block;
+      margin-bottom:.7rem;
+    }
+    .passo h3{
+      font-family:var(--fonte-titulo);
+      font-weight:600;
+      font-size:1.35rem;
+      color:var(--creme);
+      margin-bottom:.4rem;
+    }
+    .passo p{font-size:.86rem;color:var(--creme-suave)}
+
+    /* ===== Depoimentos ===== */
+    .grade-depo{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.4rem;
+      margin-top:3rem;
+    }
+    .card-depo{
+      background:var(--preto-2);
+      border:1px solid var(--borda-ouro);
+      border-radius:10px;
+      padding:1.9rem 1.6rem;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+    }
+    .card-depo blockquote{
+      font-family:var(--fonte-titulo);
+      font-style:italic;
+      font-size:1.12rem;
+      line-height:1.55;
+      color:var(--creme);
+      flex:1;
+    }
+    .card-depo cite{
+      font-style:normal;
+      font-size:.78rem;
+      font-weight:600;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--ouro);
+    }
+
+    /* ===== Formulário — o "convite" ===== */
+    .secao-orcamento{padding-bottom:6.5rem}
+    .convite{
+      max-width:680px;
+      margin:3rem auto 0;
+      background:linear-gradient(180deg,var(--preto-3),var(--preto-2));
+      border:1px solid var(--ouro);
+      border-radius:6px;
+      padding:.55rem;
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
+    }
+    .convite-interno{
+      border:1px solid var(--borda-ouro);
+      border-radius:3px;
+      padding:2.6rem clamp(1.3rem,5vw,2.8rem) 2.8rem;
+    }
+    .convite-interno .orn{width:min(240px,80%);margin-bottom:1.6rem}
+    .grade-form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.2rem 1.4rem;
+    }
+    .campo{display:flex;flex-direction:column;gap:.45rem}
+    .campo-cheio{grid-column:1 / -1}
+    .campo label{
+      font-size:.72rem;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--ouro-claro);
+    }
+    .campo input,
+    .campo select,
+    .campo textarea{
+      background:#0b0805;
+      border:1px solid var(--borda-ouro);
+      border-radius:6px;
+      color:var(--creme);
+      font-family:var(--fonte-texto);
+      font-size:.95rem;
+      padding:.85rem 1rem;
+      width:100%;
+      color-scheme:dark; /* ícones nativos (calendário) legíveis no fundo escuro */
+      transition:border-color .18s ease;
+    }
+    .campo input::placeholder,
+    .campo textarea::placeholder{color:rgba(243,234,216,.38)}
+    .campo input:focus,
+    .campo select:focus,
+    .campo textarea:focus{border-color:var(--ouro)}
+    .campo textarea{resize:vertical;min-height:110px}
+    .acao-form{grid-column:1 / -1;text-align:center;margin-top:.8rem}
+    .acao-form .btn{width:100%;font-size:1rem}
+    .dica-form{
+      margin-top:1rem;
+      font-size:.78rem;
+      color:var(--creme-suave);
+      text-align:center;
+    }
+
+    /* ===== Rodapé ===== */
+    footer{
+      border-top:1px solid var(--borda-ouro);
+      padding:3.5rem 0 6.5rem;
+      text-align:center;
+    }
+    footer .marca-rodape{
+      font-family:var(--fonte-marca);
+      font-size:2.4rem;
+      color:var(--ouro-claro);
+      display:block;
+      margin-bottom:1.2rem;
+    }
+    .info-rodape{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:.6rem 2.2rem;
+      font-size:.88rem;
+      color:var(--creme-suave);
+      margin-bottom:1.6rem;
+    }
+    .info-rodape a{color:var(--ouro-claro);text-decoration:none}
+    .info-rodape a:hover{text-decoration:underline}
+    .credito{font-size:.72rem;color:rgba(243,234,216,.45);letter-spacing:.06em}
+
+    /* ===== Botão flutuante WhatsApp ===== */
+    .zap-flutuante{
+      position:fixed;
+      right:1.2rem;
+      bottom:1.2rem;
+      z-index:50;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      background:var(--whats);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 26px rgba(0,0,0,.45);
+      transition:transform .18s ease;
+    }
+    .zap-flutuante:hover{transform:scale(1.08)}
+    .zap-flutuante svg{width:30px;height:30px;fill:#06281a}
+
+    /* ===== Responsivo ===== */
+    @media (max-width:960px){
+      .grade-cardapio{grid-template-columns:repeat(2,1fr)}
+      .grade-passos{grid-template-columns:repeat(2,1fr)}
+      .grade-depo{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      section{padding:4rem 0}
+      .hero{min-height:78vh}
+      .grade-cardapio{grid-template-columns:1fr}
+      .grade-passos{grid-template-columns:1fr}
+      .grade-form{grid-template-columns:1fr}
+      .hero-ctas{flex-direction:column;width:100%;max-width:340px}
+      .hero-ctas .btn{width:100%;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Faixa de demonstração — REMOVER na entrega final (ver README) -->
+  <div class="faixa-demo">Demonstração — página criada pela WLS Studio para o Buffet Real</div>
+
+  <!-- ===== 1. Hero ===== -->
+  <header class="hero">
+    <svg class="orn" viewBox="0 0 400 40" aria-hidden="true" focusable="false">
+      <path d="M8 20 C 80 2, 150 2, 200 20 C 250 38, 320 38, 392 20" fill="none" stroke="#c9a24b" stroke-width="1.3"/>
+      <circle cx="200" cy="20" r="3.4" fill="#e8cf8f"/>
+      <circle cx="104" cy="10.5" r="2" fill="#c9a24b"/>
+      <circle cx="296" cy="29.5" r="2" fill="#c9a24b"/>
+    </svg>
+    <h1 class="marca">Buffet Real</h1>
+    <p class="tagline">Doces finos, salgados, bolos e ceias para a sua celebração</p>
+    <p class="badge-horario">Aberto todos os dias · 9h às 21h · Itabirito-MG</p>
+    <div class="hero-ctas">
+      <a class="btn btn-whats" href="#orcamento">Pedir orçamento pelo WhatsApp</a>
+      <a class="btn btn-ouro" href="#cardapio">Ver cardápio</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== 2. Cardápio ===== -->
+    <section id="cardapio">
+      <div class="container">
+        <span class="eyebrow">Feito à mão, feito com carinho</span>
+        <h2 class="titulo-secao">Nosso Cardápio</h2>
+        <p class="sub-secao">Tudo preparado artesanalmente, com encomendas sob medida para festas, celebrações e ceias.</p>
+
+        <!-- PLACEHOLDER: substituir pelo cardápio real (itens abaixo são ilustrativos) -->
+        <div class="grade-cardapio">
+          <div class="card-cardapio">
+            <h3><span aria-hidden="true">🍓</span> Doces</h3>
+            <hr class="risco">
+            <ul>
+              <li>Brigadeiros gourmet</li>
+              <li>Docinhos finos para festa</li>
+              <li>Copinhos de mousse e verrines</li>
+              <li>Tortinhas e mini doces</li>
+              <li>Doces personalizados</li>
+            </ul>
+          </div>
+          <div class="card-cardapio">
+            <h3><span aria-hidden="true">🥟</span> Salgados</h3>
+            <hr class="risco">
+            <ul>
+              <li>Coxinhas e bolinhos</li>
+              <li>Empadinhas e folhados</li>
+              <li>Mini quiches e assados</li>
+              <li>Salgados fritos na hora</li>
+              <li>Kits festa por cento</li>
+            </ul>
+          </div>
+          <div class="card-cardapio">
+            <h3><span aria-hidden="true">🎂</span> Bolos</h3>
+            <hr class="risco">
+            <ul>
+              <li>Bolos decorados</li>
+              <li>Bolos de festa e aniversário</li>
+              <li>Naked cake e semi naked</li>
+              <li>Bolos caseiros</li>
+              <li>Recheios sob encomenda</li>
+            </ul>
+          </div>
+          <div class="card-cardapio">
+            <h3><span aria-hidden="true">🍽️</span> Ceias &amp; Eventos</h3>
+            <hr class="risco">
+            <ul>
+              <li>Ceia de Natal e Ano Novo</li>
+              <li>Assados e acompanhamentos</li>
+              <li>Buffet para eventos</li>
+              <li>Coffee break corporativo</li>
+              <li>Encomendas para datas especiais</li>
+            </ul>
+          </div>
+        </div>
+        <!-- FIM PLACEHOLDER cardápio -->
+
+        <p class="nota-cardapio">Não achou o que procura? Conte o que imagina no seu pedido — fazemos sob encomenda.</p>
+      </div>
+    </section>
+
+    <!-- ===== 3. Como funciona ===== -->
+    <section class="secao-passos">
+      <div class="container">
+        <span class="eyebrow">Simples assim</span>
+        <h2 class="titulo-secao">Como Funciona</h2>
+        <div class="grade-passos">
+          <div class="passo">
+            <span class="num" aria-hidden="true">1</span>
+            <h3>Escolha</h3>
+            <p>Veja o cardápio e pense no que combina com a sua celebração.</p>
+          </div>
+          <div class="passo">
+            <span class="num" aria-hidden="true">2</span>
+            <h3>Envie</h3>
+            <p>Preencha o pedido aqui no site — ele chega prontinho no nosso WhatsApp.</p>
+          </div>
+          <div class="passo">
+            <span class="num" aria-hidden="true">3</span>
+            <h3>Confirme</h3>
+            <p>Confirmamos juntos os detalhes, as quantidades e o valor.</p>
+          </div>
+          <div class="passo">
+            <span class="num" aria-hidden="true">4</span>
+            <h3>Celebre</h3>
+            <p>No dia combinado, é só receber e aproveitar a festa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. Depoimentos ===== -->
+    <section>
+      <div class="container">
+        <span class="eyebrow">Quem já celebrou</span>
+        <h2 class="titulo-secao">Palavras de Quem Provou</h2>
+
+        <!-- PLACEHOLDER: depoimentos reais (textos abaixo são ilustrativos, sem nomes reais) -->
+        <div class="grade-depo">
+          <div class="card-depo">
+            <blockquote>“Os docinhos foram o assunto da festa. Tudo chegou no horário, lindo e fresquinho.”</blockquote>
+            <cite>Cliente · Aniversário</cite>
+          </div>
+          <div class="card-depo">
+            <blockquote>“Atendimento atencioso do começo ao fim. O bolo ficou exatamente como sonhamos.”</blockquote>
+            <cite>Cliente · Casamento</cite>
+          </div>
+          <div class="card-depo">
+            <blockquote>“A ceia salvou o nosso Natal — comida farta, caprichada e com gostinho de casa.”</blockquote>
+            <cite>Cliente · Ceia de Natal</cite>
+          </div>
+        </div>
+        <!-- FIM PLACEHOLDER depoimentos -->
+      </div>
+    </section>
+
+    <!-- ===== 5. Monte seu Orçamento ===== -->
+    <section id="orcamento" class="secao-orcamento">
+      <div class="container">
+        <span class="eyebrow">Sem compromisso</span>
+        <h2 class="titulo-secao">Monte seu Orçamento</h2>
+        <p class="sub-secao">Preencha o que já souber — o pedido chega organizado no nosso WhatsApp e respondemos com o orçamento.</p>
+
+        <div class="convite">
+          <div class="convite-interno">
+            <svg class="orn" viewBox="0 0 400 40" aria-hidden="true" focusable="false">
+              <path d="M8 20 C 80 2, 150 2, 200 20 C 250 38, 320 38, 392 20" fill="none" stroke="#c9a24b" stroke-width="1.3"/>
+              <circle cx="200" cy="20" r="3.4" fill="#e8cf8f"/>
+            </svg>
+            <form id="form-orcamento" class="grade-form" novalidate>
+              <div class="campo">
+                <label for="nome">Seu nome</label>
+                <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar?">
+              </div>
+              <div class="campo">
+                <label for="data">Data do evento</label>
+                <input type="date" id="data" name="data">
+              </div>
+              <div class="campo">
+                <label for="convidados">Nº de convidados</label>
+                <input type="number" id="convidados" name="convidados" min="1" inputmode="numeric" placeholder="Ex.: 50">
+              </div>
+              <div class="campo">
+                <label for="local">Local do evento</label>
+                <input type="text" id="local" name="local" placeholder="Bairro, salão, residência…">
+              </div>
+              <div class="campo campo-cheio">
+                <label for="tipo">Tipo de evento</label>
+                <select id="tipo" name="tipo">
+                  <option value="" selected>Selecione…</option>
+                  <option value="Aniversário">Aniversário</option>
+                  <option value="Casamento">Casamento</option>
+                  <option value="Ceia Natal/Ano Novo">Ceia Natal/Ano Novo</option>
+                  <option value="Corporativo">Corporativo</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+              <div class="campo campo-cheio">
+                <label for="pedido">Seu pedido</label>
+                <textarea id="pedido" name="pedido" placeholder="Ex.: 100 salgados variados, 50 docinhos e um bolo decorado…"></textarea>
+              </div>
+              <div class="acao-form">
+                <button type="submit" class="btn btn-whats">Enviar pedido pelo WhatsApp</button>
+                <p class="dica-form">Abre o WhatsApp com sua mensagem pronta — você revisa antes de enviar.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 6. Rodapé ===== -->
+  <footer>
+    <div class="container">
+      <span class="marca-rodape" aria-hidden="true">Buffet Real</span>
+      <div class="info-rodape">
+        <span>📱 <a href="https://wa.me/5531980217336" target="_blank" rel="noopener">(31) 98021-7336</a></span>
+        <span>📷 <a href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">@buffetreal_miriammarinho</a></span>
+        <span>🕘 Todos os dias, das 9h às 21h</span>
+        <span>📍 Itabirito-MG</span>
+      </div>
+      <p class="credito">Buffet Real · Itabirito-MG — site por WLS Studio</p>
+    </div>
+  </footer>
+
+  <!-- ===== 7. Botão flutuante WhatsApp ===== -->
+  <a class="zap-flutuante" href="https://wa.me/5531980217336" target="_blank" rel="noopener" aria-label="Conversar com o Buffet Real no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.05-.38-1.99-1.23a7.4 7.4 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
+  </a>
+
+  <script>
+    // ===== Monta a mensagem e abre o WhatsApp =====
+    function valorCampo(id){
+      return document.getElementById(id).value.trim();
+    }
+    function ouADefinir(valor){
+      return valor === '' ? 'a definir' : valor;
+    }
+    function dataFormatada(){
+      var bruto = valorCampo('data'); // formato YYYY-MM-DD do input date
+      if(bruto === '') return 'a definir';
+      var partes = bruto.split('-');
+      if(partes.length !== 3) return 'a definir';
+      return partes[2] + '/' + partes[1] + '/' + partes[0];
+    }
+    function montarMensagem(){
+      var nome = valorCampo('nome');
+      var saudacao = nome === ''
+        ? 'Olá, Buffet Real! Gostaria de pedir um orçamento. 🥂'
+        : 'Olá, Buffet Real! Sou ' + nome + ' e gostaria de pedir um orçamento. 🥂';
+      return [
+        saudacao,
+        '',
+        '📅 Data do evento: ' + dataFormatada(),
+        '👥 Convidados: ' + ouADefinir(valorCampo('convidados')),
+        '📍 Local: ' + ouADefinir(valorCampo('local')),
+        '🎉 Tipo de evento: ' + ouADefinir(valorCampo('tipo')),
+        '📝 Pedido: ' + ouADefinir(valorCampo('pedido'))
+      ].join('\n');
+    }
+    document.getElementById('form-orcamento').addEventListener('submit', function(e){
+      e.preventDefault(); // envio nunca é bloqueado por validação — campos vazios viram "a definir"
+      var url = 'https://wa.me/5531980217336?text=' + encodeURIComponent(montarMensagem());
+      window.open(url, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>

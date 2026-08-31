@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- DEMO: remover a linha noindex abaixo no go-live (domínio próprio) -->
-  <meta name="robots" content="noindex">
+  <!-- DEMO: remover a linha robots abaixo no go-live (domínio próprio) -->
+  <meta name="robots" content="noindex, nofollow">
   <title>Buffet Real — Buffet em Itabirito-MG | Doces, Salgados, Bolos e Ceias</title>
-  <meta name="description" content="Buffet em Itabirito-MG: doces finos, salgados, bolos e ceias artesanais para aniversários, casamentos e eventos. Peça seu orçamento direto pelo WhatsApp — aberto todos os dias, das 9h às 21h.">
+  <meta name="description" content="Buffet em Itabirito-MG: doces, salgados, bolos e ceias para aniversários, casamentos e celebrações. Monte seu pedido e receba o orçamento pelo WhatsApp — todos os dias, das 9h às 21h.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Buffet Real — Buffet em Itabirito-MG">
-  <meta property="og:description" content="Doces, salgados, bolos e ceias artesanais. Monte seu orçamento e receba tudo prontinho no WhatsApp.">
+  <meta property="og:description" content="Doces, salgados, bolos e ceias. Conte como será o seu evento e receba o orçamento pelo WhatsApp.">
   <meta property="og:site_name" content="Buffet Real">
-  <meta name="theme-color" content="#0d0a07">
+  <meta name="theme-color" content="#0b0806">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
     "name": "Buffet Real",
-    "description": "Buffet artesanal em Itabirito-MG: doces, salgados, bolos, ceias e eventos.",
+    "description": "Buffet em Itabirito-MG: doces, salgados, bolos, ceias e eventos.",
     "telephone": "+5531980217336",
     "address": {
       "@type": "PostalAddress",
@@ -44,22 +44,27 @@
 
   <style>
     :root{
-      --preto:#0d0a07;
-      --preto-2:#151009;
-      --preto-3:#1c150b;
+      --preto:#0b0806;
+      --preto-2:#130e08;
+      --preto-3:#1a130a;
       --ouro:#c9a24b;
-      --ouro-claro:#e8cf8f;
-      --creme:#f3ead8;
-      --creme-suave:rgba(243,234,216,.78);
-      --borda-ouro:rgba(201,162,75,.28);
+      --ouro-claro:#f0dda4;
+      --ouro-escuro:#8a6a2a;
+      --creme:#f4ecdc;
+      --creme-suave:rgba(244,236,220,.76);
+      --creme-fraco:rgba(244,236,220,.5);
+      --borda-ouro:rgba(201,162,75,.26);
+      --borda-ouro-forte:rgba(201,162,75,.5);
       --whats:#25d366;
+      --erro:#ff9d8a;
       --fonte-marca:'Great Vibes', cursive;
       --fonte-titulo:'Cormorant Garamond', Georgia, serif;
       --fonte-texto:'Montserrat', Arial, sans-serif;
+      --barra-mobile:0px; /* vira 76px quando a barra fixa aparece */
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;scroll-padding-top:1rem}
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{animation:none!important;transition:none!important}
@@ -75,52 +80,56 @@
       overflow-x:hidden;
     }
 
+    img{max-width:100%;display:block}
     ::selection{background:var(--ouro);color:var(--preto)}
     a{color:var(--ouro-claro)}
     a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
       outline:2px solid var(--ouro-claro);
       outline-offset:3px;
     }
+    [hidden]{display:none!important}
 
     /* ===== Faixa de demonstração (remover na entrega final — ver README) ===== */
     .faixa-demo{
-      background:#080604;
+      background:#060403;
       border-bottom:1px solid var(--borda-ouro);
       color:var(--ouro);
-      font-size:.68rem;
+      font-size:.66rem;
       font-weight:600;
-      letter-spacing:.22em;
+      letter-spacing:.14em;
       text-transform:uppercase;
       text-align:center;
-      padding:.65rem 1rem;
+      padding:.6rem 1rem;
+      line-height:1.5;
     }
 
-    .container{width:min(1100px,92%);margin:0 auto}
-    section{padding:5.5rem 0}
+    .container{width:min(1120px,92%);margin:0 auto}
+    section{padding:5rem 0}
 
-    /* ===== Ornamentos ===== */
-    .orn{display:block;width:min(340px,70%);height:auto;margin:0 auto}
+    /* ===== Ornamentos (filigrana inspirada na marca) ===== */
+    .orn{display:block;width:min(320px,72%);height:auto;margin:0 auto;color:var(--ouro)}
+    .orn--pequeno{width:min(210px,62%)}
     .eyebrow{
       display:block;
-      font-size:.72rem;
+      font-size:.7rem;
       font-weight:600;
-      letter-spacing:.3em;
+      letter-spacing:.28em;
       text-transform:uppercase;
       color:var(--ouro);
       text-align:center;
-      margin-bottom:1rem;
+      margin-bottom:.9rem;
     }
     .titulo-secao{
       font-family:var(--fonte-titulo);
       font-weight:500;
-      font-size:clamp(2.1rem,5vw,3rem);
+      font-size:clamp(2rem,5vw,2.9rem);
       color:var(--ouro-claro);
       text-align:center;
       line-height:1.15;
     }
     .sub-secao{
-      max-width:560px;
-      margin:1.1rem auto 0;
+      max-width:600px;
+      margin:1rem auto 0;
       text-align:center;
       color:var(--creme-suave);
       font-size:.95rem;
@@ -128,125 +137,241 @@
 
     /* ===== Hero ===== */
     .hero{
-      min-height:88vh;
+      position:relative;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
       text-align:center;
-      padding:4.5rem 1rem 5rem;
-      position:relative;
+      padding:3.5rem 1rem 4rem;
+      min-height:min(660px,86vh);
+      overflow:hidden;
       background:
-        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(201,162,75,.13), transparent 60%),
+        radial-gradient(ellipse 85% 55% at 50% 0%, rgba(201,162,75,.14), transparent 62%),
         var(--preto);
     }
-    .hero .orn{margin-bottom:1.8rem}
+    .hero-foto{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;
+      transform:scale(1.06); /* esconde a borda suavizada do desfoque */
+    }
+    /* Véu escuro: garante leitura do texto sobre qualquer foto */
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 42%, rgba(6,4,3,.55), rgba(6,4,3,.8) 100%),
+        linear-gradient(180deg,rgba(6,4,3,.7) 0%,rgba(6,4,3,.5) 42%,rgba(6,4,3,.94) 100%);
+      pointer-events:none;
+    }
+    .hero > *:not(.hero-foto){position:relative;z-index:2}
+
     .marca{
       font-family:var(--fonte-marca);
       font-weight:400;
-      font-size:clamp(3.6rem,13vw,7rem);
-      line-height:1.15;
-      background:linear-gradient(175deg,var(--ouro-claro) 30%,var(--ouro) 75%);
+      font-size:clamp(3.2rem,12vw,6rem);
+      line-height:1.2;
+      background:linear-gradient(170deg,#fdf3d4 22%,var(--ouro-claro) 48%,var(--ouro) 72%,var(--ouro-escuro) 100%);
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
-      filter:drop-shadow(0 0 26px rgba(201,162,75,.35));
-      padding:0 .4em .12em; /* respiro para o traço do script não cortar */
+      filter:drop-shadow(0 2px 18px rgba(201,162,75,.35));
+      padding:0 .35em .1em; /* respiro para o traço do script não cortar */
     }
-    .tagline{
+    .hero .orn{margin:.4rem auto 1.4rem}
+    .hero .orn:first-of-type{margin:0 auto 1rem}
+    .titulo-hero{
       font-family:var(--fonte-titulo);
-      font-style:italic;
-      font-size:clamp(1.15rem,3vw,1.5rem);
+      font-weight:500;
+      font-size:clamp(1.5rem,4.6vw,2.35rem);
       color:var(--creme);
-      max-width:34ch;
-      margin:.9rem auto 1.8rem;
-      line-height:1.5;
+      line-height:1.3;
+      max-width:20ch;
+      margin:0 auto;
+    }
+    .texto-hero{
+      color:var(--creme-suave);
+      font-size:clamp(.9rem,2.6vw,1rem);
+      max-width:46ch;
+      margin:.9rem auto 1.5rem;
     }
     .badge-horario{
-      display:inline-block;
+      display:inline-flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:.2rem .7rem;
       border:1px solid var(--borda-ouro);
       border-radius:999px;
-      padding:.55rem 1.4rem;
-      font-size:.8rem;
+      padding:.5rem 1.2rem;
+      font-size:.76rem;
       font-weight:500;
-      letter-spacing:.08em;
+      letter-spacing:.06em;
       color:var(--ouro-claro);
-      margin-bottom:2.4rem;
+      margin-bottom:1.9rem;
+      background:rgba(11,8,6,.5);
     }
-    .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+    .hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;width:100%;max-width:520px}
 
     .btn{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      min-height:48px;
       font-family:var(--fonte-texto);
       font-size:.92rem;
       font-weight:700;
       letter-spacing:.02em;
       text-decoration:none;
       border-radius:8px;
-      padding:1rem 1.9rem;
+      padding:.9rem 1.7rem;
       cursor:pointer;
       border:0;
-      transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;
+      transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,border-color .18s ease;
     }
     .btn:hover{transform:translateY(-2px)}
     .btn:active{transform:translateY(0)}
     .btn-whats{
       background:var(--whats);
       color:#06281a; /* contraste AA sobre o verde */
-      box-shadow:0 6px 24px rgba(37,211,102,.25);
+      box-shadow:0 6px 24px rgba(37,211,102,.22);
     }
-    .btn-whats:hover{background:#31e274;box-shadow:0 8px 30px rgba(37,211,102,.35)}
+    .btn-whats:hover{background:#31e274;box-shadow:0 8px 30px rgba(37,211,102,.32)}
     .btn-ouro{
       background:transparent;
       color:var(--ouro-claro);
-      border:1px solid var(--ouro);
+      border:1px solid var(--borda-ouro-forte);
     }
-    .btn-ouro:hover{background:rgba(201,162,75,.1)}
+    .btn-ouro:hover{background:rgba(201,162,75,.1);border-color:var(--ouro)}
+    .btn svg{width:19px;height:19px;fill:currentColor;flex:0 0 auto}
 
-    /* ===== Cardápio ===== */
-    .grade-cardapio{
+    /* ===== Trabalhos ===== */
+    .secao-trabalhos{background:var(--preto-2);border-top:1px solid var(--borda-ouro);border-bottom:1px solid var(--borda-ouro)}
+    .grade-trabalhos{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:1.4rem;
-      margin-top:3rem;
+      gap:1rem;
+      margin-top:2.6rem;
     }
-    .card-cardapio{
+    .trabalho{
+      position:relative;
+      margin:0;
+      border:1px solid var(--borda-ouro);
+      border-radius:8px;
+      overflow:hidden;
+      background:var(--preto-3);
+      aspect-ratio:4/5;
+    }
+    .trabalho img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .5s ease;
+    }
+    .trabalho:hover img{transform:scale(1.05)}
+    .trabalho figcaption{
+      position:absolute;
+      left:0;right:0;bottom:0;
+      padding:1.6rem .9rem .7rem;
+      font-size:.76rem;
+      font-weight:600;
+      letter-spacing:.04em;
+      color:var(--creme);
+      background:linear-gradient(180deg,transparent,rgba(6,4,3,.9));
+    }
+    /* Moldura de espera: aparece só enquanto a foto real não existe */
+    .moldura-espera{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      height:100%;
+      padding:1rem;
+      text-align:center;
+      background:
+        repeating-linear-gradient(45deg,rgba(201,162,75,.035) 0 10px,transparent 10px 20px),
+        var(--preto-3);
+    }
+    .moldura-espera .ico{font-size:1.5rem;filter:grayscale(.2) opacity(.9)}
+    .moldura-espera span{font-size:.72rem;color:var(--creme-fraco);letter-spacing:.06em;line-height:1.5}
+    .acao-central{text-align:center;margin-top:2.4rem}
+    .nota-fotos{
+      text-align:center;
+      font-size:.74rem;
+      color:var(--creme-fraco);
+      margin-top:1.2rem;
+      max-width:56ch;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    /* ===== Serviços ===== */
+    .grade-servicos{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.2rem;
+      margin-top:2.8rem;
+    }
+    .card-servico{
+      display:flex;
+      flex-direction:column;
       background:linear-gradient(180deg,var(--preto-2),var(--preto));
       border:1px solid var(--borda-ouro);
       border-radius:10px;
-      padding:1.9rem 1.6rem;
+      padding:1.7rem 1.5rem 1.5rem;
+      transition:border-color .2s ease,transform .2s ease;
     }
-    .card-cardapio h3{
+    .card-servico:hover{border-color:var(--borda-ouro-forte);transform:translateY(-3px)}
+    .card-servico .ico{
+      font-size:1.7rem;
+      line-height:1;
+      margin-bottom:.7rem;
+    }
+    .card-servico h3{
       font-family:var(--fonte-titulo);
       font-weight:600;
-      font-size:1.5rem;
+      font-size:1.45rem;
       color:var(--ouro-claro);
-      display:flex;
-      align-items:center;
-      gap:.55rem;
     }
-    .card-cardapio .risco{
+    .card-servico .risco{
       height:1px;
       background:linear-gradient(90deg,var(--ouro),transparent);
-      margin:1rem 0 1.1rem;
+      margin:.8rem 0 .9rem;
       border:0;
     }
-    .card-cardapio ul{list-style:none}
-    .card-cardapio li{
+    .card-servico p{
       color:var(--creme-suave);
-      font-size:.88rem;
-      padding:.34rem 0 .34rem 1.15rem;
-      position:relative;
+      font-size:.87rem;
+      flex:1;
+      margin-bottom:1.2rem;
     }
-    .card-cardapio li::before{
-      content:"✦";
-      position:absolute;
-      left:0;
-      top:.34rem;
-      color:var(--ouro);
-      font-size:.7rem;
+    .btn-categoria{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      width:100%;
+      background:transparent;
+      border:1px solid var(--borda-ouro-forte);
+      border-radius:7px;
+      color:var(--ouro-claro);
+      font-family:var(--fonte-texto);
+      font-size:.8rem;
+      font-weight:600;
+      letter-spacing:.04em;
+      padding:.6rem 1rem;
+      cursor:pointer;
+      transition:background-color .18s ease,border-color .18s ease;
     }
-    .nota-cardapio{
+    .btn-categoria:hover{background:rgba(201,162,75,.12);border-color:var(--ouro)}
+    .nota-servicos{
       text-align:center;
       margin-top:2.2rem;
       font-family:var(--fonte-titulo);
@@ -255,160 +380,244 @@
       color:var(--creme-suave);
     }
 
+    /* ===== Confiança ===== */
+    .secao-confianca{background:var(--preto-2);border-top:1px solid var(--borda-ouro);border-bottom:1px solid var(--borda-ouro)}
+    .bloco-confianca{
+      display:grid;
+      grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+      gap:2.4rem;
+      align-items:center;
+      margin-top:2.8rem;
+    }
+    .certificado{
+      border:1px solid var(--borda-ouro-forte);
+      border-radius:8px;
+      padding:.5rem;
+      background:linear-gradient(180deg,var(--preto-3),var(--preto));
+      box-shadow:0 18px 46px rgba(0,0,0,.45);
+    }
+    .certificado img{border-radius:4px;width:100%;height:auto}
+    .certificado figcaption{
+      font-size:.74rem;
+      color:var(--creme-fraco);
+      text-align:center;
+      padding:.7rem .5rem .3rem;
+      letter-spacing:.04em;
+    }
+    /* sem certificado, os pilares ocupam o centro sem coluna vazia */
+    .bloco-confianca:has(> .certificado[hidden]){grid-template-columns:1fr;max-width:620px;margin-left:auto;margin-right:auto}
+    .pilares{list-style:none;display:flex;flex-direction:column;gap:1.4rem}
+    .pilar{display:flex;gap:1rem;align-items:flex-start}
+    .pilar .ico{
+      flex:0 0 auto;
+      width:40px;height:40px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid var(--borda-ouro);
+      border-radius:50%;
+      font-size:1.05rem;
+      background:var(--preto-3);
+    }
+    .pilar h3{
+      font-family:var(--fonte-titulo);
+      font-size:1.28rem;
+      font-weight:600;
+      color:var(--creme);
+      line-height:1.3;
+    }
+    .pilar p{font-size:.87rem;color:var(--creme-suave)}
+    .pilar a{text-decoration:none;border-bottom:1px solid var(--borda-ouro-forte)}
+    .pilar a:hover{border-color:var(--ouro-claro)}
+
     /* ===== Como funciona ===== */
-    .secao-passos{background:var(--preto-2);border-top:1px solid var(--borda-ouro);border-bottom:1px solid var(--borda-ouro)}
     .grade-passos{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:1.6rem;
-      margin-top:3rem;
+      gap:1.5rem;
+      margin-top:2.8rem;
       text-align:center;
     }
     .passo .num{
       font-family:var(--fonte-titulo);
-      font-size:2.6rem;
+      font-size:2.4rem;
       font-weight:500;
       color:var(--ouro);
       line-height:1;
       display:block;
-      margin-bottom:.7rem;
+      margin-bottom:.5rem;
     }
     .passo h3{
       font-family:var(--fonte-titulo);
       font-weight:600;
-      font-size:1.35rem;
+      font-size:1.3rem;
       color:var(--creme);
-      margin-bottom:.4rem;
+      margin-bottom:.3rem;
     }
-    .passo p{font-size:.86rem;color:var(--creme-suave)}
+    .passo p{font-size:.85rem;color:var(--creme-suave)}
 
-    /* ===== Depoimentos ===== */
-    .grade-depo{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1.4rem;
-      margin-top:3rem;
-    }
-    .card-depo{
-      background:var(--preto-2);
-      border:1px solid var(--borda-ouro);
-      border-radius:10px;
-      padding:1.9rem 1.6rem;
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
-    }
-    .card-depo blockquote{
-      font-family:var(--fonte-titulo);
-      font-style:italic;
-      font-size:1.12rem;
-      line-height:1.55;
-      color:var(--creme);
-      flex:1;
-    }
-    .card-depo cite{
-      font-style:normal;
-      font-size:.78rem;
-      font-weight:600;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--ouro);
-    }
-
-    /* ===== Formulário — o "convite" ===== */
-    .secao-orcamento{padding-bottom:6.5rem}
+    /* ===== Orçamento ===== */
+    .secao-orcamento{padding-bottom:5.5rem}
     .convite{
-      max-width:680px;
-      margin:3rem auto 0;
+      max-width:720px;
+      margin:2.8rem auto 0;
       background:linear-gradient(180deg,var(--preto-3),var(--preto-2));
       border:1px solid var(--ouro);
       border-radius:6px;
-      padding:.55rem;
+      padding:.5rem;
       box-shadow:0 20px 60px rgba(0,0,0,.5);
     }
     .convite-interno{
       border:1px solid var(--borda-ouro);
       border-radius:3px;
-      padding:2.6rem clamp(1.3rem,5vw,2.8rem) 2.8rem;
+      padding:2.4rem clamp(1.1rem,5vw,2.6rem) 2.4rem;
     }
-    .convite-interno .orn{width:min(240px,80%);margin-bottom:1.6rem}
+    .convite-interno .orn{margin-bottom:1.6rem}
     .grade-form{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:1.2rem 1.4rem;
+      gap:1.15rem 1.3rem;
     }
-    .campo{display:flex;flex-direction:column;gap:.45rem}
+    .campo{display:flex;flex-direction:column;gap:.4rem;min-width:0}
     .campo-cheio{grid-column:1 / -1}
-    .campo label{
-      font-size:.72rem;
+    .campo label,
+    .legenda-grupo{
+      font-size:.71rem;
       font-weight:600;
-      letter-spacing:.18em;
+      letter-spacing:.16em;
       text-transform:uppercase;
       color:var(--ouro-claro);
+    }
+    .campo .opcional{
+      color:var(--creme-fraco);
+      letter-spacing:.08em;
+      font-weight:500;
+      text-transform:none;
     }
     .campo input,
     .campo select,
     .campo textarea{
-      background:#0b0805;
+      background:#080604;
       border:1px solid var(--borda-ouro);
       border-radius:6px;
       color:var(--creme);
       font-family:var(--fonte-texto);
-      font-size:.95rem;
-      padding:.85rem 1rem;
+      font-size:1rem; /* 16px evita zoom automático no iOS */
+      min-height:48px;
+      padding:.8rem .9rem;
       width:100%;
+      max-width:100%;
       color-scheme:dark; /* ícones nativos (calendário) legíveis no fundo escuro */
       transition:border-color .18s ease;
     }
     .campo input::placeholder,
-    .campo textarea::placeholder{color:rgba(243,234,216,.38)}
+    .campo textarea::placeholder{color:rgba(244,236,220,.34)}
     .campo input:focus,
     .campo select:focus,
     .campo textarea:focus{border-color:var(--ouro)}
-    .campo textarea{resize:vertical;min-height:110px}
-    .acao-form{grid-column:1 / -1;text-align:center;margin-top:.8rem}
+    .campo textarea{resize:vertical;min-height:104px;line-height:1.6}
+    .campo input[aria-invalid="true"],
+    .campo select[aria-invalid="true"]{border-color:var(--erro)}
+    .erro-campo{
+      font-size:.76rem;
+      color:var(--erro);
+      line-height:1.5;
+    }
+
+    /* chips de categoria */
+    .grupo-categorias{border:0;padding:0;margin:0;min-width:0}
+    .grupo-categorias .legenda-grupo{display:block;margin-bottom:.7rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.55rem}
+    .chip{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      min-height:44px;
+      padding:.55rem 1rem;
+      border:1px solid var(--borda-ouro);
+      border-radius:999px;
+      background:#080604;
+      color:var(--creme-suave);
+      font-size:.85rem;
+      cursor:pointer;
+      transition:border-color .18s ease,background-color .18s ease,color .18s ease;
+    }
+    .chip input{
+      position:absolute;
+      opacity:0;
+      width:1px;height:1px;
+      margin:0;
+    }
+    .chip .marca-chip{
+      width:16px;height:16px;
+      border:1px solid var(--borda-ouro-forte);
+      border-radius:4px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.65rem;
+      color:var(--preto);
+      flex:0 0 auto;
+      transition:background-color .18s ease;
+    }
+    .chip:hover{border-color:var(--borda-ouro-forte)}
+    .chip input:checked ~ .marca-chip{background:var(--ouro);border-color:var(--ouro)}
+    .chip input:checked ~ .marca-chip::after{content:"✓"}
+    .chip:has(input:checked){border-color:var(--ouro);color:var(--creme);background:rgba(201,162,75,.1)}
+    .chip:has(input:focus-visible){outline:2px solid var(--ouro-claro);outline-offset:3px}
+
+    .acao-form{grid-column:1 / -1;text-align:center;margin-top:.5rem}
     .acao-form .btn{width:100%;font-size:1rem}
     .dica-form{
-      margin-top:1rem;
+      margin-top:.9rem;
       font-size:.78rem;
       color:var(--creme-suave);
       text-align:center;
+      line-height:1.6;
+    }
+    .aviso-form{
+      grid-column:1 / -1;
+      border:1px solid var(--erro);
+      border-radius:6px;
+      background:rgba(255,157,138,.08);
+      color:var(--erro);
+      font-size:.83rem;
+      padding:.75rem 1rem;
     }
 
     /* ===== Rodapé ===== */
     footer{
       border-top:1px solid var(--borda-ouro);
-      padding:3.5rem 0 6.5rem;
+      padding:3.2rem 0 calc(3rem + var(--barra-mobile));
       text-align:center;
     }
     footer .marca-rodape{
       font-family:var(--fonte-marca);
-      font-size:2.4rem;
+      font-size:2.3rem;
       color:var(--ouro-claro);
       display:block;
-      margin-bottom:1.2rem;
+      margin-bottom:1rem;
     }
     .info-rodape{
       display:flex;
       flex-wrap:wrap;
       justify-content:center;
-      gap:.6rem 2.2rem;
-      font-size:.88rem;
+      gap:.5rem 2rem;
+      font-size:.87rem;
       color:var(--creme-suave);
-      margin-bottom:1.6rem;
+      margin-bottom:1.4rem;
     }
     .info-rodape a{color:var(--ouro-claro);text-decoration:none}
     .info-rodape a:hover{text-decoration:underline}
-    .credito{font-size:.72rem;color:rgba(243,234,216,.45);letter-spacing:.06em}
+    .credito{font-size:.72rem;color:rgba(244,236,220,.42);letter-spacing:.06em}
 
-    /* ===== Botão flutuante WhatsApp ===== */
+    /* ===== Botão flutuante WhatsApp (desktop) ===== */
     .zap-flutuante{
       position:fixed;
       right:1.2rem;
       bottom:1.2rem;
       z-index:50;
-      width:58px;
-      height:58px;
+      width:56px;
+      height:56px;
       border-radius:50%;
       background:var(--whats);
       display:flex;
@@ -418,110 +627,260 @@
       transition:transform .18s ease;
     }
     .zap-flutuante:hover{transform:scale(1.08)}
-    .zap-flutuante svg{width:30px;height:30px;fill:#06281a}
+    .zap-flutuante svg{width:29px;height:29px;fill:#06281a}
+
+    /* ===== CTA fixo (mobile) ===== */
+    .barra-mobile{
+      display:none;
+      position:fixed;
+      left:0;right:0;bottom:0;
+      z-index:60;
+      padding:.7rem .9rem calc(.7rem + env(safe-area-inset-bottom,0px));
+      background:rgba(8,6,4,.94);
+      backdrop-filter:blur(8px);
+      border-top:1px solid var(--borda-ouro);
+      transition:transform .25s ease,opacity .25s ease;
+    }
+    .barra-mobile .btn{width:100%}
+    .barra-mobile[data-oculta="1"]{transform:translateY(120%);opacity:0;pointer-events:none}
 
     /* ===== Responsivo ===== */
-    @media (max-width:960px){
-      .grade-cardapio{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:1000px){
+      .grade-trabalhos{grid-template-columns:repeat(3,1fr)}
+      .grade-servicos{grid-template-columns:repeat(2,1fr)}
       .grade-passos{grid-template-columns:repeat(2,1fr)}
-      .grade-depo{grid-template-columns:1fr}
+      .bloco-confianca{grid-template-columns:1fr;gap:2rem}
+      .certificado{max-width:420px;margin:0 auto}
     }
-    @media (max-width:560px){
-      section{padding:4rem 0}
-      .hero{min-height:78vh}
-      .grade-cardapio{grid-template-columns:1fr}
-      .grade-passos{grid-template-columns:1fr}
+    @media (max-width:640px){
+      section{padding:3.6rem 0}
+      .hero{min-height:auto;padding:2.6rem 1rem 3rem}
+      .grade-trabalhos{grid-template-columns:repeat(2,1fr);gap:.7rem}
+      .grade-servicos{grid-template-columns:1fr}
+      .grade-passos{grid-template-columns:1fr;gap:1.8rem}
       .grade-form{grid-template-columns:1fr}
-      .hero-ctas{flex-direction:column;width:100%;max-width:340px}
-      .hero-ctas .btn{width:100%;text-align:center}
+      .hero-ctas{flex-direction:column;max-width:360px}
+      .hero-ctas .btn{width:100%}
+      .info-rodape{flex-direction:column;gap:.5rem}
+    }
+    @media (max-width:700px){
+      .barra-mobile{display:block}
+      .zap-flutuante{display:none} /* um só CTA fixo no celular, sem poluição */
+    }
+    @media (max-width:360px){
+      .container{width:94%}
+      .chip{font-size:.8rem;padding:.5rem .8rem}
     }
   </style>
 </head>
 <body>
 
   <!-- Faixa de demonstração — REMOVER na entrega final (ver README) -->
-  <div class="faixa-demo">Demonstração — página criada pela WLS Studio para o Buffet Real</div>
+  <div class="faixa-demo">Demonstração personalizada criada pela WLS Studio para o Buffet Real</div>
 
   <!-- ===== 1. Hero ===== -->
-  <header class="hero">
-    <svg class="orn" viewBox="0 0 400 40" aria-hidden="true" focusable="false">
-      <path d="M8 20 C 80 2, 150 2, 200 20 C 250 38, 320 38, 392 20" fill="none" stroke="#c9a24b" stroke-width="1.3"/>
-      <circle cx="200" cy="20" r="3.4" fill="#e8cf8f"/>
-      <circle cx="104" cy="10.5" r="2" fill="#c9a24b"/>
-      <circle cx="296" cy="29.5" r="2" fill="#c9a24b"/>
+  <header class="hero" id="topo">
+    <!-- FOTO: img/hero.webp (ou .jpg) — some sozinha se o arquivo não existir -->
+    <img class="hero-foto" src="img/hero.webp" alt="" data-opcional="1" fetchpriority="high" width="1600" height="1000">
+
+    <svg class="orn" viewBox="0 0 400 46" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M200 23h-46"/>
+        <path d="M154 23c-10 0-14-9-24-9s-15 7-15 12 5 9 11 9 10-4 10-9-4-8-9-8-8 3-8 7"/>
+        <path d="M150 18c-8-8-20-12-32-9-11 3-17 12-28 12-7 0-12-4-12-9"/>
+        <path d="M150 28c-8 8-20 12-32 9-11-3-17-12-28-12-7 0-12 4-12 9"/>
+        <path d="M78 22c-6-4-14-5-21-2"/>
+        <path d="M78 24c-6 4-14 5-21 2"/>
+      </g>
+      <g fill="currentColor">
+        <circle cx="200" cy="23" r="3.6"/>
+        <circle cx="185" cy="23" r="1.5"/>
+        <circle cx="57" cy="20" r="1.6"/>
+        <circle cx="57" cy="26" r="1.6"/>
+      </g>
+      <g transform="translate(400,0) scale(-1,1)">
+        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <path d="M200 23h-46"/>
+          <path d="M154 23c-10 0-14-9-24-9s-15 7-15 12 5 9 11 9 10-4 10-9-4-8-9-8-8 3-8 7"/>
+          <path d="M150 18c-8-8-20-12-32-9-11 3-17 12-28 12-7 0-12-4-12-9"/>
+          <path d="M150 28c-8 8-20 12-32 9-11-3-17-12-28-12-7 0-12 4-12 9"/>
+          <path d="M78 22c-6-4-14-5-21-2"/>
+          <path d="M78 24c-6 4-14 5-21 2"/>
+        </g>
+        <g fill="currentColor">
+          <circle cx="185" cy="23" r="1.5"/>
+          <circle cx="57" cy="20" r="1.6"/>
+          <circle cx="57" cy="26" r="1.6"/>
+        </g>
+      </g>
     </svg>
-    <h1 class="marca">Buffet Real</h1>
-    <p class="tagline">Doces finos, salgados, bolos e ceias para a sua celebração</p>
-    <p class="badge-horario">Aberto todos os dias · 9h às 21h · Itabirito-MG</p>
+
+    <p class="marca">Buffet Real</p>
+    <h1 class="titulo-hero">Seu evento com sabor, cuidado e apresentação.</h1>
+    <p class="texto-hero">Doces, salgados, bolos, ceias e soluções personalizadas para celebrações em Itabirito e região.</p>
+    <p class="badge-horario"><span>Itabirito-MG</span><span aria-hidden="true">·</span><span>Todos os dias, das 9h às 21h</span></p>
+
     <div class="hero-ctas">
-      <a class="btn btn-whats" href="#orcamento">Pedir orçamento pelo WhatsApp</a>
-      <a class="btn btn-ouro" href="#cardapio">Ver cardápio</a>
+      <a class="btn btn-whats" href="#orcamento">Solicitar orçamento</a>
+      <a class="btn btn-ouro" href="#trabalhos">Ver trabalhos</a>
     </div>
   </header>
 
   <main>
-    <!-- ===== 2. Cardápio ===== -->
-    <section id="cardapio">
+    <!-- ===== 2. Trabalhos ===== -->
+    <section id="trabalhos" class="secao-trabalhos">
       <div class="container">
-        <span class="eyebrow">Feito à mão, feito com carinho</span>
-        <h2 class="titulo-secao">Nosso Cardápio</h2>
-        <p class="sub-secao">Tudo preparado artesanalmente, com encomendas sob medida para festas, celebrações e ceias.</p>
+        <span class="eyebrow">Portfólio</span>
+        <h2 class="titulo-secao">Alguns dos nossos trabalhos</h2>
+        <p class="sub-secao">Cada encomenda é preparada sob medida — do docinho da festa à ceia da família inteira.</p>
 
-        <!-- PLACEHOLDER: substituir pelo cardápio real (itens abaixo são ilustrativos) -->
-        <div class="grade-cardapio">
-          <div class="card-cardapio">
-            <h3><span aria-hidden="true">🍓</span> Doces</h3>
-            <hr class="risco">
-            <ul>
-              <li>Brigadeiros gourmet</li>
-              <li>Docinhos finos para festa</li>
-              <li>Copinhos de mousse e verrines</li>
-              <li>Tortinhas e mini doces</li>
-              <li>Doces personalizados</li>
-            </ul>
-          </div>
-          <div class="card-cardapio">
-            <h3><span aria-hidden="true">🥟</span> Salgados</h3>
-            <hr class="risco">
-            <ul>
-              <li>Coxinhas e bolinhos</li>
-              <li>Empadinhas e folhados</li>
-              <li>Mini quiches e assados</li>
-              <li>Salgados fritos na hora</li>
-              <li>Kits festa por cento</li>
-            </ul>
-          </div>
-          <div class="card-cardapio">
-            <h3><span aria-hidden="true">🎂</span> Bolos</h3>
-            <hr class="risco">
-            <ul>
-              <li>Bolos decorados</li>
-              <li>Bolos de festa e aniversário</li>
-              <li>Naked cake e semi naked</li>
-              <li>Bolos caseiros</li>
-              <li>Recheios sob encomenda</li>
-            </ul>
-          </div>
-          <div class="card-cardapio">
-            <h3><span aria-hidden="true">🍽️</span> Ceias &amp; Eventos</h3>
-            <hr class="risco">
-            <ul>
-              <li>Ceia de Natal e Ano Novo</li>
-              <li>Assados e acompanhamentos</li>
-              <li>Buffet para eventos</li>
-              <li>Coffee break corporativo</li>
-              <li>Encomendas para datas especiais</li>
-            </ul>
-          </div>
+        <!-- FOTOS: img/trabalho-01.webp … trabalho-08.webp (ou .jpg).
+             Enquanto o arquivo não existir, o quadro mostra a moldura de espera. -->
+        <div class="grade-trabalhos" id="grade-trabalhos">
+          <figure class="trabalho">
+            <img src="img/trabalho-01.webp" alt="Bolo de andares em mesa decorada com arranjos florais e parede de folhagens" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Bolos">
+            <figcaption>Bolos e mesa decorada</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalho-02.webp" alt="Mesa farta montada ao ar livre, com tábuas de frios, pães e frutas" loading="lazy" width="722" height="542" data-opcional="1" data-espera="Montagem">
+            <figcaption>Montagem de evento</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalho-03.webp" alt="Buffet servido ao ar livre com pães, salgados e porções" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Salgados">
+            <figcaption>Salgados e porções</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalho-04.webp" alt="Travessa com porções variadas servidas pelo Buffet Real" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Apresentação">
+            <figcaption>Apresentação</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalho-05.webp" alt="Gamela de madeira com porção quente servida em evento" loading="lazy" width="722" height="736" data-opcional="1" data-espera="Petiscos">
+            <figcaption>Petiscos</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalho-06.webp" alt="Arranjo de flores brancas usado na decoração de um evento" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Decoração">
+            <figcaption>Decoração</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalho-07.webp" alt="Arranjo floral com o cartão do Buffet Real" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Detalhes">
+            <figcaption>Detalhes</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalho-08.webp" alt="Ambientação com folhagens e luzes preparada para uma celebração" loading="lazy" width="720" height="1280" data-opcional="1" data-espera="Ambientação">
+            <figcaption>Ambientação</figcaption>
+          </figure>
         </div>
-        <!-- FIM PLACEHOLDER cardápio -->
 
-        <p class="nota-cardapio">Não achou o que procura? Conte o que imagina no seu pedido — fazemos sob encomenda.</p>
+        <div class="acao-central">
+          <a class="btn btn-ouro" href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 5.18a4.66 4.66 0 1 0 0 9.32 4.66 4.66 0 0 0 0-9.32Zm0 7.69a3.03 3.03 0 1 1 0-6.06 3.03 3.03 0 0 1 0 6.06Zm5.93-7.87a1.09 1.09 0 1 1-2.18 0 1.09 1.09 0 0 1 2.18 0Z"/></svg>
+            Ver mais trabalhos no Instagram
+          </a>
+          <p class="nota-fotos">Imagens do perfil público do Buffet Real, usadas nesta demonstração. Na versão final elas são substituídas pelos arquivos originais em alta resolução.</p>
+          <p class="nota-fotos" id="nota-fotos" hidden>Os quadros acima ficam reservados para as fotos reais dos seus trabalhos — na versão final entram as imagens originais do Buffet Real, tratadas e otimizadas.</p>
+        </div>
       </div>
     </section>
 
-    <!-- ===== 3. Como funciona ===== -->
-    <section class="secao-passos">
+    <!-- ===== 3. Serviços ===== -->
+    <section id="servicos">
+      <div class="container">
+        <span class="eyebrow">Feito à mão, feito com carinho</span>
+        <h2 class="titulo-secao">Nossos Serviços</h2>
+        <p class="sub-secao">Escolha o que você procura e o pedido já vai preenchido para o WhatsApp.</p>
+
+        <!-- Categorias alinhadas 1:1 com as opções do formulário (data-categoria) -->
+        <div class="grade-servicos">
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true">🍓</span>
+            <h3>Doces</h3>
+            <hr class="risco">
+            <p>Docinhos para festa, sobremesas e encomendas personalizadas para a sua celebração.</p>
+            <button type="button" class="btn-categoria" data-categoria="Doces">Quero solicitar orçamento</button>
+          </article>
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true">🥟</span>
+            <h3>Salgados</h3>
+            <hr class="risco">
+            <p>Salgados variados para festas, reuniões e encontros, feitos sob encomenda.</p>
+            <button type="button" class="btn-categoria" data-categoria="Salgados">Quero solicitar orçamento</button>
+          </article>
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true">🎂</span>
+            <h3>Bolos</h3>
+            <hr class="risco">
+            <p>Bolos para aniversários, casamentos e datas especiais, no tamanho e no sabor que você quiser.</p>
+            <button type="button" class="btn-categoria" data-categoria="Bolos">Quero solicitar orçamento</button>
+          </article>
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true">🍽️</span>
+            <h3>Ceias</h3>
+            <hr class="risco">
+            <p>Ceias completas para as datas em que a família toda se reúne à mesa.</p>
+            <button type="button" class="btn-categoria" data-categoria="Ceias">Quero solicitar orçamento</button>
+          </article>
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true">🥂</span>
+            <h3>Buffet para evento</h3>
+            <hr class="risco">
+            <p>Atendimento completo para aniversários, casamentos e confraternizações.</p>
+            <button type="button" class="btn-categoria" data-categoria="Buffet para evento">Quero solicitar orçamento</button>
+          </article>
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true">✨</span>
+            <h3>Outros</h3>
+            <hr class="risco">
+            <p>Tem uma ideia diferente? Conte o que você imaginou e montamos junto com você.</p>
+            <button type="button" class="btn-categoria" data-categoria="Outros">Quero solicitar orçamento</button>
+          </article>
+        </div>
+
+        <p class="nota-servicos">Não achou o que procura? Conte o que imagina no seu pedido — fazemos sob encomenda.</p>
+      </div>
+    </section>
+
+    <!-- ===== 4. Confiança ===== -->
+    <section class="secao-confianca">
+      <div class="container">
+        <span class="eyebrow">Quem está por trás</span>
+        <h2 class="titulo-secao">Um buffet de Itabirito, com nome e rosto</h2>
+
+        <div class="bloco-confianca">
+          <!-- FOTO: img/certificado.webp — o bloco nasce oculto e só aparece quando a imagem carregar -->
+          <figure class="certificado" id="bloco-certificado" data-oculta-se-falhar="1" hidden>
+            <img src="img/certificado.webp" alt="Certificado de reconhecimento empresarial recebido pelo Buffet Real" width="900" height="1200" data-opcional="1">
+            <figcaption>Reconhecimento de Alta Performance Empresarial 2026, recebido pelo Buffet Real em Itabirito-MG</figcaption>
+          </figure>
+
+          <ul class="pilares">
+            <li class="pilar">
+              <span class="ico" aria-hidden="true">📍</span>
+              <div>
+                <h3>Reconhecido em Itabirito</h3>
+                <p>Certificado como a empresa mais recomendada no segmento de buffet para eventos na cidade, pelo atendimento.</p>
+              </div>
+            </li>
+            <li class="pilar">
+              <span class="ico" aria-hidden="true">💬</span>
+              <div>
+                <h3>Atendimento personalizado</h3>
+                <p>Quem responde é a Miriam. Cada pedido é conversado, ajustado e confirmado antes do evento.</p>
+              </div>
+            </li>
+            <li class="pilar">
+              <span class="ico" aria-hidden="true">📷</span>
+              <div>
+                <h3>Trabalhos reais, à vista de todos</h3>
+                <p>O dia a dia do buffet fica publicado no perfil <a href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">@buffetreal_miriammarinho</a>.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. Como funciona ===== -->
+    <section>
       <div class="container">
         <span class="eyebrow">Simples assim</span>
         <h2 class="titulo-secao">Como Funciona</h2>
@@ -529,100 +888,118 @@
           <div class="passo">
             <span class="num" aria-hidden="true">1</span>
             <h3>Escolha</h3>
-            <p>Veja o cardápio e pense no que combina com a sua celebração.</p>
+            <p>Veja os trabalhos e os serviços e pense no que combina com a sua celebração.</p>
           </div>
           <div class="passo">
             <span class="num" aria-hidden="true">2</span>
-            <h3>Envie</h3>
-            <p>Preencha o pedido aqui no site — ele chega prontinho no nosso WhatsApp.</p>
+            <h3>Conte</h3>
+            <p>Preencha data, convidados, local e o que deseja aqui na página.</p>
           </div>
           <div class="passo">
             <span class="num" aria-hidden="true">3</span>
-            <h3>Confirme</h3>
-            <p>Confirmamos juntos os detalhes, as quantidades e o valor.</p>
+            <h3>Envie</h3>
+            <p>O pedido chega organizado no WhatsApp do Buffet Real, pronto para você revisar.</p>
           </div>
           <div class="passo">
             <span class="num" aria-hidden="true">4</span>
             <h3>Celebre</h3>
-            <p>No dia combinado, é só receber e aproveitar a festa.</p>
+            <p>Confirmamos os detalhes e, no dia combinado, é só receber e aproveitar.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== 4. Depoimentos ===== -->
-    <section>
-      <div class="container">
-        <span class="eyebrow">Quem já celebrou</span>
-        <h2 class="titulo-secao">Palavras de Quem Provou</h2>
-
-        <!-- PLACEHOLDER: depoimentos reais (textos abaixo são ilustrativos, sem nomes reais) -->
-        <div class="grade-depo">
-          <div class="card-depo">
-            <blockquote>“Os docinhos foram o assunto da festa. Tudo chegou no horário, lindo e fresquinho.”</blockquote>
-            <cite>Cliente · Aniversário</cite>
-          </div>
-          <div class="card-depo">
-            <blockquote>“Atendimento atencioso do começo ao fim. O bolo ficou exatamente como sonhamos.”</blockquote>
-            <cite>Cliente · Casamento</cite>
-          </div>
-          <div class="card-depo">
-            <blockquote>“A ceia salvou o nosso Natal — comida farta, caprichada e com gostinho de casa.”</blockquote>
-            <cite>Cliente · Ceia de Natal</cite>
-          </div>
-        </div>
-        <!-- FIM PLACEHOLDER depoimentos -->
-      </div>
-    </section>
-
-    <!-- ===== 5. Monte seu Orçamento ===== -->
+    <!-- ===== 6. Orçamento inteligente ===== -->
     <section id="orcamento" class="secao-orcamento">
       <div class="container">
         <span class="eyebrow">Sem compromisso</span>
-        <h2 class="titulo-secao">Monte seu Orçamento</h2>
-        <p class="sub-secao">Preencha o que já souber — o pedido chega organizado no nosso WhatsApp e respondemos com o orçamento.</p>
+        <h2 class="titulo-secao">Conte como será o seu evento</h2>
+        <p class="sub-secao">Preencha as principais informações e receba um atendimento mais rápido pelo WhatsApp.</p>
 
         <div class="convite">
           <div class="convite-interno">
-            <svg class="orn" viewBox="0 0 400 40" aria-hidden="true" focusable="false">
-              <path d="M8 20 C 80 2, 150 2, 200 20 C 250 38, 320 38, 392 20" fill="none" stroke="#c9a24b" stroke-width="1.3"/>
-              <circle cx="200" cy="20" r="3.4" fill="#e8cf8f"/>
+            <svg class="orn orn--pequeno" viewBox="0 0 400 46" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+                <path d="M200 23h-46"/>
+                <path d="M154 23c-10 0-14-9-24-9s-15 7-15 12 5 9 11 9 10-4 10-9-4-8-9-8-8 3-8 7"/>
+                <path d="M150 18c-8-8-20-12-32-9-11 3-17 12-28 12-7 0-12-4-12-9"/>
+                <path d="M150 28c-8 8-20 12-32 9-11-3-17-12-28-12-7 0-12 4-12 9"/>
+              </g>
+              <g fill="currentColor"><circle cx="200" cy="23" r="3.6"/><circle cx="185" cy="23" r="1.5"/></g>
+              <g transform="translate(400,0) scale(-1,1)">
+                <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+                  <path d="M200 23h-46"/>
+                  <path d="M154 23c-10 0-14-9-24-9s-15 7-15 12 5 9 11 9 10-4 10-9-4-8-9-8-8 3-8 7"/>
+                  <path d="M150 18c-8-8-20-12-32-9-11 3-17 12-28 12-7 0-12-4-12-9"/>
+                  <path d="M150 28c-8 8-20 12-32 9-11-3-17-12-28-12-7 0-12 4-12 9"/>
+                </g>
+                <g fill="currentColor"><circle cx="185" cy="23" r="1.5"/></g>
+              </g>
             </svg>
+
             <form id="form-orcamento" class="grade-form" novalidate>
+              <p class="aviso-form" id="aviso-form" role="alert" hidden></p>
+
               <div class="campo">
                 <label for="nome">Seu nome</label>
-                <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar?">
+                <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar?" aria-describedby="erro-nome">
+                <p class="erro-campo" id="erro-nome" hidden></p>
               </div>
+
               <div class="campo">
                 <label for="data">Data do evento</label>
-                <input type="date" id="data" name="data">
+                <input type="date" id="data" name="data" aria-describedby="erro-data">
+                <p class="erro-campo" id="erro-data" hidden></p>
               </div>
+
               <div class="campo">
                 <label for="convidados">Nº de convidados</label>
-                <input type="number" id="convidados" name="convidados" min="1" inputmode="numeric" placeholder="Ex.: 50">
+                <input type="number" id="convidados" name="convidados" min="1" step="1" inputmode="numeric" placeholder="Ex.: 50" aria-describedby="erro-convidados">
+                <p class="erro-campo" id="erro-convidados" hidden></p>
               </div>
+
               <div class="campo">
-                <label for="local">Local do evento</label>
-                <input type="text" id="local" name="local" placeholder="Bairro, salão, residência…">
-              </div>
-              <div class="campo campo-cheio">
                 <label for="tipo">Tipo de evento</label>
-                <select id="tipo" name="tipo">
+                <select id="tipo" name="tipo" aria-describedby="erro-tipo">
                   <option value="" selected>Selecione…</option>
                   <option value="Aniversário">Aniversário</option>
                   <option value="Casamento">Casamento</option>
-                  <option value="Ceia Natal/Ano Novo">Ceia Natal/Ano Novo</option>
-                  <option value="Corporativo">Corporativo</option>
+                  <option value="Confraternização">Confraternização</option>
+                  <option value="Evento corporativo">Evento corporativo</option>
+                  <option value="Ceia">Ceia</option>
                   <option value="Outro">Outro</option>
                 </select>
+                <p class="erro-campo" id="erro-tipo" hidden></p>
               </div>
+
               <div class="campo campo-cheio">
-                <label for="pedido">Seu pedido</label>
-                <textarea id="pedido" name="pedido" placeholder="Ex.: 100 salgados variados, 50 docinhos e um bolo decorado…"></textarea>
+                <label for="local">Local do evento <span class="opcional">(opcional)</span></label>
+                <input type="text" id="local" name="local" placeholder="Bairro, salão, residência…">
               </div>
+
+              <fieldset class="campo-cheio grupo-categorias">
+                <legend class="legenda-grupo">O que você procura <span class="opcional">(opcional)</span></legend>
+                <div class="chips" id="chips-categorias">
+                  <label class="chip"><input type="checkbox" name="categoria" value="Doces"><span class="marca-chip" aria-hidden="true"></span>Doces</label>
+                  <label class="chip"><input type="checkbox" name="categoria" value="Salgados"><span class="marca-chip" aria-hidden="true"></span>Salgados</label>
+                  <label class="chip"><input type="checkbox" name="categoria" value="Bolos"><span class="marca-chip" aria-hidden="true"></span>Bolos</label>
+                  <label class="chip"><input type="checkbox" name="categoria" value="Ceias"><span class="marca-chip" aria-hidden="true"></span>Ceias</label>
+                  <label class="chip"><input type="checkbox" name="categoria" value="Buffet para evento"><span class="marca-chip" aria-hidden="true"></span>Buffet para evento</label>
+                  <label class="chip"><input type="checkbox" name="categoria" value="Outros"><span class="marca-chip" aria-hidden="true"></span>Outros</label>
+                </div>
+              </fieldset>
+
+              <div class="campo campo-cheio">
+                <label for="detalhes">Detalhes do pedido <span class="opcional">(opcional)</span></label>
+                <textarea id="detalhes" name="detalhes" placeholder="Ex.: 100 salgados variados, 50 docinhos e um bolo decorado…"></textarea>
+              </div>
+
               <div class="acao-form">
-                <button type="submit" class="btn btn-whats">Enviar pedido pelo WhatsApp</button>
-                <p class="dica-form">Abre o WhatsApp com sua mensagem pronta — você revisa antes de enviar.</p>
+                <button type="submit" class="btn btn-whats">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.05-.38-1.99-1.23a7.4 7.4 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
+                  Enviar pelo WhatsApp
+                </button>
+                <p class="dica-form">Você será direcionado ao WhatsApp com as informações organizadas para revisar e enviar.</p>
               </div>
             </form>
           </div>
@@ -631,7 +1008,7 @@
     </section>
   </main>
 
-  <!-- ===== 6. Rodapé ===== -->
+  <!-- ===== 7. Rodapé ===== -->
   <footer>
     <div class="container">
       <span class="marca-rodape" aria-hidden="true">Buffet Real</span>
@@ -641,50 +1018,272 @@
         <span>🕘 Todos os dias, das 9h às 21h</span>
         <span>📍 Itabirito-MG</span>
       </div>
-      <p class="credito">Buffet Real · Itabirito-MG — site por WLS Studio</p>
+      <p class="credito">Buffet Real · Itabirito-MG — página por WLS Studio</p>
     </div>
   </footer>
 
-  <!-- ===== 7. Botão flutuante WhatsApp ===== -->
+  <!-- ===== 8. WhatsApp flutuante (desktop) ===== -->
   <a class="zap-flutuante" href="https://wa.me/5531980217336" target="_blank" rel="noopener" aria-label="Conversar com o Buffet Real no WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.05-.38-1.99-1.23a7.4 7.4 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
   </a>
 
+  <!-- ===== 9. CTA fixo (mobile) ===== -->
+  <div class="barra-mobile" id="barra-mobile">
+    <a class="btn btn-whats" href="#orcamento">Pedir orçamento</a>
+  </div>
+
   <script>
-    // ===== Monta a mensagem e abre o WhatsApp =====
-    function valorCampo(id){
-      return document.getElementById(id).value.trim();
+  (function(){
+    'use strict';
+
+    var WHATSAPP = '5531980217336';
+
+    /* ==========================================================
+       1. Imagens opcionais
+       Enquanto o arquivo não existir, nada quebra: tenta .jpg,
+       depois troca por uma moldura de espera (ou some).
+       ========================================================== */
+    function trataFalhaImagem(img){
+      var src = img.getAttribute('src') || '';
+
+      // 1ª tentativa: mesmo nome em .jpg
+      if(img.dataset.tentouJpg !== '1' && /\.webp$/i.test(src)){
+        img.dataset.tentouJpg = '1';
+        img.src = src.replace(/\.webp$/i, '.jpg');
+        return;
+      }
+
+      var bloco = img.closest('[data-oculta-se-falhar]');
+      if(bloco){ bloco.hidden = true; return; }
+
+      var figura = img.closest('.trabalho');
+      if(figura){
+        // Moldura de espera no lugar da foto (o quadro continua elegante)
+        var legenda = figura.querySelector('figcaption');
+        var rotulo = img.dataset.espera || (legenda ? legenda.textContent : '');
+        figura.classList.add('sem-foto');
+        figura.innerHTML =
+          '<div class="moldura-espera"><span class="ico" aria-hidden="true">✦</span><span>' +
+          rotulo + '</span></div>';
+        var nota = document.getElementById('nota-fotos');
+        if(nota) nota.hidden = false;
+        return;
+      }
+
+      img.remove(); // hero e demais imagens decorativas
     }
-    function ouADefinir(valor){
-      return valor === '' ? 'a definir' : valor;
+
+    document.addEventListener('error', function(e){
+      var alvo = e.target;
+      if(alvo && alvo.tagName === 'IMG' && alvo.dataset.opcional === '1'){
+        trataFalhaImagem(alvo);
+      }
+    }, true);
+
+    // imagens que já falharam antes do script carregar (ex.: hero)
+    var jaCarregadas = document.querySelectorAll('img[data-opcional="1"]');
+    for(var m = 0; m < jaCarregadas.length; m++){
+      if(jaCarregadas[m].complete && jaCarregadas[m].naturalWidth === 0){
+        trataFalhaImagem(jaCarregadas[m]);
+      }
     }
-    function dataFormatada(){
-      var bruto = valorCampo('data'); // formato YYYY-MM-DD do input date
-      if(bruto === '') return 'a definir';
-      var partes = bruto.split('-');
-      if(partes.length !== 3) return 'a definir';
-      return partes[2] + '/' + partes[1] + '/' + partes[0];
+
+    // certificado: aparece somente quando a foto carrega de verdade
+    var imgCertificado = document.querySelector('#bloco-certificado img');
+    if(imgCertificado){
+      var mostraCertificado = function(){
+        var bloco = document.getElementById('bloco-certificado');
+        if(bloco) bloco.hidden = false;
+      };
+      if(imgCertificado.complete && imgCertificado.naturalWidth > 0) mostraCertificado();
+      else imgCertificado.addEventListener('load', mostraCertificado);
     }
+
+    /* ==========================================================
+       2. Serviços → formulário (rola e pré-seleciona a categoria)
+       ========================================================== */
+    function marcaCategoria(valor){
+      var caixas = document.querySelectorAll('#chips-categorias input[type="checkbox"]');
+      for(var i = 0; i < caixas.length; i++){
+        if(caixas[i].value === valor){ caixas[i].checked = true; return caixas[i]; }
+      }
+      return null;
+    }
+
+    var botoesCategoria = document.querySelectorAll('.btn-categoria');
+    for(var b = 0; b < botoesCategoria.length; b++){
+      botoesCategoria[b].addEventListener('click', function(){
+        marcaCategoria(this.dataset.categoria);
+        var secao = document.getElementById('orcamento');
+        if(secao) secao.scrollIntoView({behavior:'smooth', block:'start'});
+        // foco no 1º campo depois da rolagem, sem roubar a tela do usuário
+        window.setTimeout(function(){
+          var nome = document.getElementById('nome');
+          if(nome) nome.focus({preventScroll:true});
+        }, 600);
+      });
+    }
+
+    /* ==========================================================
+       3. Formulário — validação e mensagem do WhatsApp
+       ========================================================== */
+    var form = document.getElementById('form-orcamento');
+    var aviso = document.getElementById('aviso-form');
+
+    function hoje(){
+      var d = new Date();
+      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    }
+    function dataMinimaISO(){
+      var d = hoje();
+      var mes = String(d.getMonth() + 1).padStart(2, '0');
+      var dia = String(d.getDate()).padStart(2, '0');
+      return d.getFullYear() + '-' + mes + '-' + dia;
+    }
+    // impede escolher data passada já no seletor nativo
+    document.getElementById('data').setAttribute('min', dataMinimaISO());
+
+    function valor(id){
+      var el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    }
+    function mostraErro(id, mensagem){
+      var campo = document.getElementById(id);
+      var caixa = document.getElementById('erro-' + id);
+      if(campo) campo.setAttribute('aria-invalid', 'true');
+      if(caixa){ caixa.textContent = mensagem; caixa.hidden = false; }
+    }
+    function limpaErro(id){
+      var campo = document.getElementById(id);
+      var caixa = document.getElementById('erro-' + id);
+      if(campo) campo.removeAttribute('aria-invalid');
+      if(caixa){ caixa.textContent = ''; caixa.hidden = true; }
+    }
+    function limpaTodosErros(){
+      ['nome','data','convidados','tipo'].forEach(limpaErro);
+      aviso.hidden = true;
+      aviso.textContent = '';
+    }
+
+    function dataEhPassada(iso){
+      var partes = iso.split('-');
+      if(partes.length !== 3) return false;
+      var escolhida = new Date(Number(partes[0]), Number(partes[1]) - 1, Number(partes[2]));
+      return escolhida < hoje();
+    }
+
+    function validar(){
+      limpaTodosErros();
+      var erros = [];
+
+      if(valor('nome') === ''){
+        mostraErro('nome', 'Precisamos do seu nome para te atender.');
+        erros.push('nome');
+      }
+
+      var data = valor('data');
+      if(data === ''){
+        mostraErro('data', 'Informe a data do evento.');
+        erros.push('data');
+      } else if(dataEhPassada(data)){
+        mostraErro('data', 'A data do evento não pode ser anterior a hoje.');
+        erros.push('data');
+      }
+
+      var convidados = valor('convidados');
+      if(convidados === ''){
+        mostraErro('convidados', 'Informe quantas pessoas você espera.');
+        erros.push('convidados');
+      } else if(!/^\d+$/.test(convidados) || Number(convidados) < 1){
+        mostraErro('convidados', 'O número de convidados precisa ser 1 ou mais.');
+        erros.push('convidados');
+      }
+
+      if(valor('tipo') === ''){
+        mostraErro('tipo', 'Escolha o tipo de evento.');
+        erros.push('tipo');
+      }
+
+      if(erros.length > 0){
+        aviso.textContent = erros.length === 1
+          ? 'Falta preencher 1 campo abaixo. Seus dados foram mantidos.'
+          : 'Faltam preencher ' + erros.length + ' campos abaixo. Seus dados foram mantidos.';
+        aviso.hidden = false;
+        var primeiro = document.getElementById(erros[0]);
+        if(primeiro) primeiro.focus();
+      }
+      return erros.length === 0;
+    }
+
+    // some com o erro assim que o campo é corrigido
+    ['nome','data','convidados','tipo'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.addEventListener('input', function(){ limpaErro(id); });
+      if(el) el.addEventListener('change', function(){ limpaErro(id); });
+    });
+
+    function dataBR(iso){
+      var p = iso.split('-');
+      return p[2] + '/' + p[1] + '/' + p[0];
+    }
+    function categoriasEscolhidas(){
+      var marcadas = document.querySelectorAll('#chips-categorias input:checked');
+      var lista = [];
+      for(var i = 0; i < marcadas.length; i++) lista.push(marcadas[i].value);
+      return lista.join(', ');
+    }
+
     function montarMensagem(){
-      var nome = valorCampo('nome');
-      var saudacao = nome === ''
-        ? 'Olá, Buffet Real! Gostaria de pedir um orçamento. 🥂'
-        : 'Olá, Buffet Real! Sou ' + nome + ' e gostaria de pedir um orçamento. 🥂';
-      return [
-        saudacao,
+      var linhas = [
+        'Olá, Miriam! Gostaria de solicitar um orçamento para o Buffet Real.',
         '',
-        '📅 Data do evento: ' + dataFormatada(),
-        '👥 Convidados: ' + ouADefinir(valorCampo('convidados')),
-        '📍 Local: ' + ouADefinir(valorCampo('local')),
-        '🎉 Tipo de evento: ' + ouADefinir(valorCampo('tipo')),
-        '📝 Pedido: ' + ouADefinir(valorCampo('pedido'))
-      ].join('\n');
+        'Nome: ' + valor('nome'),
+        'Data do evento: ' + dataBR(valor('data')),
+        'Número de convidados: ' + valor('convidados'),
+        'Tipo de evento: ' + valor('tipo')
+      ];
+
+      // campos opcionais entram só quando preenchidos
+      var local = valor('local');
+      if(local !== '') linhas.push('Local: ' + local);
+
+      var categorias = categoriasEscolhidas();
+      if(categorias !== '') linhas.push('Categorias desejadas: ' + categorias);
+
+      var detalhes = valor('detalhes');
+      if(detalhes !== '') linhas.push('Detalhes: ' + detalhes);
+
+      linhas.push('', 'Aguardo o retorno. Obrigado(a)!');
+      return linhas.join('\n');
     }
-    document.getElementById('form-orcamento').addEventListener('submit', function(e){
-      e.preventDefault(); // envio nunca é bloqueado por validação — campos vazios viram "a definir"
-      var url = 'https://wa.me/5531980217336?text=' + encodeURIComponent(montarMensagem());
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault(); // nada é enviado daqui: só abrimos o WhatsApp
+      if(!validar()) return;
+      var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(montarMensagem());
       window.open(url, '_blank', 'noopener');
     });
+
+    /* ==========================================================
+       4. CTA fixo do celular — sai da frente quando o formulário
+          está na tela e reserva espaço no rodapé.
+       ========================================================== */
+    var barra = document.getElementById('barra-mobile');
+    var secaoOrcamento = document.getElementById('orcamento');
+
+    function ajustaEspacoRodape(){
+      var visivel = window.getComputedStyle(barra).display !== 'none';
+      document.documentElement.style.setProperty('--barra-mobile', visivel ? '76px' : '0px');
+    }
+    ajustaEspacoRodape();
+    window.addEventListener('resize', ajustaEspacoRodape);
+
+    if('IntersectionObserver' in window && secaoOrcamento){
+      new IntersectionObserver(function(entradas){
+        barra.dataset.oculta = entradas[0].isIntersecting ? '1' : '0';
+      }, {threshold: 0.12}).observe(secaoOrcamento);
+    }
+  })();
   </script>
 </body>
 </html>

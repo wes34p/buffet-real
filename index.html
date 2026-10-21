@@ -90,20 +90,6 @@
     }
     [hidden]{display:none!important}
 
-    /* ===== Faixa de demonstração (remover na entrega final) ===== */
-    .faixa-demo{
-      background:#060403;
-      border-bottom:1px solid var(--borda-ouro);
-      color:var(--ouro);
-      font-size:.66rem;
-      font-weight:600;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      text-align:center;
-      padding:.6rem 1rem;
-      line-height:1.5;
-    }
-
     .container{width:min(1120px,92%);margin:0 auto}
     section{padding:5rem 0}
 
@@ -983,7 +969,8 @@
       .grade-passos{text-align:left;gap:.8rem}
       .passo{display:grid;grid-template-columns:auto 1fr;gap:.15rem 1rem;padding:1.1rem 1.1rem 1.15rem}
       .passo .num{grid-row:1 / span 2;margin:0;font-size:2.1rem}
-      .badge-horario{border-radius:14px;font-size:.72rem}
+      .badge-horario{border-radius:14px;font-size:.72rem;flex-direction:column;gap:.1rem}
+      .badge-horario span[aria-hidden="true"]{display:none}
       .prato-botao{min-height:56px;padding:.75rem .9rem}
       .prato-nome{font-size:1.1rem}
       .grade-equipe{grid-template-columns:1fr}
@@ -995,8 +982,6 @@
 </head>
 <body>
 
-  <!-- Faixa de demonstração: REMOVER na entrega final -->
-  <div class="faixa-demo">Demonstração personalizada criada pela WLS Studio para o Buffet Real</div>
 
   <!-- ===== 1. Hero ===== -->
   <header class="hero" id="topo">
@@ -1207,7 +1192,6 @@
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 5.18a4.66 4.66 0 1 0 0 9.32 4.66 4.66 0 0 0 0-9.32Zm0 7.69a3.03 3.03 0 1 1 0-6.06 3.03 3.03 0 0 1 0 6.06Zm5.93-7.87a1.09 1.09 0 1 1-2.18 0 1.09 1.09 0 0 1 2.18 0Z"/></svg>
             Ver mais trabalhos no Instagram
           </a>
-          <p class="nota-fotos">Imagens do perfil público do Buffet Real, usadas nesta demonstração. Na versão final entram os arquivos originais em alta resolução.</p>
           <p class="nota-fotos" id="nota-fotos" hidden>Os quadros acima ficam reservados para as fotos reais dos trabalhos do Buffet Real.</p>
         </div>
       </div>

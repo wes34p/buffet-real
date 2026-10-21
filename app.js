@@ -301,7 +301,7 @@
         imgCapa.srcset = cat.capa.replace(/\.webp$/, '-p.webp') + ' 800w, ' + cat.capa + ' 1600w';
         imgCapa.sizes = '(max-width: 999px) 100vw, 800px';
         imgCapa.alt = '';
-        imgCapa.loading = i === 0 ? 'eager' : 'lazy';
+        imgCapa.loading = 'lazy';
         imgCapa.decoding = 'async';
         imgCapa.width = 1600;
         imgCapa.height = 686;
@@ -426,6 +426,14 @@
   /* ==========================================================
      5. "Meu cardápio": lateral, gaveta e resumo do formulário
      ========================================================== */
+  // depois de remover, o foco vai para o próximo "×" (ou para o fechar da gaveta)
+  function devolveFoco(caixa){
+    var proximo = caixa.querySelector('.mc-remover');
+    if(proximo){ proximo.focus(); return; }
+    var dialogo = caixa.closest('dialog');
+    if(dialogo) document.getElementById('fecha-gaveta').focus();
+  }
+
   function renderLista(caixa){
     caixa.replaceChildren();
     var grupos = selecaoAgrupada();
@@ -455,7 +463,7 @@
         var rem = el('button', 'mc-remover', '×');
         rem.type = 'button';
         rem.setAttribute('aria-label', 'Remover ' + item.nome);
-        rem.addEventListener('click', function(){ alternaItem(item.id); });
+        rem.addEventListener('click', function(){ alternaItem(item.id); devolveFoco(caixa); });
         li.appendChild(rem);
         ul.appendChild(li);
       });
@@ -465,7 +473,7 @@
         var rem = el('button', 'mc-remover', '×');
         rem.type = 'button';
         rem.setAttribute('aria-label', 'Remover pedido de sugestão de ' + g.cat.nome);
-        rem.addEventListener('click', function(){ alternaInteresse(g.cat.id, false); });
+        rem.addEventListener('click', function(){ alternaInteresse(g.cat.id, false); devolveFoco(caixa); });
         li.appendChild(rem);
         ul.appendChild(li);
       }
@@ -612,14 +620,14 @@
   ajustaEspacoRodape();
   window.addEventListener('resize', ajustaEspacoRodape);
   var secaoOrcamento = document.getElementById('orcamento');
-  // a barra some no topo (o hero já tem os botões) e dentro do formulário
+  // a barra some enquanto os botões do hero estão na tela e dentro do formulário
   var naTela = { topo: true, orcamento: false };
   if('IntersectionObserver' in window){
     var observa = new IntersectionObserver(function(entradas){
-      entradas.forEach(function(en){ naTela[en.target.id === 'topo' ? 'topo' : 'orcamento'] = en.isIntersecting; });
+      entradas.forEach(function(en){ naTela[en.target === secaoOrcamento ? 'orcamento' : 'topo'] = en.isIntersecting; });
       barra.dataset.oculta = naTela.topo || naTela.orcamento ? '1' : '0';
     }, { threshold: 0.12 });
-    observa.observe(document.getElementById('topo'));
+    observa.observe(document.querySelector('.hero-ctas'));
     observa.observe(secaoOrcamento);
   }
 

@@ -34,6 +34,7 @@
   function paraNumero(s){
     s = String(s || '').replace(/[^\d,.-]/g, '');
     if(s.indexOf(',') > -1) s = s.replace(/\./g, '').replace(',', '.');
+    else if(/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, '');  // "1.500" é mil e quinhentos
     var n = parseFloat(s);
     return isFinite(n) ? n : 0;
   }
@@ -303,7 +304,7 @@
     d.appendChild(topo);
     d.appendChild(el('h1', 'doc-titulo', 'Orçamento' + (c.codigo ? ' · ' + c.codigo : '')));
     var meta = el('div', 'doc-meta');
-    [['Cliente', c.nome], ['WhatsApp', c.whatsapp], ['Evento', c.tipo], ['Data', c.data], ['Convidados', c.convidados], ['Local', c.local]].forEach(function(p){
+    [['Cliente', c.nome], ['WhatsApp', c.whatsapp], ['Evento', c.tipo], ['Data', c.data], ['Horário', c.horario], ['Convidados', c.convidados], ['Local', c.local]].forEach(function(p){
       if(p[1]) meta.appendChild(el('div', '', p[0] + ': ' + p[1]));
     });
     d.appendChild(meta);
@@ -349,6 +350,11 @@
   function linkCardapio(){
     var partes = [];
     estado.linhas.forEach(function(l){
+      var sug = /^Sugestão da Miriam: (.+)$/.exec(l.nome);
+      if(sug){
+        CARDAPIO.forEach(function(c, ci){ if(c.nome.toLowerCase() === sug[1].toLowerCase() && partes.indexOf('s' + ci) < 0) partes.push('s' + ci); });
+        return;
+      }
       if(!l.ref) return;
       var p = l.ref.split('.');
       var item = CARDAPIO[+p[0]] && CARDAPIO[+p[0]].itens[+p[1]];
@@ -455,15 +461,16 @@
     var dig = String(estado.campos.whatsapp || '').replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, '');
     var destino = dig.length === 10 || dig.length === 11 ? '55' + dig : '';
     var url = 'https://wa.me/' + destino + '?text=' + encodeURIComponent(resposta());
-    var j = window.open(url, '_blank', 'noopener');
-    if(!j) window.location.href = url;
+    var a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    document.body.appendChild(a); a.click(); a.remove();
     if(!destino) avisa('Sem WhatsApp do cliente: escolha o contato no WhatsApp.');
   });
   document.getElementById('copiar').addEventListener('click', function(){ copia(resposta(), 'Orçamento copiado.'); });
   document.getElementById('imprimir').addEventListener('click', function(){ desenhaDocumento(); window.print(); });
   window.addEventListener('beforeprint', desenhaDocumento);
   document.getElementById('link-cardapio').addEventListener('click', function(){
-    if(!estado.linhas.some(function(l){ return l.ref; })){ avisa('Adicione pratos do cardápio para gerar o link.'); return; }
+    if(!estado.linhas.some(function(l){ return l.ref || /^Sugestão da Miriam: /.test(l.nome); })){ avisa('Adicione pratos do cardápio para gerar o link.'); return; }
     copia(linkCardapio(), 'Link do cardápio copiado. Cole na conversa com o cliente.');
   });
 

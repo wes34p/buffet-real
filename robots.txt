@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /orcamento.html
+
+Sitemap: https://buffetrealitabirito.com.br/sitemap.xml

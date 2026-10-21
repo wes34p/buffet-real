@@ -141,11 +141,33 @@
     }
     /* o "cartãozinho" preto e dourado da marca é o destaque da página */
     .hero-logo{
-      width:min(300px,64vw);
+      width:min(300px,64vw,34vh);
       height:auto;
       border-radius:18px;
       box-shadow:0 22px 48px rgba(60,40,10,.28);
-      margin-bottom:1.8rem;
+      margin-bottom:1.4rem;
+    }
+    @media (max-width:640px) and (max-height:700px){
+      .hero{padding:1.5rem 1rem 1.8rem}
+      .hero-logo{width:min(170px,28vh);margin-bottom:1rem}
+      .hero .texto-hero{margin:.6rem auto 1rem}
+      .hero .badge-horario{display:none}
+    }
+    @media (min-width:900px){
+      .hero{
+        display:grid;
+        grid-template-columns:auto minmax(0,540px);
+        column-gap:3.5rem;
+        justify-content:center;
+        align-content:center;
+        text-align:left;
+        padding:3.2rem 2rem 3.4rem;
+      }
+      .hero-logo{grid-row:1 / span 4;align-self:center;margin:0;width:min(320px,46vh)}
+      .hero .titulo-hero{margin:0}
+      .hero .texto-hero{margin:.9rem 0 1.3rem}
+      .hero .badge-horario{justify-self:start;margin-bottom:1.5rem}
+      .hero .hero-ctas{justify-content:flex-start}
     }
     .titulo-hero{
       font-family:var(--fonte-titulo);

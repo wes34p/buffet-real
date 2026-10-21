@@ -2,24 +2,27 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%235a2e1f'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='32' text-anchor='middle' fill='%23e8c78a'%3EBR%3C/text%3E%3C/svg%3E">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- DEMO: remover a linha robots abaixo no go-live (domínio próprio) -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Buffet Real | Buffet para eventos em Itabirito-MG</title>
-  <meta name="description" content="Buffet Real em Itabirito-MG: petiscos, salgados, pratos principais, mesa de frios e equipe para eventos. Solicite um orçamento personalizado pelo WhatsApp.">
+  <title>Buffet Real | Buffet para eventos em Itabirito-MG e região · Monte seu cardápio</title>
+  <meta name="description" content="Buffet Real, de Miriam Marinho, em Itabirito-MG e região: petiscos de buteco, salgados, prato principal, mesa de frios e equipe completa para eventos. Monte seu cardápio e peça o orçamento pelo WhatsApp.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="Buffet Real — Buffet em Itabirito-MG">
-  <meta property="og:description" content="Petiscos, salgados, pratos principais e mesa de frios. Consulte o cardápio e solicite seu orçamento.">
+  <meta property="og:title" content="Buffet Real · Monte o cardápio do seu evento">
+  <meta property="og:description" content="Petiscos de buteco, salgados, prato principal e mesa de frios em Itabirito e região. Escolha os pratos e receba o orçamento da Miriam pelo WhatsApp.">
   <meta property="og:site_name" content="Buffet Real">
   <meta name="theme-color" content="#0b0806">
 
-  <script type="application/ld+json">
+  <!-- O cardápio (hasMenu) é acrescentado pelo app.js a partir do cardapio-data.js -->
+  <script type="application/ld+json" id="ld-negocio">
   {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
     "name": "Buffet Real",
-    "description": "Buffet para eventos em Itabirito-MG com petiscos, salgados, pratos principais, mesa de frios e equipe de apoio",
+    "alternateName": "Buffet Real Miriam Marinho",
+    "description": "Buffet para eventos em Itabirito-MG e região, com petiscos de buteco, salgados, prato principal, mesa de frios e equipe de cozinha, garçons, portaria e limpeza.",
     "telephone": "+5531980217336",
     "address": {
       "@type": "PostalAddress",
@@ -27,8 +30,12 @@
       "addressRegion": "MG",
       "addressCountry": "BR"
     },
+    "areaServed": [
+      {"@type": "City", "name": "Itabirito"},
+      {"@type": "AdministrativeArea", "name": "Itabirito e região, Minas Gerais"}
+    ],
     "sameAs": ["https://www.instagram.com/buffetreal_miriammarinho"],
-    "servesCuisine": "Petiscos, salgados, pratos principais, mesa de frios"
+    "servesCuisine": ["Petiscos", "Salgados", "Pratos principais", "Mesa de frios"]
   }
   </script>
 
@@ -83,7 +90,7 @@
     }
     [hidden]{display:none!important}
 
-    /* ===== Faixa de demonstração (remover na entrega final — ver README) ===== */
+    /* ===== Faixa de demonstração (remover na entrega final) ===== */
     .faixa-demo{
       background:#060403;
       border-bottom:1px solid var(--borda-ouro);
@@ -425,8 +432,8 @@
     /* ===== Como funciona ===== */
     .grade-passos{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:1.5rem;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.2rem;
       margin-top:2.8rem;
       text-align:center;
     }
@@ -480,7 +487,8 @@
       text-transform:uppercase;
       color:var(--ouro-claro);
     }
-    .campo .opcional{
+    .campo .opcional,
+    .legenda-grupo .opcional{
       color:var(--creme-fraco);
       letter-spacing:.08em;
       font-weight:500;
@@ -642,7 +650,6 @@
     @media (max-width:1000px){
       .grade-trabalhos{grid-template-columns:repeat(3,1fr)}
       .grade-servicos{grid-template-columns:repeat(2,1fr)}
-      .grade-passos{grid-template-columns:repeat(2,1fr)}
       .bloco-confianca{grid-template-columns:1fr;gap:2rem}
       .certificado{max-width:420px;margin:0 auto}
     }
@@ -666,33 +673,309 @@
       .chip{font-size:.8rem;padding:.5rem .8rem}
     }
 
-    .secao-cardapio{background:var(--preto-2);border-top:1px solid var(--borda-ouro);border-bottom:1px solid var(--borda-ouro)}
-    .cardapio-painel{max-width:1050px;margin:2.5rem auto 0;padding:clamp(1rem,3vw,2rem);background:var(--preto);border:1px solid var(--borda-ouro);border-radius:12px}
-    .cardapio-abas{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem}
-    .cardapio-aba{background:var(--preto-3);color:var(--creme);font:600 .8rem var(--fonte-texto);border:1px solid var(--borda-ouro);border-radius:999px;min-height:44px;padding:.75rem 1rem;cursor:pointer}
-    .cardapio-aba[aria-pressed="true"]{background:var(--ouro);color:var(--preto);border-color:var(--ouro)}
-    .cardapio-conteudo h3{font:500 2rem var(--fonte-titulo);color:var(--ouro-claro)}
-    .cardapio-desc{color:var(--creme-suave);margin-bottom:1rem}
-    .cardapio-vazio{color:var(--creme-suave);padding:1.3rem;border:1px dashed var(--borda-ouro);margin-bottom:1rem;border-radius:8px}
-    .cardapio-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem;margin-bottom:1.3rem}
-    .cardapio-item{display:flex;flex-direction:column;background:var(--preto-3);border:1px solid var(--borda-ouro);border-radius:9px;overflow:hidden}
-    .cardapio-item img{width:100%;aspect-ratio:4/3;object-fit:cover}
-    .cardapio-item-corpo{display:flex;flex:1;flex-direction:column;gap:.65rem;padding:1rem}
-    .cardapio-item-corpo h4{font:600 1.3rem var(--fonte-titulo);color:var(--ouro-claro)}
-    .cardapio-item-corpo p{color:var(--creme-suave);font-size:.85rem;flex:1}
-    .cardapio-resumo{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.6rem;padding-top:1.5rem;border-top:1px solid var(--borda-ouro)}
-    .cardapio-resumo strong{color:var(--ouro-claro)}.cardapio-resumo p{color:var(--creme-suave);font-size:.85rem}
-    @media(max-width:600px){.cardapio-abas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.cardapio-resumo .btn{width:100%}}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* ===== Botão principal dourado ===== */
+    .btn-dourado{
+      background:linear-gradient(180deg,#e6c878,var(--ouro));
+      color:#1a1206;
+      box-shadow:0 8px 28px rgba(201,162,75,.28);
+    }
+    .btn-dourado:hover{background:linear-gradient(180deg,#f0d690,#d6b25c);box-shadow:0 10px 34px rgba(201,162,75,.38)}
+
+    /* ===== Como funciona (logo após o hero) ===== */
+    .secao-passos{padding:3.6rem 0 3.2rem}
+    .passo{
+      border:1px solid var(--borda-ouro);
+      border-radius:10px;
+      padding:1.6rem 1.3rem 1.4rem;
+      background:linear-gradient(180deg,var(--preto-2),var(--preto));
+    }
+
+    /* ===== Cardápio ===== */
+    .secao-cardapio{background:var(--preto-2);border-top:1px solid var(--borda-ouro);border-bottom:1px solid var(--borda-ouro);scroll-margin-top:0}
+    .cardapio-atalhos{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.4rem}
+    .btn-fino{
+      display:inline-flex;align-items:center;gap:.45rem;
+      min-height:44px;padding:.55rem 1.05rem;
+      background:transparent;color:var(--ouro-claro);
+      border:1px solid var(--borda-ouro);border-radius:999px;
+      font:600 .78rem var(--fonte-texto);letter-spacing:.03em;
+      cursor:pointer;text-decoration:none;
+      transition:border-color .18s ease,background-color .18s ease;
+    }
+    .btn-fino:hover{border-color:var(--ouro);background:rgba(201,162,75,.08)}
+    .btn-fino svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+    .cardapio-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 330px;
+      gap:1.8rem;
+      align-items:start;
+      margin-top:2.4rem;
+    }
+    .cardapio-barra{
+      position:sticky;top:0;z-index:20;
+      margin:0 -.2rem 1.2rem;
+      padding:.75rem .2rem .8rem;
+      background:rgba(19,14,8,.96);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--borda-ouro);
+    }
+    .cardapio-abas{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;padding:2px}
+    .cardapio-abas::-webkit-scrollbar{display:none}
+    .cardapio-aba{
+      flex:0 0 auto;
+      display:inline-flex;align-items:center;gap:.5rem;
+      min-height:44px;padding:.55rem 1.05rem;
+      border:1px solid var(--borda-ouro);border-radius:999px;
+      background:var(--preto);color:var(--creme-suave);
+      font:600 .82rem var(--fonte-texto);
+      cursor:pointer;scroll-snap-align:start;
+      transition:border-color .18s ease,background-color .18s ease,color .18s ease;
+    }
+    .cardapio-aba:hover{border-color:var(--borda-ouro-forte);color:var(--creme)}
+    .cardapio-aba[aria-selected="true"]{background:var(--ouro);border-color:var(--ouro);color:#1a1206}
+    .aba-contador{
+      min-width:1.35rem;height:1.35rem;padding:0 .35rem;
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:999px;background:var(--ouro);color:#1a1206;
+      font-size:.68rem;font-weight:700;
+    }
+    .cardapio-aba[aria-selected="true"] .aba-contador{background:#1a1206;color:var(--ouro-claro)}
+    .busca{position:relative;margin-top:.65rem}
+    .busca input{
+      width:100%;min-height:46px;
+      padding:.7rem 2.8rem .7rem 2.7rem;
+      background:#080604;color:var(--creme);
+      border:1px solid var(--borda-ouro);border-radius:999px;
+      font:1rem var(--fonte-texto);
+    }
+    .busca input::placeholder{color:rgba(244,236,220,.38)}
+    .busca input:focus{border-color:var(--ouro);outline:none}
+    .busca > svg{position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--ouro);fill:none;stroke-width:1.8;pointer-events:none}
+    .busca-limpar{
+      position:absolute;right:.3rem;top:50%;transform:translateY(-50%);
+      width:40px;height:40px;border-radius:50%;
+      background:none;border:0;color:var(--creme-suave);
+      font-size:1.3rem;line-height:1;cursor:pointer;
+    }
+
+    .painel-cabeca{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1rem}
+    .painel-cabeca h3{font:500 clamp(1.8rem,4.4vw,2.3rem)/1.15 var(--fonte-titulo);color:var(--ouro-claro)}
+    .painel-apelido{font:400 1.55rem/1.2 var(--fonte-marca);color:var(--ouro)}
+    .painel-desc{color:var(--creme-suave);font-size:.9rem;max-width:62ch;margin:.35rem 0 1.1rem}
+    .grupos-nav{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.4rem}
+    .grupos-nav a{
+      display:inline-flex;align-items:center;min-height:38px;
+      padding:.4rem .85rem;border:1px solid var(--borda-ouro);border-radius:999px;
+      color:var(--creme-suave);font-size:.74rem;letter-spacing:.04em;text-decoration:none;
+    }
+    .grupos-nav a:hover{border-color:var(--ouro);color:var(--creme)}
+    .grupo-titulo{
+      display:flex;align-items:center;gap:.8rem;
+      margin:1.7rem 0 .8rem;
+      font:600 .7rem var(--fonte-texto);letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);
+      scroll-margin-top:150px;
+    }
+    .grupo-titulo::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--borda-ouro-forte),transparent)}
+
+    .pratos{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,225px),1fr));gap:.7rem}
+    .prato{
+      border:1px solid var(--borda-ouro);border-radius:10px;
+      background:linear-gradient(180deg,var(--preto-3),var(--preto));
+      transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease;
+    }
+    .prato:hover{border-color:var(--borda-ouro-forte)}
+    .prato[data-escolhido="1"]{
+      border-color:var(--ouro);
+      background:linear-gradient(180deg,rgba(201,162,75,.14),var(--preto) 85%);
+      box-shadow:0 10px 28px rgba(201,162,75,.12);
+    }
+    .prato-botao{
+      display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.2rem .8rem;align-items:center;
+      width:100%;min-height:64px;padding:.9rem 1rem;
+      background:none;border:0;border-radius:10px;
+      color:inherit;font:inherit;text-align:left;cursor:pointer;
+    }
+    .prato-nome{font:600 1.17rem/1.25 var(--fonte-titulo);color:var(--creme)}
+    .prato-desc{grid-column:1;font-size:.77rem;line-height:1.5;color:var(--creme-suave)}
+    .prato-cat{grid-column:1;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro)}
+    .prato-marca{
+      grid-column:2;grid-row:1 / span 3;
+      width:32px;height:32px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid var(--borda-ouro-forte);color:var(--ouro);
+      transition:background-color .2s ease,border-color .2s ease,color .2s ease;
+    }
+    .prato-marca svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .prato-marca .ic-ok{display:none}
+    .prato[data-escolhido="1"] .prato-marca{background:var(--ouro);border-color:var(--ouro);color:#1a1206;animation:pulso .32s ease}
+    .prato[data-escolhido="1"] .ic-mais{display:none}
+    .prato[data-escolhido="1"] .ic-ok{display:block}
+    @keyframes pulso{0%{transform:scale(.7)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+    .prato-opcoes{margin:0 1rem;padding:.75rem 0 1rem;border-top:1px dashed var(--borda-ouro)}
+    .prato-opcoes .rotulo{font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro);margin-bottom:.5rem}
+    .opcoes{display:flex;flex-wrap:wrap;gap:.4rem}
+    .chip--mini{min-height:40px;padding:.4rem .8rem;font-size:.78rem}
+
+    .sugestao{
+      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.9rem 1.4rem;
+      margin-top:1.6rem;padding:1.15rem 1.25rem;
+      border:1px dashed var(--borda-ouro-forte);border-radius:10px;
+      background:rgba(201,162,75,.04);
+    }
+    .sugestao strong{display:block;font:600 1.18rem/1.3 var(--fonte-titulo);color:var(--creme)}
+    .sugestao p{font-size:.84rem;color:var(--creme-suave);max-width:48ch}
+    .sugestao--destaque{border-style:solid;border-color:var(--ouro);background:linear-gradient(180deg,rgba(201,162,75,.1),transparent);padding:1.6rem 1.4rem}
+    .btn-alterna{width:auto;min-width:200px}
+    .btn-alterna[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#1a1206}
+    .busca-info{font-size:.85rem;color:var(--creme-suave);margin-bottom:.4rem}
+
+    /* ===== Meu cardápio (lateral, gaveta e formulário) ===== */
+    .meu-cardapio{
+      position:sticky;top:1rem;
+      padding:1.35rem 1.3rem 1.2rem;
+      background:var(--preto);
+      border:1px solid var(--ouro);border-radius:12px;
+      box-shadow:0 18px 46px rgba(0,0,0,.45);
+    }
+    .mc-cabeca{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
+    .mc-cabeca h3{font:500 1.65rem/1.2 var(--fonte-titulo);color:var(--ouro-claro)}
+    .mc-total{font-size:.74rem;color:var(--creme-suave);white-space:nowrap}
+    .mc-lista{margin:.8rem 0 1rem;max-height:46vh;overflow:auto;overscroll-behavior:contain}
+    .mc-cat{margin:.9rem 0 .25rem;font:600 .64rem var(--fonte-texto);letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
+    .mc-cat:first-child{margin-top:0}
+    .mc-itens{list-style:none}
+    .mc-item{
+      display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+      padding:.3rem 0;border-bottom:1px solid rgba(201,162,75,.12);
+      font-size:.86rem;color:var(--creme);
+    }
+    .mc-item small{display:block;color:var(--creme-fraco);font-size:.73rem;line-height:1.4}
+    .mc-item--sugestao{color:var(--creme-suave);font-style:italic}
+    .mc-remover{
+      flex:0 0 auto;width:40px;height:40px;border-radius:50%;
+      background:none;border:1px solid transparent;color:var(--creme-fraco);
+      font-size:1.15rem;line-height:1;cursor:pointer;
+      transition:color .18s ease,border-color .18s ease;
+    }
+    .mc-remover:hover{color:var(--erro);border-color:rgba(255,157,138,.4)}
+    .mc-vazio{font-size:.86rem;color:var(--creme-suave);padding:.6rem 0 .2rem;line-height:1.6}
+    .mc-acoes{display:flex;flex-direction:column;gap:.5rem}
+    .mc-acoes .btn{width:100%}
+    .mc-mini{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap}
+    .link-discreto{
+      background:none;border:0;min-height:40px;padding:.3rem .2rem;
+      color:var(--creme-fraco);font:500 .76rem var(--fonte-texto);
+      text-decoration:underline;text-underline-offset:3px;cursor:pointer;
+    }
+    .link-discreto:hover{color:var(--ouro-claro)}
+
+    .gaveta{
+      margin:auto auto 0;width:100%;max-width:560px;max-height:88vh;
+      padding:0;border:0;border-top:1px solid var(--ouro);border-radius:16px 16px 0 0;
+      background:var(--preto);color:var(--creme);
+    }
+    .gaveta::backdrop{background:rgba(0,0,0,.62)}
+    .gaveta[open]{animation:sobe .25s ease}
+    @keyframes sobe{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
+    .gaveta-interna{padding:1.2rem 1.1rem calc(1.2rem + env(safe-area-inset-bottom,0px))}
+    .gaveta .mc-lista{max-height:50vh}
+    .gaveta-fechar{
+      width:44px;height:44px;border-radius:50%;
+      background:none;border:1px solid var(--borda-ouro);color:var(--creme);
+      font-size:1.3rem;cursor:pointer;
+    }
+
+    .faixa-compartilhado{
+      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem 1.2rem;
+      margin-top:1.8rem;padding:1rem 1.2rem;
+      border:1px solid var(--ouro);border-radius:10px;background:rgba(201,162,75,.08);
+      font-size:.88rem;color:var(--creme);
+    }
+    .faixa-compartilhado div{display:flex;gap:.5rem;flex-wrap:wrap}
+
+    /* ===== Equipe ===== */
+    .grade-equipe{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.6rem}
+    .card-servico .ico svg{width:30px;height:30px;stroke:var(--ouro);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+    .card-servico .btn-categoria[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#1a1206}
+    .vasilhames{max-width:820px;margin:1.4rem auto 0}
+
+    /* ===== Perguntas frequentes ===== */
+    .faq{max-width:780px;margin:2.4rem auto 0;display:flex;flex-direction:column;gap:.7rem}
+    .faq details{border:1px solid var(--borda-ouro);border-radius:10px;background:var(--preto-2)}
+    .faq details[open]{border-color:var(--borda-ouro-forte)}
+    .faq summary{
+      display:flex;justify-content:space-between;align-items:center;gap:1rem;
+      min-height:56px;padding:.9rem 1.2rem;cursor:pointer;list-style:none;
+      font:600 1.15rem/1.3 var(--fonte-titulo);color:var(--creme);
+    }
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";font:400 1.5rem var(--fonte-texto);color:var(--ouro);transition:transform .2s ease}
+    .faq details[open] summary::after{transform:rotate(45deg)}
+    .faq details p{padding:0 1.2rem 1.1rem;font-size:.9rem;color:var(--creme-suave)}
+
+    /* ===== Resumo no formulário ===== */
+    .resumo-form{
+      border:1px solid var(--borda-ouro-forte);border-radius:8px;
+      background:#080604;padding:1rem 1.1rem;
+    }
+    .resumo-form .mc-lista{max-height:none;margin:.4rem 0 .2rem}
+    .resumo-topo{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
+    .chip input:disabled ~ .marca-chip{opacity:.85}
+    .chip:has(input:disabled){cursor:default}
+
+    .toast{
+      position:fixed;left:50%;bottom:calc(1.2rem + var(--barra-mobile));z-index:80;
+      transform:translateX(-50%);
+      max-width:min(92vw,420px);padding:.75rem 1.1rem;
+      background:var(--creme);color:#1a1206;border-radius:8px;
+      font-size:.85rem;font-weight:600;text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+
+    /* ===== Barra fixa (celular e tablet) ===== */
+    .barra-interna{display:flex;gap:.6rem}
+    .barra-interna .btn{flex:1;padding:.8rem .7rem;font-size:.88rem}
+    .bolha{
+      min-width:1.5rem;height:1.5rem;padding:0 .4rem;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:var(--ouro);color:#1a1206;font-size:.75rem;
+    }
+
+    @media (max-width:999px){
+      .cardapio-layout{grid-template-columns:minmax(0,1fr)}
+      .meu-cardapio{display:none}
+      .grade-equipe{grid-template-columns:repeat(2,1fr)}
+      .barra-mobile{display:block}
+      .zap-flutuante{display:none}
+    }
+    @media (max-width:640px){
+      .secao-passos{padding:3rem 0 2.6rem}
+      .grade-passos{text-align:left;gap:.8rem}
+      .passo{display:grid;grid-template-columns:auto 1fr;gap:.15rem 1rem;padding:1.1rem 1.1rem 1.15rem}
+      .passo .num{grid-row:1 / span 2;margin:0;font-size:2.1rem}
+      .badge-horario{border-radius:14px;font-size:.72rem}
+      .prato-botao{min-height:56px;padding:.75rem .9rem}
+      .prato-nome{font-size:1.1rem}
+      .grade-equipe{grid-template-columns:1fr}
+      .sugestao{flex-direction:column;align-items:stretch}
+      .btn-alterna{width:100%;min-width:0}
+      .faixa-compartilhado{flex-direction:column;align-items:stretch}
+    }
   </style>
 </head>
 <body>
 
-  <!-- Faixa de demonstração — REMOVER na entrega final (ver README) -->
+  <!-- Faixa de demonstração: REMOVER na entrega final -->
   <div class="faixa-demo">Demonstração personalizada criada pela WLS Studio para o Buffet Real</div>
 
   <!-- ===== 1. Hero ===== -->
   <header class="hero" id="topo">
-    <!-- FOTO: img/hero.webp (ou .jpg) — some sozinha se o arquivo não existir -->
+    <!-- FOTO: img/hero.webp (ou .jpg), some sozinha se o arquivo não existir -->
     <img class="hero-foto" src="img/hero.webp" alt="" data-opcional="1" fetchpriority="high" width="1600" height="1000">
 
     <svg class="orn" viewBox="0 0 400 46" aria-hidden="true" focusable="false">
@@ -728,47 +1011,169 @@
     </svg>
 
     <p class="marca">Buffet Real</p>
-    <h1 class="titulo-hero">Seu evento com sabor, cuidado e apresentação.</h1>
-    <p class="texto-hero">Petiscos, salgados, pratos principais e mesa de frios para seu evento em Itabirito e região.</p>
-    <p class="badge-horario"><span>Itabirito-MG</span><span aria-hidden="true">·</span><span>Atendimento mediante contato</span></p>
+    <h1 class="titulo-hero">Monte o cardápio do seu evento e receba o orçamento da Miriam.</h1>
+    <p class="texto-hero">Petiscos de buteco, salgados, prato principal e mesa de frios, com equipe completa para servir. Em Itabirito e região.</p>
+    <p class="badge-horario"><span>Itabirito-MG e região</span><span aria-hidden="true">·</span><span>Orçamento pelo que você escolhe</span></p>
 
     <div class="hero-ctas">
-      <a class="btn btn-whats" href="#orcamento">Solicitar orçamento</a>
-      <a class="btn btn-ouro" href="#cardapio">Ver cardápio</a>
+      <a class="btn btn-dourado" href="#cardapio">Montar meu cardápio</a>
+      <a class="btn btn-ouro" href="https://wa.me/5531980217336" target="_blank" rel="noopener">Falar com a Miriam</a>
     </div>
   </header>
 
   <main>
-    <!-- ===== 2. Trabalhos ===== -->
-    <section id="trabalhos" class="secao-trabalhos">
+    <!-- ===== 2. Como funciona ===== -->
+    <section class="secao-passos" aria-labelledby="titulo-passos">
+      <div class="container">
+        <span class="eyebrow">Simples assim</span>
+        <h2 class="titulo-secao" id="titulo-passos">Como funciona</h2>
+        <div class="grade-passos">
+          <div class="passo">
+            <span class="num" aria-hidden="true">1</span>
+            <h3>Monte seu cardápio</h3>
+            <p>Toque nos petiscos, salgados e pratos que combinam com a sua festa. Dá para mudar quantas vezes quiser.</p>
+          </div>
+          <div class="passo">
+            <span class="num" aria-hidden="true">2</span>
+            <h3>Conte sobre o evento</h3>
+            <p>Data, número de convidados, local e a equipe que você precisa no dia.</p>
+          </div>
+          <div class="passo">
+            <span class="num" aria-hidden="true">3</span>
+            <h3>Receba o orçamento</h3>
+            <p>O pedido chega organizado no WhatsApp da Miriam, que monta o orçamento pelo que você escolheu, não por pessoa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. Cardápio interativo ===== -->
+    <section id="cardapio" class="secao-cardapio" aria-labelledby="titulo-cardapio">
+      <div class="container">
+        <span class="eyebrow">Cardápio digital</span>
+        <h2 class="titulo-secao" id="titulo-cardapio">Escolha o que vai servir no seu evento</h2>
+        <p class="sub-secao">Toque em um prato para incluir. O que você escolher fica guardado em “Meu cardápio” e segue junto com o pedido de orçamento.</p>
+        <div class="cardapio-atalhos">
+          <button type="button" class="btn-fino" id="btn-compartilhar-cardapio">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+            Enviar o cardápio para alguém
+          </button>
+        </div>
+
+        <div class="faixa-compartilhado" id="faixa-compartilhado" role="status" hidden>
+          <span id="texto-compartilhado">Você abriu um cardápio montado por outra pessoa.</span>
+          <div>
+            <button type="button" class="btn btn-dourado" id="usar-compartilhado">Usar este cardápio</button>
+            <button type="button" class="btn btn-ouro" id="manter-meu">Manter o meu</button>
+          </div>
+        </div>
+
+        <div class="cardapio-layout">
+          <div class="cardapio-principal">
+            <div class="cardapio-barra">
+              <div class="cardapio-abas" id="cardapio-abas" role="tablist" aria-label="Categorias do cardápio"></div>
+              <div class="busca">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <label class="sr-only" for="busca-prato">Buscar prato no cardápio</label>
+                <input type="search" id="busca-prato" placeholder="Buscar prato (ex.: bacalhau, strogonoff)" autocomplete="off" enterkeyhint="search">
+                <button type="button" class="busca-limpar" id="busca-limpar" aria-label="Limpar busca" hidden>×</button>
+              </div>
+            </div>
+            <div id="cardapio-paineis"></div>
+            <div id="painel-busca" aria-live="polite" hidden></div>
+          </div>
+
+          <aside class="meu-cardapio" aria-labelledby="titulo-meu-cardapio">
+            <div class="mc-cabeca">
+              <h3 id="titulo-meu-cardapio">Meu cardápio</h3>
+              <span class="mc-total" data-total-texto>Nenhum item</span>
+            </div>
+            <div class="mc-lista" data-lista-cardapio></div>
+            <div class="mc-acoes">
+              <a class="btn btn-whats" href="#orcamento">Pedir orçamento</a>
+              <div class="mc-mini">
+                <button type="button" class="link-discreto" data-compartilhar-selecao>Enviar para alguém aprovar</button>
+                <button type="button" class="link-discreto" data-limpar>Limpar</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. Equipe ===== -->
+    <section id="equipe" aria-labelledby="titulo-equipe">
+      <div class="container">
+        <span class="eyebrow">Equipe completa</span>
+        <h2 class="titulo-secao" id="titulo-equipe">Quem trabalha no seu evento</h2>
+        <p class="sub-secao">Além da comida, a Miriam leva a equipe que a festa precisar. Marque o que deseja e isso já entra no seu pedido.</p>
+
+        <div class="grade-equipe">
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 18h14v7H9z"/><path d="M9 18c-3 0-5-2-5-5s2.4-5 5-5c.6-2.6 3.6-4 7-4s6.4 1.4 7 4c2.6 0 5 2 5 5s-2 5-5 5"/><path d="M13 22h6"/></svg></span>
+            <h3>Cozinha</h3>
+            <hr class="risco">
+            <p>Equipe de cozinha para preparar e finalizar os pratos no evento.</p>
+            <button type="button" class="btn-categoria" data-equipe="Cozinha" aria-pressed="false">Incluir no pedido</button>
+          </article>
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 21h22"/><path d="M7 21a9 9 0 0 1 18 0"/><path d="M16 12v-2"/><path d="M14 10h4"/><path d="M4 25h24"/></svg></span>
+            <h3>Garçons</h3>
+            <hr class="risco">
+            <p>Garçons para servir os convidados durante a festa.</p>
+            <button type="button" class="btn-categoria" data-equipe="Garçons" aria-pressed="false">Incluir no pedido</button>
+          </article>
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 28V5h16v23"/><path d="M5 28h22"/><circle cx="20" cy="17" r="1.2"/></svg></span>
+            <h3>Portaria</h3>
+            <hr class="risco">
+            <p>Porteiro para receber e organizar a entrada dos convidados.</p>
+            <button type="button" class="btn-categoria" data-equipe="Portaria" aria-pressed="false">Incluir no pedido</button>
+          </article>
+          <article class="card-servico">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M25 20l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/><path d="M7 21l.8 2.2L10 24l-2.2.8L7 27l-.8-2.2L4 24l2.2-.8z"/></svg></span>
+            <h3>Limpeza</h3>
+            <hr class="risco">
+            <p>Equipe de limpeza para manter o espaço em ordem durante o evento.</p>
+            <button type="button" class="btn-categoria" data-equipe="Limpeza" aria-pressed="false">Incluir no pedido</button>
+          </article>
+        </div>
+
+        <div class="sugestao vasilhames">
+          <div>
+            <strong>Vasilhames</strong>
+            <p>Precisa de vasilhames para servir? Consulte a disponibilidade e as condições com a Miriam.</p>
+          </div>
+          <button type="button" class="btn-categoria btn-alterna" data-vasilhames aria-pressed="false">Quero consultar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. Trabalhos ===== -->
+    <section id="trabalhos" class="secao-trabalhos" aria-labelledby="titulo-trabalhos">
       <div class="container">
         <span class="eyebrow">Portfólio</span>
-        <h2 class="titulo-secao">Alguns dos nossos trabalhos</h2>
-        <p class="sub-secao">Uma seleção de trabalhos com comidas, petiscos e mesas para eventos.</p>
+        <h2 class="titulo-secao" id="titulo-trabalhos">Alguns dos nossos trabalhos</h2>
+        <p class="sub-secao">Mesas, petiscos e salgados servidos pelo Buffet Real em eventos de verdade.</p>
 
-        <!-- FOTOS: img/trabalho-01.webp … trabalho-08.webp (ou .jpg).
-             Enquanto o arquivo não existir, o quadro mostra a moldura de espera. -->
+        <!-- FOTOS: img/trabalho-0X.webp (ou .jpg). Sem o arquivo, o quadro mostra a moldura de espera. -->
         <div class="grade-trabalhos" id="grade-trabalhos">
-          
           <figure class="trabalho">
-            <img src="img/trabalho-02.webp" alt="Mesa farta montada ao ar livre, com tábuas de frios, pães e frutas" loading="lazy" width="722" height="542" data-opcional="1" data-espera="Montagem">
-            <figcaption>Montagem de evento</figcaption>
+            <img src="img/trabalho-02.webp" alt="Mesa farta montada ao ar livre, com tábuas de frios, pães e frutas" loading="lazy" width="722" height="542" data-opcional="1" data-espera="Mesa de frios">
+            <figcaption>Mesa de frios</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-03.webp" alt="Buffet servido ao ar livre com pães, salgados e porções" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Salgados">
+            <img src="img/trabalho-03.webp" alt="Buffet servido ao ar livre com mini sanduíches, batata frita e porções em gamelas" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Salgados">
             <figcaption>Salgados e porções</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-04.webp" alt="Travessa com porções variadas servidas pelo Buffet Real" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Apresentação">
-            <figcaption>Apresentação</figcaption>
+            <img src="img/trabalho-04.webp" alt="Travessa com torresmo, mandioca frita, linguiça e queijo coalho" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Petiscos">
+            <figcaption>Petiscos de buteco</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-05.webp" alt="Gamela de madeira com porção quente servida em evento" loading="lazy" width="722" height="736" data-opcional="1" data-espera="Petiscos">
-            <figcaption>Petiscos</figcaption>
+            <img src="img/trabalho-05.webp" alt="Gamela de madeira com porção quente servida em evento" loading="lazy" width="722" height="736" data-opcional="1" data-espera="Porções">
+            <figcaption>Porções quentes</figcaption>
           </figure>
-          
-          
-          
         </div>
 
         <div class="acao-central">
@@ -776,43 +1181,22 @@
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 5.18a4.66 4.66 0 1 0 0 9.32 4.66 4.66 0 0 0 0-9.32Zm0 7.69a3.03 3.03 0 1 1 0-6.06 3.03 3.03 0 0 1 0 6.06Zm5.93-7.87a1.09 1.09 0 1 1-2.18 0 1.09 1.09 0 0 1 2.18 0Z"/></svg>
             Ver mais trabalhos no Instagram
           </a>
-          <p class="nota-fotos">Imagens do perfil público do Buffet Real, usadas nesta demonstração. Na versão final elas são substituídas pelos arquivos originais em alta resolução.</p>
-          <p class="nota-fotos" id="nota-fotos" hidden>Os quadros acima ficam reservados para as fotos reais dos seus trabalhos — na versão final entram as imagens originais do Buffet Real, tratadas e otimizadas.</p>
+          <p class="nota-fotos">Imagens do perfil público do Buffet Real, usadas nesta demonstração. Na versão final entram os arquivos originais em alta resolução.</p>
+          <p class="nota-fotos" id="nota-fotos" hidden>Os quadros acima ficam reservados para as fotos reais dos trabalhos do Buffet Real.</p>
         </div>
       </div>
     </section>
 
-    <!-- ===== 3. Serviços ===== -->
-    <section id="servicos"><div class="container">
-<span class="eyebrow">Para celebrar com sabor</span><h2 class="titulo-secao">Nossos serviços</h2>
-<p class="sub-secao">O orçamento é preparado conforme as opções escolhidas e as necessidades de cada evento.</p>
-<div class="grade-servicos">
-<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Petiscos</h3><hr class="risco"><p>Petiscos para servir em eventos e encontros.</p><button type="button" class="btn-categoria" data-categoria="Petiscos">Incluir no orçamento</button></article>
-<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Salgados</h3><hr class="risco"><p>Seleção de salgados para comemorações.</p><button type="button" class="btn-categoria" data-categoria="Salgados">Incluir no orçamento</button></article>
-<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Pratos principais</h3><hr class="risco"><p>Opções de refeições para o seu evento.</p><button type="button" class="btn-categoria" data-categoria="Pratos principais">Incluir no orçamento</button></article>
-<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Mesa de frios</h3><hr class="risco"><p>Composições de frios para receber convidados.</p><button type="button" class="btn-categoria" data-categoria="Mesa de frios">Incluir no orçamento</button></article>
-<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Equipe de apoio</h3><hr class="risco"><p>Consulte equipe de cozinha, garçons, portaria e limpeza.</p><a class="btn-categoria" href="#orcamento">Consultar equipe</a></article>
-</div></div></section>
-
-    <!-- ===== Cardápio digital ===== -->
-<section id="cardapio" class="secao-cardapio" aria-labelledby="titulo-cardapio"><div class="container">
-<span class="eyebrow">Cardápio digital</span><h2 class="titulo-secao" id="titulo-cardapio">Escolha o que combina com seu evento</h2>
-<p class="sub-secao">Selecione uma categoria para conhecer as opções. O cardápio detalhado será preenchido com o material original de Miriam.</p>
-<div class="cardapio-painel">
-<div class="cardapio-abas" id="cardapio-abas" role="group" aria-label="Categorias"></div>
-<div class="cardapio-conteudo" id="cardapio-conteudo" aria-live="polite"></div>
-<div class="cardapio-resumo"><div><strong>Sua seleção</strong><p id="cardapio-selecao" aria-live="polite">Nenhuma opção selecionada.</p></div><a class="btn btn-ouro" href="#orcamento">Continuar para orçamento</a></div>
-</div></div></section>
-<!-- ===== 4. Confiança ===== -->
-    <section class="secao-confianca">
+    <!-- ===== 6. Confiança ===== -->
+    <section class="secao-confianca" aria-labelledby="titulo-confianca">
       <div class="container">
         <span class="eyebrow">Quem está por trás</span>
-        <h2 class="titulo-secao">Um buffet de Itabirito, com nome e rosto</h2>
+        <h2 class="titulo-secao" id="titulo-confianca">Um buffet de Itabirito, com nome e rosto</h2>
 
         <div class="bloco-confianca">
-          <!-- FOTO: img/certificado.webp — o bloco nasce oculto e só aparece quando a imagem carregar -->
+          <!-- FOTO: img/certificado.webp, o bloco nasce oculto e só aparece quando a imagem carregar -->
           <figure class="certificado" id="bloco-certificado" data-oculta-se-falhar="1" hidden>
-            <img src="img/certificado.webp" alt="Certificado de reconhecimento empresarial recebido pelo Buffet Real" width="900" height="1200" data-opcional="1">
+            <img src="img/certificado.webp" alt="Certificado de reconhecimento empresarial recebido pelo Buffet Real" width="900" height="1200" loading="lazy" data-opcional="1">
             <figcaption>Reconhecimento de Alta Performance Empresarial 2026, recebido pelo Buffet Real em Itabirito-MG</figcaption>
           </figure>
 
@@ -827,8 +1211,8 @@
             <li class="pilar">
               <span class="ico" aria-hidden="true">💬</span>
               <div>
-                <h3>Atendimento personalizado</h3>
-                <p>Quem responde é a Miriam. Cada pedido é conversado, ajustado e confirmado antes do evento.</p>
+                <h3>Atendimento da própria Miriam</h3>
+                <p>Quem responde e monta o orçamento é a Miriam. Cada pedido é conversado, ajustado e confirmado antes do evento.</p>
               </div>
             </li>
             <li class="pilar">
@@ -843,42 +1227,42 @@
       </div>
     </section>
 
-    <!-- ===== 5. Como funciona ===== -->
-    <section>
+    <!-- ===== 7. Perguntas frequentes ===== -->
+    <section id="duvidas" aria-labelledby="titulo-duvidas">
       <div class="container">
-        <span class="eyebrow">Simples assim</span>
-        <h2 class="titulo-secao">Como Funciona</h2>
-        <div class="grade-passos">
-          <div class="passo">
-            <span class="num" aria-hidden="true">1</span>
-            <h3>Escolha</h3>
-            <p>Veja os trabalhos e os serviços e pense no que combina com a sua celebração.</p>
-          </div>
-          <div class="passo">
-            <span class="num" aria-hidden="true">2</span>
-            <h3>Conte</h3>
-            <p>Preencha data, convidados, local e o que deseja aqui na página.</p>
-          </div>
-          <div class="passo">
-            <span class="num" aria-hidden="true">3</span>
-            <h3>Envie</h3>
-            <p>O pedido chega organizado no WhatsApp do Buffet Real, pronto para você revisar.</p>
-          </div>
-          <div class="passo">
-            <span class="num" aria-hidden="true">4</span>
-            <h3>Celebre</h3>
-            <p>Confirmamos os detalhes e, no dia combinado, é só receber e aproveitar.</p>
-          </div>
+        <span class="eyebrow">Antes de pedir</span>
+        <h2 class="titulo-secao" id="titulo-duvidas">Perguntas frequentes</h2>
+        <div class="faq">
+          <details>
+            <summary>O orçamento é cobrado por pessoa?</summary>
+            <p>Não. A Miriam monta o orçamento a partir do cardápio que você escolhe e da equipe que o evento precisa. Cada festa tem um cardápio diferente, por isso cada orçamento é feito sob medida.</p>
+          </details>
+          <details>
+            <summary>Não sei o que escolher. E agora?</summary>
+            <p>Sem problema. Em cada categoria do cardápio existe a opção “Quero sugestões da Miriam”. Marque o que precisa e ela indica as melhores opções para o seu evento.</p>
+          </details>
+          <details>
+            <summary>Vocês levam equipe para o evento?</summary>
+            <p>Sim. Você pode pedir equipe de cozinha, garçons, portaria e limpeza. É só marcar no pedido e a Miriam inclui no orçamento.</p>
+          </details>
+          <details>
+            <summary>O que o Buffet Real oferece?</summary>
+            <p>A comida do evento: petiscos, salgados, prato principal e mesa de frios, com a equipe para servir. É nisso que a Miriam é especialista, e é isso que entra no orçamento.</p>
+          </details>
+          <details>
+            <summary>Atendem fora de Itabirito?</summary>
+            <p>O Buffet Real atende Itabirito e região. Informe o local do evento no pedido e a Miriam confirma o atendimento.</p>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- ===== 6. Orçamento inteligente ===== -->
-    <section id="orcamento" class="secao-orcamento">
+    <!-- ===== 8. Orçamento ===== -->
+    <section id="orcamento" class="secao-orcamento" aria-labelledby="titulo-orcamento">
       <div class="container">
         <span class="eyebrow">Sem compromisso</span>
-        <h2 class="titulo-secao">Conte como será o seu evento</h2>
-        <p class="sub-secao">Informe seu evento, o cardápio e a equipe. Miriam prepara o orçamento personalizado.</p>
+        <h2 class="titulo-secao" id="titulo-orcamento">Peça seu orçamento</h2>
+        <p class="sub-secao">Confira seu cardápio, conte sobre o evento e envie. O pedido chega organizado no WhatsApp da Miriam.</p>
 
         <div class="convite">
           <div class="convite-interno">
@@ -904,6 +1288,16 @@
             <form id="form-orcamento" class="grade-form" novalidate>
               <p class="aviso-form" id="aviso-form" role="alert" hidden></p>
 
+              <div class="campo campo-cheio">
+                <div class="resumo-topo">
+                  <span class="legenda-grupo">Seu cardápio</span>
+                  <a class="link-discreto" href="#cardapio">Editar cardápio</a>
+                </div>
+                <div class="resumo-form">
+                  <div class="mc-lista" data-lista-cardapio data-vazio-form="1"></div>
+                </div>
+              </div>
+
               <div class="campo">
                 <label for="nome">Seu nome</label>
                 <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar?" aria-describedby="erro-nome">
@@ -911,15 +1305,9 @@
               </div>
 
               <div class="campo">
-                <label for="data">Data do evento</label>
-                <input type="date" id="data" name="data" aria-describedby="erro-data">
-                <p class="erro-campo" id="erro-data" hidden></p>
-              </div>
-
-              <div class="campo">
-                <label for="convidados">Nº de convidados</label>
-                <input type="number" id="convidados" name="convidados" min="1" step="1" inputmode="numeric" placeholder="Ex.: 50" aria-describedby="erro-convidados">
-                <p class="erro-campo" id="erro-convidados" hidden></p>
+                <label for="whatsapp">Seu WhatsApp</label>
+                <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel-national" inputmode="tel" placeholder="(31) 90000-0000" aria-describedby="erro-whatsapp">
+                <p class="erro-campo" id="erro-whatsapp" hidden></p>
               </div>
 
               <div class="campo">
@@ -930,42 +1318,57 @@
                   <option value="Casamento">Casamento</option>
                   <option value="Confraternização">Confraternização</option>
                   <option value="Evento corporativo">Evento corporativo</option>
-                  
+                  <option value="Batizado">Batizado</option>
+                  <option value="Formatura">Formatura</option>
                   <option value="Outro">Outro</option>
                 </select>
                 <p class="erro-campo" id="erro-tipo" hidden></p>
               </div>
 
-              <div class="campo campo-cheio">
+              <div class="campo">
+                <label for="data">Data do evento</label>
+                <input type="date" id="data" name="data" aria-describedby="erro-data">
+                <p class="erro-campo" id="erro-data" hidden></p>
+              </div>
+
+              <div class="campo">
+                <label for="convidados">Nº de convidados</label>
+                <input type="number" id="convidados" name="convidados" min="1" step="1" inputmode="numeric" placeholder="Ex.: 80" aria-describedby="erro-convidados">
+                <p class="erro-campo" id="erro-convidados" hidden></p>
+              </div>
+
+              <div class="campo">
                 <label for="local">Local do evento <span class="opcional">(opcional)</span></label>
-                <input type="text" id="local" name="local" placeholder="Bairro, salão, residência…">
+                <input type="text" id="local" name="local" placeholder="Cidade, bairro ou salão">
               </div>
 
               <fieldset class="campo-cheio grupo-categorias">
-                <legend class="legenda-grupo">O que você procura <span class="opcional">(opcional)</span></legend>
-                <div class="chips" id="chips-categorias">
-<label class="chip"><input type="checkbox" name="categoria" value="Petiscos"><span class="marca-chip" aria-hidden="true"></span>Petiscos</label>
-<label class="chip"><input type="checkbox" name="categoria" value="Salgados"><span class="marca-chip" aria-hidden="true"></span>Salgados</label>
-<label class="chip"><input type="checkbox" name="categoria" value="Pratos principais"><span class="marca-chip" aria-hidden="true"></span>Pratos principais</label>
-<label class="chip"><input type="checkbox" name="categoria" value="Mesa de frios"><span class="marca-chip" aria-hidden="true"></span>Mesa de frios</label>
-</div>
+                <legend class="legenda-grupo">Categorias de interesse <span class="opcional">(marque para receber sugestões)</span></legend>
+                <div class="chips" id="chips-categorias"></div>
               </fieldset>
 
-              <fieldset class="campo-cheio grupo-categorias"><legend class="legenda-grupo">Equipe necessária <span class="opcional">(opcional)</span></legend><div class="chips" id="chips-equipe">
-<label class="chip"><input type="checkbox" name="equipe" value="Cozinha"><span class="marca-chip" aria-hidden="true"></span>Cozinha</label>
-<label class="chip"><input type="checkbox" name="equipe" value="Garçons"><span class="marca-chip" aria-hidden="true"></span>Garçons</label>
-<label class="chip"><input type="checkbox" name="equipe" value="Portaria"><span class="marca-chip" aria-hidden="true"></span>Portaria</label>
-<label class="chip"><input type="checkbox" name="equipe" value="Limpeza"><span class="marca-chip" aria-hidden="true"></span>Limpeza</label>
-</div></fieldset>
-<fieldset class="campo-cheio grupo-categorias"><legend class="legenda-grupo">Materiais de apoio <span class="opcional">(a consultar)</span></legend><div class="chips"><label class="chip"><input type="checkbox" id="vasilhames"><span class="marca-chip" aria-hidden="true"></span>Consultar vasilhames</label></div></fieldset>
-<div class="campo campo-cheio"><label for="detalhes">Detalhes do pedido <span class="opcional">(opcional)</span></label><textarea id="detalhes" name="detalhes" placeholder="Conte quais pratos deseja e outras necessidades do evento."></textarea></div>
+              <fieldset class="campo-cheio grupo-categorias">
+                <legend class="legenda-grupo">Equipe necessária <span class="opcional">(opcional)</span></legend>
+                <div class="chips" id="chips-equipe">
+                  <label class="chip"><input type="checkbox" name="equipe" value="Cozinha"><span class="marca-chip" aria-hidden="true"></span>Cozinha</label>
+                  <label class="chip"><input type="checkbox" name="equipe" value="Garçons"><span class="marca-chip" aria-hidden="true"></span>Garçons</label>
+                  <label class="chip"><input type="checkbox" name="equipe" value="Portaria"><span class="marca-chip" aria-hidden="true"></span>Portaria</label>
+                  <label class="chip"><input type="checkbox" name="equipe" value="Limpeza"><span class="marca-chip" aria-hidden="true"></span>Limpeza</label>
+                  <label class="chip"><input type="checkbox" id="vasilhames" name="vasilhames"><span class="marca-chip" aria-hidden="true"></span>Consultar vasilhames</label>
+                </div>
+              </fieldset>
+
+              <div class="campo campo-cheio">
+                <label for="detalhes">Observações <span class="opcional">(opcional)</span></label>
+                <textarea id="detalhes" name="detalhes" placeholder="Horário da festa, restrições alimentares, algo que não encontrou no cardápio…"></textarea>
+              </div>
 
               <div class="acao-form">
                 <button type="submit" class="btn btn-whats">
                   <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.05-.38-1.99-1.23a7.4 7.4 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
-                  Enviar pelo WhatsApp
+                  Enviar pedido pelo WhatsApp
                 </button>
-                <p class="dica-form">Você será direcionado ao WhatsApp com as informações organizadas para revisar e enviar.</p>
+                <p class="dica-form">Você será direcionado ao WhatsApp com o pedido pronto. É só conferir e tocar em enviar.</p>
               </div>
             </form>
           </div>
@@ -974,325 +1377,54 @@
     </section>
   </main>
 
-  <!-- ===== 7. Rodapé ===== -->
+  <!-- ===== Rodapé ===== -->
   <footer>
     <div class="container">
       <span class="marca-rodape" aria-hidden="true">Buffet Real</span>
       <div class="info-rodape">
         <span>📱 <a href="https://wa.me/5531980217336" target="_blank" rel="noopener">(31) 98021-7336</a></span>
         <span>📷 <a href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">@buffetreal_miriammarinho</a></span>
-        <span>🕘 Atendimento mediante contato</span>
-        <span>📍 Itabirito-MG</span>
+        <span>📍 Itabirito-MG e região</span>
       </div>
-      <p class="credito">Buffet Real · Itabirito-MG — página por WLS Studio</p>
+      <p class="credito">Buffet Real · Miriam Marinho · Itabirito-MG · página por WLS Studio</p>
     </div>
   </footer>
 
-  <!-- ===== 8. WhatsApp flutuante (desktop) ===== -->
+  <!-- WhatsApp flutuante (desktop) -->
   <a class="zap-flutuante" href="https://wa.me/5531980217336" target="_blank" rel="noopener" aria-label="Conversar com o Buffet Real no WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.05-.38-1.99-1.23a7.4 7.4 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
   </a>
 
-  <!-- ===== 9. CTA fixo (mobile) ===== -->
+  <!-- Barra fixa (celular e tablet) -->
   <div class="barra-mobile" id="barra-mobile">
-    <a class="btn btn-whats" href="#orcamento">Pedir orçamento</a>
+    <div class="barra-interna">
+      <button type="button" class="btn btn-ouro" id="abre-gaveta" hidden>Meu cardápio <span class="bolha" id="bolha-total">0</span></button>
+      <a class="btn btn-whats" href="#orcamento" id="barra-cta">Pedir orçamento</a>
+    </div>
   </div>
 
+  <!-- Gaveta "Meu cardápio" (celular e tablet) -->
+  <dialog class="gaveta" id="gaveta" aria-labelledby="titulo-gaveta">
+    <div class="gaveta-interna">
+      <div class="mc-cabeca">
+        <h3 id="titulo-gaveta">Meu cardápio</h3>
+        <button type="button" class="gaveta-fechar" id="fecha-gaveta" aria-label="Fechar">×</button>
+      </div>
+      <p class="mc-total" data-total-texto>Nenhum item</p>
+      <div class="mc-lista" data-lista-cardapio></div>
+      <div class="mc-acoes">
+        <a class="btn btn-whats" href="#orcamento" data-fecha-gaveta>Pedir orçamento</a>
+        <div class="mc-mini">
+          <button type="button" class="link-discreto" data-compartilhar-selecao>Enviar para alguém aprovar</button>
+          <button type="button" class="link-discreto" data-limpar>Limpar</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
+
   <script src="cardapio-data.js"></script>
-  <script>
-  (function(){
-    'use strict';
-
-    var WHATSAPP = '5531980217336';
-
-    /* ==========================================================
-       1. Imagens opcionais
-       Enquanto o arquivo não existir, nada quebra: tenta .jpg,
-       depois troca por uma moldura de espera (ou some).
-       ========================================================== */
-    function trataFalhaImagem(img){
-      var src = img.getAttribute('src') || '';
-
-      // 1ª tentativa: mesmo nome em .jpg
-      if(img.dataset.tentouJpg !== '1' && /\.webp$/i.test(src)){
-        img.dataset.tentouJpg = '1';
-        img.src = src.replace(/\.webp$/i, '.jpg');
-        return;
-      }
-
-      var bloco = img.closest('[data-oculta-se-falhar]');
-      if(bloco){ bloco.hidden = true; return; }
-
-      var figura = img.closest('.trabalho');
-      if(figura){
-        // Moldura de espera no lugar da foto (o quadro continua elegante)
-        var legenda = figura.querySelector('figcaption');
-        var rotulo = img.dataset.espera || (legenda ? legenda.textContent : '');
-        figura.classList.add('sem-foto');
-        figura.innerHTML =
-          '<div class="moldura-espera"><span class="ico" aria-hidden="true">✦</span><span>' +
-          rotulo + '</span></div>';
-        var nota = document.getElementById('nota-fotos');
-        if(nota) nota.hidden = false;
-        return;
-      }
-
-      img.remove(); // hero e demais imagens decorativas
-    }
-
-    document.addEventListener('error', function(e){
-      var alvo = e.target;
-      if(alvo && alvo.tagName === 'IMG' && alvo.dataset.opcional === '1'){
-        trataFalhaImagem(alvo);
-      }
-    }, true);
-
-    // imagens que já falharam antes do script carregar (ex.: hero)
-    var jaCarregadas = document.querySelectorAll('img[data-opcional="1"]');
-    for(var m = 0; m < jaCarregadas.length; m++){
-      if(jaCarregadas[m].complete && jaCarregadas[m].naturalWidth === 0){
-        trataFalhaImagem(jaCarregadas[m]);
-      }
-    }
-
-    // certificado: aparece somente quando a foto carrega de verdade
-    var imgCertificado = document.querySelector('#bloco-certificado img');
-    if(imgCertificado){
-      var mostraCertificado = function(){
-        var bloco = document.getElementById('bloco-certificado');
-        if(bloco) bloco.hidden = false;
-      };
-      if(imgCertificado.complete && imgCertificado.naturalWidth > 0) mostraCertificado();
-      else imgCertificado.addEventListener('load', mostraCertificado);
-    }
-
-    /* ==========================================================
-       2. Serviços → formulário (rola e pré-seleciona a categoria)
-       ========================================================== */
-    function marcaCategoria(valor){
-      var caixas = document.querySelectorAll('#chips-categorias input[type="checkbox"]');
-      for(var i = 0; i < caixas.length; i++){
-        if(caixas[i].value === valor){ caixas[i].checked = true; return caixas[i]; }
-      }
-      return null;
-    }
-
-    var botoesCategoria = document.querySelectorAll('.btn-categoria');
-    for(var b = 0; b < botoesCategoria.length; b++){
-      botoesCategoria[b].addEventListener('click', function(){
-        marcaCategoria(this.dataset.categoria);
-        var secao = document.getElementById('orcamento');
-        if(secao) secao.scrollIntoView({behavior:'smooth', block:'start'});
-        // foco no 1º campo depois da rolagem, sem roubar a tela do usuário
-        window.setTimeout(function(){
-          var nome = document.getElementById('nome');
-          if(nome) nome.focus({preventScroll:true});
-        }, 600);
-      });
-    }
-
-    /* ==========================================================
-       3. Formulário — validação e mensagem do WhatsApp
-       ========================================================== */
-    var escolhidos = new Map();
-     var dadosCardapio = window.BUFFET_CARDAPIO || [];
-     var abasCardapio = document.getElementById('cardapio-abas');
-     var conteudoCardapio = document.getElementById('cardapio-conteudo');
-     var selecaoCardapio = document.getElementById('cardapio-selecao');
-     function elem(tag,classe,txt){var e=document.createElement(tag);e.className=classe||'';if(txt!==undefined)e.textContent=txt;return e;}
-     function atualizaSelecao(){
-       var c=Array.from(document.querySelectorAll('#chips-categorias input:checked')).map(function(e){return e.value;});
-       var n=Array.from(escolhidos.values()).map(function(e){return e.nome;});
-       selecaoCardapio.textContent=[c.length?'Categorias: '+c.join(', '):'',n.length?'Itens: '+n.join(', '):''].filter(Boolean).join(' • ')||'Nenhuma opção selecionada.';
-     }
-     function escolheCategoria(nome){var el=Array.from(document.querySelectorAll('#chips-categorias input')).find(function(x){return x.value===nome;});if(el)el.checked=true;atualizaSelecao();}
-     function exibeCat(cat){
-       conteudoCardapio.replaceChildren();
-       Array.from(abasCardapio.children).forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cat===cat.nome));});
-       conteudoCardapio.appendChild(elem('h3','',cat.nome));
-       conteudoCardapio.appendChild(elem('p','cardapio-desc',cat.descricao||''));
-       if(!cat.itens||!cat.itens.length)conteudoCardapio.appendChild(elem('p','cardapio-vazio','A relação de pratos desta categoria está sendo preparada. Você já pode indicar seu interesse.'));
-       else {
-         var grade=elem('div','cardapio-grade');
-         cat.itens.forEach(function(item){
-           var card=elem('article','cardapio-item');
-           if(item.imagem){var img=elem('img');img.src=item.imagem;img.alt=item.nome;img.loading='lazy';card.appendChild(img);}
-           var corpo=elem('div','cardapio-item-corpo');corpo.appendChild(elem('h4','',item.nome));
-           if(item.descricao)corpo.appendChild(elem('p','',item.descricao));
-           var btn=elem('button','btn-categoria',escolhidos.has(item.id)?'Remover seleção':'Selecionar item');
-           btn.type='button';btn.setAttribute('aria-pressed',String(escolhidos.has(item.id)));
-           btn.addEventListener('click',function(){if(escolhidos.has(item.id))escolhidos.delete(item.id);else{escolhidos.set(item.id,{nome:item.nome,categoria:cat.nome});escolheCategoria(cat.nome);}exibeCat(cat);atualizaSelecao();});
-           corpo.appendChild(btn);card.appendChild(corpo);grade.appendChild(card);
-         });conteudoCardapio.appendChild(grade);
-       }
-       var add=elem('button','btn btn-ouro','Tenho interesse nesta categoria');add.type='button';
-       add.addEventListener('click',function(){escolheCategoria(cat.nome);add.textContent='Categoria incluída';add.disabled=true;});
-       conteudoCardapio.appendChild(add);
-     }
-     dadosCardapio.forEach(function(cat){var btn=elem('button','cardapio-aba',cat.nome);btn.type='button';btn.dataset.cat=cat.nome;btn.setAttribute('aria-pressed','false');btn.addEventListener('click',function(){exibeCat(cat);});abasCardapio.appendChild(btn);});
-     if(dadosCardapio.length)exibeCat(dadosCardapio[0]);
-     document.querySelectorAll('#chips-categorias input').forEach(function(el){el.addEventListener('change',atualizaSelecao);});
-     var form = document.getElementById('form-orcamento');
-    var aviso = document.getElementById('aviso-form');
-
-    function hoje(){
-      var d = new Date();
-      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-    }
-    function dataMinimaISO(){
-      var d = hoje();
-      var mes = String(d.getMonth() + 1).padStart(2, '0');
-      var dia = String(d.getDate()).padStart(2, '0');
-      return d.getFullYear() + '-' + mes + '-' + dia;
-    }
-    // impede escolher data passada já no seletor nativo
-    document.getElementById('data').setAttribute('min', dataMinimaISO());
-
-    function valor(id){
-      var el = document.getElementById(id);
-      return el ? el.value.trim() : '';
-    }
-    function mostraErro(id, mensagem){
-      var campo = document.getElementById(id);
-      var caixa = document.getElementById('erro-' + id);
-      if(campo) campo.setAttribute('aria-invalid', 'true');
-      if(caixa){ caixa.textContent = mensagem; caixa.hidden = false; }
-    }
-    function limpaErro(id){
-      var campo = document.getElementById(id);
-      var caixa = document.getElementById('erro-' + id);
-      if(campo) campo.removeAttribute('aria-invalid');
-      if(caixa){ caixa.textContent = ''; caixa.hidden = true; }
-    }
-    function limpaTodosErros(){
-      ['nome','data','convidados','tipo'].forEach(limpaErro);
-      aviso.hidden = true;
-      aviso.textContent = '';
-    }
-
-    function dataEhPassada(iso){
-      var partes = iso.split('-');
-      if(partes.length !== 3) return false;
-      var escolhida = new Date(Number(partes[0]), Number(partes[1]) - 1, Number(partes[2]));
-      return escolhida < hoje();
-    }
-
-    function validar(){
-      limpaTodosErros();
-      var erros = [];
-
-      if(valor('nome') === ''){
-        mostraErro('nome', 'Precisamos do seu nome para te atender.');
-        erros.push('nome');
-      }
-
-      var data = valor('data');
-      if(data === ''){
-        mostraErro('data', 'Informe a data do evento.');
-        erros.push('data');
-      } else if(dataEhPassada(data)){
-        mostraErro('data', 'A data do evento não pode ser anterior a hoje.');
-        erros.push('data');
-      }
-
-      var convidados = valor('convidados');
-      if(convidados === ''){
-        mostraErro('convidados', 'Informe quantas pessoas você espera.');
-        erros.push('convidados');
-      } else if(!/^\d+$/.test(convidados) || Number(convidados) < 1){
-        mostraErro('convidados', 'O número de convidados precisa ser 1 ou mais.');
-        erros.push('convidados');
-      }
-
-      if(valor('tipo') === ''){
-        mostraErro('tipo', 'Escolha o tipo de evento.');
-        erros.push('tipo');
-      }
-
-      if(erros.length > 0){
-        aviso.textContent = erros.length === 1
-          ? 'Falta preencher 1 campo abaixo. Seus dados foram mantidos.'
-          : 'Faltam preencher ' + erros.length + ' campos abaixo. Seus dados foram mantidos.';
-        aviso.hidden = false;
-        var primeiro = document.getElementById(erros[0]);
-        if(primeiro) primeiro.focus();
-      }
-      return erros.length === 0;
-    }
-
-    // some com o erro assim que o campo é corrigido
-    ['nome','data','convidados','tipo'].forEach(function(id){
-      var el = document.getElementById(id);
-      if(el) el.addEventListener('input', function(){ limpaErro(id); });
-      if(el) el.addEventListener('change', function(){ limpaErro(id); });
-    });
-
-    function dataBR(iso){
-      var p = iso.split('-');
-      return p[2] + '/' + p[1] + '/' + p[0];
-    }
-    function categoriasEscolhidas(){
-      var marcadas = document.querySelectorAll('#chips-categorias input:checked');
-      var lista = [];
-      for(var i = 0; i < marcadas.length; i++) lista.push(marcadas[i].value);
-      return lista.join(', ');
-    }
-
-    function montarMensagem(){
-      var linhas = [
-        'Olá, Miriam! Gostaria de solicitar um orçamento para o Buffet Real.',
-        '',
-        'Nome: ' + valor('nome'),
-        'Data do evento: ' + dataBR(valor('data')),
-        'Número de convidados: ' + valor('convidados'),
-        'Tipo de evento: ' + valor('tipo')
-      ];
-
-      // campos opcionais entram só quando preenchidos
-      var local = valor('local');
-      if(local !== '') linhas.push('Local: ' + local);
-
-      var categorias = categoriasEscolhidas();
-      if(categorias !== '') linhas.push('Categorias desejadas: ' + categorias);
-
-      if(escolhidos.size){linhas.push('Pratos selecionados:');escolhidos.forEach(function(x){linhas.push('• '+x.nome+' ('+x.categoria+')');});}
-       var equipe=Array.from(document.querySelectorAll('#chips-equipe input:checked')).map(function(x){return x.value;});
-       if(equipe.length)linhas.push('Equipe solicitada: '+equipe.join(', '));
-       if(document.getElementById('vasilhames').checked)linhas.push('Consultar vasilhames: sim');
-       var detalhes = valor('detalhes');
-      if(detalhes !== '') linhas.push('Detalhes: ' + detalhes);
-
-      linhas.push('', 'Aguardo o retorno. Obrigado(a)!');
-      return linhas.join('\n');
-    }
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault(); // nada é enviado daqui: só abrimos o WhatsApp
-      if(!validar()) return;
-      var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(montarMensagem());
-      window.open(url, '_blank', 'noopener');
-    });
-
-    /* ==========================================================
-       4. CTA fixo do celular — sai da frente quando o formulário
-          está na tela e reserva espaço no rodapé.
-       ========================================================== */
-    var barra = document.getElementById('barra-mobile');
-    var secaoOrcamento = document.getElementById('orcamento');
-
-    function ajustaEspacoRodape(){
-      var visivel = window.getComputedStyle(barra).display !== 'none';
-      document.documentElement.style.setProperty('--barra-mobile', visivel ? '76px' : '0px');
-    }
-    ajustaEspacoRodape();
-    window.addEventListener('resize', ajustaEspacoRodape);
-
-    if('IntersectionObserver' in window && secaoOrcamento){
-      new IntersectionObserver(function(entradas){
-        barra.dataset.oculta = entradas[0].isIntersecting ? '1' : '0';
-      }, {threshold: 0.12}).observe(secaoOrcamento);
-    }
-  })();
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>

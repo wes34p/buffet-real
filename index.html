@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- DEMO: remover a linha robots abaixo no go-live (domínio próprio) -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Buffet Real — Buffet em Itabirito-MG | Doces, Salgados, Bolos e Ceias</title>
-  <meta name="description" content="Buffet em Itabirito-MG: doces, salgados, bolos e ceias para aniversários, casamentos e celebrações. Monte seu pedido e receba o orçamento pelo WhatsApp — todos os dias, das 9h às 21h.">
+  <title>Buffet Real | Buffet para eventos em Itabirito-MG</title>
+  <meta name="description" content="Buffet Real em Itabirito-MG: petiscos, salgados, pratos principais, mesa de frios e equipe para eventos. Solicite um orçamento personalizado pelo WhatsApp.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Buffet Real — Buffet em Itabirito-MG">
-  <meta property="og:description" content="Doces, salgados, bolos e ceias. Conte como será o seu evento e receba o orçamento pelo WhatsApp.">
+  <meta property="og:description" content="Petiscos, salgados, pratos principais e mesa de frios. Consulte o cardápio e solicite seu orçamento.">
   <meta property="og:site_name" content="Buffet Real">
   <meta name="theme-color" content="#0b0806">
 
@@ -19,7 +19,7 @@
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
     "name": "Buffet Real",
-    "description": "Buffet em Itabirito-MG: doces, salgados, bolos, ceias e eventos.",
+    "description": "Buffet para eventos em Itabirito-MG com petiscos, salgados, pratos principais, mesa de frios e equipe de apoio",
     "telephone": "+5531980217336",
     "address": {
       "@type": "PostalAddress",
@@ -27,14 +27,8 @@
       "addressRegion": "MG",
       "addressCountry": "BR"
     },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "09:00",
-      "closes": "21:00"
-    },
     "sameAs": ["https://www.instagram.com/buffetreal_miriammarinho"],
-    "servesCuisine": "Doces, salgados, bolos, ceias e eventos"
+    "servesCuisine": "Petiscos, salgados, pratos principais, mesa de frios"
   }
   </script>
 
@@ -671,6 +665,24 @@
       .container{width:94%}
       .chip{font-size:.8rem;padding:.5rem .8rem}
     }
+
+    .secao-cardapio{background:var(--preto-2);border-top:1px solid var(--borda-ouro);border-bottom:1px solid var(--borda-ouro)}
+    .cardapio-painel{max-width:1050px;margin:2.5rem auto 0;padding:clamp(1rem,3vw,2rem);background:var(--preto);border:1px solid var(--borda-ouro);border-radius:12px}
+    .cardapio-abas{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem}
+    .cardapio-aba{background:var(--preto-3);color:var(--creme);font:600 .8rem var(--fonte-texto);border:1px solid var(--borda-ouro);border-radius:999px;min-height:44px;padding:.75rem 1rem;cursor:pointer}
+    .cardapio-aba[aria-pressed="true"]{background:var(--ouro);color:var(--preto);border-color:var(--ouro)}
+    .cardapio-conteudo h3{font:500 2rem var(--fonte-titulo);color:var(--ouro-claro)}
+    .cardapio-desc{color:var(--creme-suave);margin-bottom:1rem}
+    .cardapio-vazio{color:var(--creme-suave);padding:1.3rem;border:1px dashed var(--borda-ouro);margin-bottom:1rem;border-radius:8px}
+    .cardapio-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem;margin-bottom:1.3rem}
+    .cardapio-item{display:flex;flex-direction:column;background:var(--preto-3);border:1px solid var(--borda-ouro);border-radius:9px;overflow:hidden}
+    .cardapio-item img{width:100%;aspect-ratio:4/3;object-fit:cover}
+    .cardapio-item-corpo{display:flex;flex:1;flex-direction:column;gap:.65rem;padding:1rem}
+    .cardapio-item-corpo h4{font:600 1.3rem var(--fonte-titulo);color:var(--ouro-claro)}
+    .cardapio-item-corpo p{color:var(--creme-suave);font-size:.85rem;flex:1}
+    .cardapio-resumo{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.6rem;padding-top:1.5rem;border-top:1px solid var(--borda-ouro)}
+    .cardapio-resumo strong{color:var(--ouro-claro)}.cardapio-resumo p{color:var(--creme-suave);font-size:.85rem}
+    @media(max-width:600px){.cardapio-abas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.cardapio-resumo .btn{width:100%}}
   </style>
 </head>
 <body>
@@ -717,12 +729,12 @@
 
     <p class="marca">Buffet Real</p>
     <h1 class="titulo-hero">Seu evento com sabor, cuidado e apresentação.</h1>
-    <p class="texto-hero">Doces, salgados, bolos, ceias e soluções personalizadas para celebrações em Itabirito e região.</p>
-    <p class="badge-horario"><span>Itabirito-MG</span><span aria-hidden="true">·</span><span>Todos os dias, das 9h às 21h</span></p>
+    <p class="texto-hero">Petiscos, salgados, pratos principais e mesa de frios para seu evento em Itabirito e região.</p>
+    <p class="badge-horario"><span>Itabirito-MG</span><span aria-hidden="true">·</span><span>Atendimento mediante contato</span></p>
 
     <div class="hero-ctas">
       <a class="btn btn-whats" href="#orcamento">Solicitar orçamento</a>
-      <a class="btn btn-ouro" href="#trabalhos">Ver trabalhos</a>
+      <a class="btn btn-ouro" href="#cardapio">Ver cardápio</a>
     </div>
   </header>
 
@@ -732,15 +744,12 @@
       <div class="container">
         <span class="eyebrow">Portfólio</span>
         <h2 class="titulo-secao">Alguns dos nossos trabalhos</h2>
-        <p class="sub-secao">Cada encomenda é preparada sob medida — do docinho da festa à ceia da família inteira.</p>
+        <p class="sub-secao">Uma seleção de trabalhos com comidas, petiscos e mesas para eventos.</p>
 
         <!-- FOTOS: img/trabalho-01.webp … trabalho-08.webp (ou .jpg).
              Enquanto o arquivo não existir, o quadro mostra a moldura de espera. -->
         <div class="grade-trabalhos" id="grade-trabalhos">
-          <figure class="trabalho">
-            <img src="img/trabalho-01.webp" alt="Bolo de andares em mesa decorada com arranjos florais e parede de folhagens" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Bolos">
-            <figcaption>Bolos e mesa decorada</figcaption>
-          </figure>
+          
           <figure class="trabalho">
             <img src="img/trabalho-02.webp" alt="Mesa farta montada ao ar livre, com tábuas de frios, pães e frutas" loading="lazy" width="722" height="542" data-opcional="1" data-espera="Montagem">
             <figcaption>Montagem de evento</figcaption>
@@ -757,18 +766,9 @@
             <img src="img/trabalho-05.webp" alt="Gamela de madeira com porção quente servida em evento" loading="lazy" width="722" height="736" data-opcional="1" data-espera="Petiscos">
             <figcaption>Petiscos</figcaption>
           </figure>
-          <figure class="trabalho">
-            <img src="img/trabalho-06.webp" alt="Arranjo de flores brancas usado na decoração de um evento" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Decoração">
-            <figcaption>Decoração</figcaption>
-          </figure>
-          <figure class="trabalho">
-            <img src="img/trabalho-07.webp" alt="Arranjo floral com o cartão do Buffet Real" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Detalhes">
-            <figcaption>Detalhes</figcaption>
-          </figure>
-          <figure class="trabalho">
-            <img src="img/trabalho-08.webp" alt="Ambientação com folhagens e luzes preparada para uma celebração" loading="lazy" width="720" height="1280" data-opcional="1" data-espera="Ambientação">
-            <figcaption>Ambientação</figcaption>
-          </figure>
+          
+          
+          
         </div>
 
         <div class="acao-central">
@@ -783,63 +783,27 @@
     </section>
 
     <!-- ===== 3. Serviços ===== -->
-    <section id="servicos">
-      <div class="container">
-        <span class="eyebrow">Feito à mão, feito com carinho</span>
-        <h2 class="titulo-secao">Nossos Serviços</h2>
-        <p class="sub-secao">Escolha o que você procura e o pedido já vai preenchido para o WhatsApp.</p>
+    <section id="servicos"><div class="container">
+<span class="eyebrow">Para celebrar com sabor</span><h2 class="titulo-secao">Nossos serviços</h2>
+<p class="sub-secao">O orçamento é preparado conforme as opções escolhidas e as necessidades de cada evento.</p>
+<div class="grade-servicos">
+<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Petiscos</h3><hr class="risco"><p>Petiscos para servir em eventos e encontros.</p><button type="button" class="btn-categoria" data-categoria="Petiscos">Incluir no orçamento</button></article>
+<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Salgados</h3><hr class="risco"><p>Seleção de salgados para comemorações.</p><button type="button" class="btn-categoria" data-categoria="Salgados">Incluir no orçamento</button></article>
+<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Pratos principais</h3><hr class="risco"><p>Opções de refeições para o seu evento.</p><button type="button" class="btn-categoria" data-categoria="Pratos principais">Incluir no orçamento</button></article>
+<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Mesa de frios</h3><hr class="risco"><p>Composições de frios para receber convidados.</p><button type="button" class="btn-categoria" data-categoria="Mesa de frios">Incluir no orçamento</button></article>
+<article class="card-servico"><span class="ico" aria-hidden="true">✦</span><h3>Equipe de apoio</h3><hr class="risco"><p>Consulte equipe de cozinha, garçons, portaria e limpeza.</p><a class="btn-categoria" href="#orcamento">Consultar equipe</a></article>
+</div></div></section>
 
-        <!-- Categorias alinhadas 1:1 com as opções do formulário (data-categoria) -->
-        <div class="grade-servicos">
-          <article class="card-servico">
-            <span class="ico" aria-hidden="true">🍓</span>
-            <h3>Doces</h3>
-            <hr class="risco">
-            <p>Docinhos para festa, sobremesas e encomendas personalizadas para a sua celebração.</p>
-            <button type="button" class="btn-categoria" data-categoria="Doces">Quero solicitar orçamento</button>
-          </article>
-          <article class="card-servico">
-            <span class="ico" aria-hidden="true">🥟</span>
-            <h3>Salgados</h3>
-            <hr class="risco">
-            <p>Salgados variados para festas, reuniões e encontros, feitos sob encomenda.</p>
-            <button type="button" class="btn-categoria" data-categoria="Salgados">Quero solicitar orçamento</button>
-          </article>
-          <article class="card-servico">
-            <span class="ico" aria-hidden="true">🎂</span>
-            <h3>Bolos</h3>
-            <hr class="risco">
-            <p>Bolos para aniversários, casamentos e datas especiais, no tamanho e no sabor que você quiser.</p>
-            <button type="button" class="btn-categoria" data-categoria="Bolos">Quero solicitar orçamento</button>
-          </article>
-          <article class="card-servico">
-            <span class="ico" aria-hidden="true">🍽️</span>
-            <h3>Ceias</h3>
-            <hr class="risco">
-            <p>Ceias completas para as datas em que a família toda se reúne à mesa.</p>
-            <button type="button" class="btn-categoria" data-categoria="Ceias">Quero solicitar orçamento</button>
-          </article>
-          <article class="card-servico">
-            <span class="ico" aria-hidden="true">🥂</span>
-            <h3>Buffet para evento</h3>
-            <hr class="risco">
-            <p>Atendimento completo para aniversários, casamentos e confraternizações.</p>
-            <button type="button" class="btn-categoria" data-categoria="Buffet para evento">Quero solicitar orçamento</button>
-          </article>
-          <article class="card-servico">
-            <span class="ico" aria-hidden="true">✨</span>
-            <h3>Outros</h3>
-            <hr class="risco">
-            <p>Tem uma ideia diferente? Conte o que você imaginou e montamos junto com você.</p>
-            <button type="button" class="btn-categoria" data-categoria="Outros">Quero solicitar orçamento</button>
-          </article>
-        </div>
-
-        <p class="nota-servicos">Não achou o que procura? Conte o que imagina no seu pedido — fazemos sob encomenda.</p>
-      </div>
-    </section>
-
-    <!-- ===== 4. Confiança ===== -->
+    <!-- ===== Cardápio digital ===== -->
+<section id="cardapio" class="secao-cardapio" aria-labelledby="titulo-cardapio"><div class="container">
+<span class="eyebrow">Cardápio digital</span><h2 class="titulo-secao" id="titulo-cardapio">Escolha o que combina com seu evento</h2>
+<p class="sub-secao">Selecione uma categoria para conhecer as opções. O cardápio detalhado será preenchido com o material original de Miriam.</p>
+<div class="cardapio-painel">
+<div class="cardapio-abas" id="cardapio-abas" role="group" aria-label="Categorias"></div>
+<div class="cardapio-conteudo" id="cardapio-conteudo" aria-live="polite"></div>
+<div class="cardapio-resumo"><div><strong>Sua seleção</strong><p id="cardapio-selecao" aria-live="polite">Nenhuma opção selecionada.</p></div><a class="btn btn-ouro" href="#orcamento">Continuar para orçamento</a></div>
+</div></div></section>
+<!-- ===== 4. Confiança ===== -->
     <section class="secao-confianca">
       <div class="container">
         <span class="eyebrow">Quem está por trás</span>
@@ -914,7 +878,7 @@
       <div class="container">
         <span class="eyebrow">Sem compromisso</span>
         <h2 class="titulo-secao">Conte como será o seu evento</h2>
-        <p class="sub-secao">Preencha as principais informações e receba um atendimento mais rápido pelo WhatsApp.</p>
+        <p class="sub-secao">Informe seu evento, o cardápio e a equipe. Miriam prepara o orçamento personalizado.</p>
 
         <div class="convite">
           <div class="convite-interno">
@@ -966,7 +930,7 @@
                   <option value="Casamento">Casamento</option>
                   <option value="Confraternização">Confraternização</option>
                   <option value="Evento corporativo">Evento corporativo</option>
-                  <option value="Ceia">Ceia</option>
+                  
                   <option value="Outro">Outro</option>
                 </select>
                 <p class="erro-campo" id="erro-tipo" hidden></p>
@@ -980,19 +944,21 @@
               <fieldset class="campo-cheio grupo-categorias">
                 <legend class="legenda-grupo">O que você procura <span class="opcional">(opcional)</span></legend>
                 <div class="chips" id="chips-categorias">
-                  <label class="chip"><input type="checkbox" name="categoria" value="Doces"><span class="marca-chip" aria-hidden="true"></span>Doces</label>
-                  <label class="chip"><input type="checkbox" name="categoria" value="Salgados"><span class="marca-chip" aria-hidden="true"></span>Salgados</label>
-                  <label class="chip"><input type="checkbox" name="categoria" value="Bolos"><span class="marca-chip" aria-hidden="true"></span>Bolos</label>
-                  <label class="chip"><input type="checkbox" name="categoria" value="Ceias"><span class="marca-chip" aria-hidden="true"></span>Ceias</label>
-                  <label class="chip"><input type="checkbox" name="categoria" value="Buffet para evento"><span class="marca-chip" aria-hidden="true"></span>Buffet para evento</label>
-                  <label class="chip"><input type="checkbox" name="categoria" value="Outros"><span class="marca-chip" aria-hidden="true"></span>Outros</label>
-                </div>
+<label class="chip"><input type="checkbox" name="categoria" value="Petiscos"><span class="marca-chip" aria-hidden="true"></span>Petiscos</label>
+<label class="chip"><input type="checkbox" name="categoria" value="Salgados"><span class="marca-chip" aria-hidden="true"></span>Salgados</label>
+<label class="chip"><input type="checkbox" name="categoria" value="Pratos principais"><span class="marca-chip" aria-hidden="true"></span>Pratos principais</label>
+<label class="chip"><input type="checkbox" name="categoria" value="Mesa de frios"><span class="marca-chip" aria-hidden="true"></span>Mesa de frios</label>
+</div>
               </fieldset>
 
-              <div class="campo campo-cheio">
-                <label for="detalhes">Detalhes do pedido <span class="opcional">(opcional)</span></label>
-                <textarea id="detalhes" name="detalhes" placeholder="Ex.: 100 salgados variados, 50 docinhos e um bolo decorado…"></textarea>
-              </div>
+              <fieldset class="campo-cheio grupo-categorias"><legend class="legenda-grupo">Equipe necessária <span class="opcional">(opcional)</span></legend><div class="chips" id="chips-equipe">
+<label class="chip"><input type="checkbox" name="equipe" value="Cozinha"><span class="marca-chip" aria-hidden="true"></span>Cozinha</label>
+<label class="chip"><input type="checkbox" name="equipe" value="Garçons"><span class="marca-chip" aria-hidden="true"></span>Garçons</label>
+<label class="chip"><input type="checkbox" name="equipe" value="Portaria"><span class="marca-chip" aria-hidden="true"></span>Portaria</label>
+<label class="chip"><input type="checkbox" name="equipe" value="Limpeza"><span class="marca-chip" aria-hidden="true"></span>Limpeza</label>
+</div></fieldset>
+<fieldset class="campo-cheio grupo-categorias"><legend class="legenda-grupo">Materiais de apoio <span class="opcional">(a consultar)</span></legend><div class="chips"><label class="chip"><input type="checkbox" id="vasilhames"><span class="marca-chip" aria-hidden="true"></span>Consultar vasilhames</label></div></fieldset>
+<div class="campo campo-cheio"><label for="detalhes">Detalhes do pedido <span class="opcional">(opcional)</span></label><textarea id="detalhes" name="detalhes" placeholder="Conte quais pratos deseja e outras necessidades do evento."></textarea></div>
 
               <div class="acao-form">
                 <button type="submit" class="btn btn-whats">
@@ -1015,7 +981,7 @@
       <div class="info-rodape">
         <span>📱 <a href="https://wa.me/5531980217336" target="_blank" rel="noopener">(31) 98021-7336</a></span>
         <span>📷 <a href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">@buffetreal_miriammarinho</a></span>
-        <span>🕘 Todos os dias, das 9h às 21h</span>
+        <span>🕘 Atendimento mediante contato</span>
         <span>📍 Itabirito-MG</span>
       </div>
       <p class="credito">Buffet Real · Itabirito-MG — página por WLS Studio</p>
@@ -1032,6 +998,7 @@
     <a class="btn btn-whats" href="#orcamento">Pedir orçamento</a>
   </div>
 
+  <script src="cardapio-data.js"></script>
   <script>
   (function(){
     'use strict';
@@ -1127,7 +1094,45 @@
     /* ==========================================================
        3. Formulário — validação e mensagem do WhatsApp
        ========================================================== */
-    var form = document.getElementById('form-orcamento');
+    var escolhidos = new Map();
+     var dadosCardapio = window.BUFFET_CARDAPIO || [];
+     var abasCardapio = document.getElementById('cardapio-abas');
+     var conteudoCardapio = document.getElementById('cardapio-conteudo');
+     var selecaoCardapio = document.getElementById('cardapio-selecao');
+     function elem(tag,classe,txt){var e=document.createElement(tag);e.className=classe||'';if(txt!==undefined)e.textContent=txt;return e;}
+     function atualizaSelecao(){
+       var c=Array.from(document.querySelectorAll('#chips-categorias input:checked')).map(function(e){return e.value;});
+       var n=Array.from(escolhidos.values()).map(function(e){return e.nome;});
+       selecaoCardapio.textContent=[c.length?'Categorias: '+c.join(', '):'',n.length?'Itens: '+n.join(', '):''].filter(Boolean).join(' • ')||'Nenhuma opção selecionada.';
+     }
+     function escolheCategoria(nome){var el=Array.from(document.querySelectorAll('#chips-categorias input')).find(function(x){return x.value===nome;});if(el)el.checked=true;atualizaSelecao();}
+     function exibeCat(cat){
+       conteudoCardapio.replaceChildren();
+       Array.from(abasCardapio.children).forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cat===cat.nome));});
+       conteudoCardapio.appendChild(elem('h3','',cat.nome));
+       conteudoCardapio.appendChild(elem('p','cardapio-desc',cat.descricao||''));
+       if(!cat.itens||!cat.itens.length)conteudoCardapio.appendChild(elem('p','cardapio-vazio','A relação de pratos desta categoria está sendo preparada. Você já pode indicar seu interesse.'));
+       else {
+         var grade=elem('div','cardapio-grade');
+         cat.itens.forEach(function(item){
+           var card=elem('article','cardapio-item');
+           if(item.imagem){var img=elem('img');img.src=item.imagem;img.alt=item.nome;img.loading='lazy';card.appendChild(img);}
+           var corpo=elem('div','cardapio-item-corpo');corpo.appendChild(elem('h4','',item.nome));
+           if(item.descricao)corpo.appendChild(elem('p','',item.descricao));
+           var btn=elem('button','btn-categoria',escolhidos.has(item.id)?'Remover seleção':'Selecionar item');
+           btn.type='button';btn.setAttribute('aria-pressed',String(escolhidos.has(item.id)));
+           btn.addEventListener('click',function(){if(escolhidos.has(item.id))escolhidos.delete(item.id);else{escolhidos.set(item.id,{nome:item.nome,categoria:cat.nome});escolheCategoria(cat.nome);}exibeCat(cat);atualizaSelecao();});
+           corpo.appendChild(btn);card.appendChild(corpo);grade.appendChild(card);
+         });conteudoCardapio.appendChild(grade);
+       }
+       var add=elem('button','btn btn-ouro','Tenho interesse nesta categoria');add.type='button';
+       add.addEventListener('click',function(){escolheCategoria(cat.nome);add.textContent='Categoria incluída';add.disabled=true;});
+       conteudoCardapio.appendChild(add);
+     }
+     dadosCardapio.forEach(function(cat){var btn=elem('button','cardapio-aba',cat.nome);btn.type='button';btn.dataset.cat=cat.nome;btn.setAttribute('aria-pressed','false');btn.addEventListener('click',function(){exibeCat(cat);});abasCardapio.appendChild(btn);});
+     if(dadosCardapio.length)exibeCat(dadosCardapio[0]);
+     document.querySelectorAll('#chips-categorias input').forEach(function(el){el.addEventListener('change',atualizaSelecao);});
+     var form = document.getElementById('form-orcamento');
     var aviso = document.getElementById('aviso-form');
 
     function hoje(){
@@ -1250,7 +1255,11 @@
       var categorias = categoriasEscolhidas();
       if(categorias !== '') linhas.push('Categorias desejadas: ' + categorias);
 
-      var detalhes = valor('detalhes');
+      if(escolhidos.size){linhas.push('Pratos selecionados:');escolhidos.forEach(function(x){linhas.push('• '+x.nome+' ('+x.categoria+')');});}
+       var equipe=Array.from(document.querySelectorAll('#chips-equipe input:checked')).map(function(x){return x.value;});
+       if(equipe.length)linhas.push('Equipe solicitada: '+equipe.join(', '));
+       if(document.getElementById('vasilhames').checked)linhas.push('Consultar vasilhames: sim');
+       var detalhes = valor('detalhes');
       if(detalhes !== '') linhas.push('Detalhes: ' + detalhes);
 
       linhas.push('', 'Aguardo o retorno. Obrigado(a)!');

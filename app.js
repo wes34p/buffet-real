@@ -202,6 +202,8 @@
       var moldura = el('span', 'prato-foto');
       var img = el('img');
       img.src = item.imagem;
+      img.srcset = item.imagem.replace(/\.webp$/, '-p.webp') + ' 360w, ' + item.imagem + ' 720w';
+      img.sizes = '(max-width: 699px) 84px, 300px';
       img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';
@@ -296,6 +298,8 @@
         var capa = el('div', 'painel-capa');
         var imgCapa = el('img');
         imgCapa.src = cat.capa;
+        imgCapa.srcset = cat.capa.replace(/\.webp$/, '-p.webp') + ' 800w, ' + cat.capa + ' 1600w';
+        imgCapa.sizes = '(max-width: 999px) 100vw, 800px';
         imgCapa.alt = '';
         imgCapa.loading = i === 0 ? 'eager' : 'lazy';
         imgCapa.decoding = 'async';

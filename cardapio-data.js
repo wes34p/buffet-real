@@ -12,13 +12,16 @@
  *  - "imagem" é opcional: "img/cardapio/nome-do-prato.webp", só com foto real do Buffet Real.
  *  - Não mude o "id" de uma categoria depois de publicada: ele é usado nos links
  *    (ex.: site/#cardapio-salgados) e no QR Code.
+ *  - Prato novo entra no FIM da sua categoria (ou do seu grupo, no fim da lista).
+ *    Não reordene nem apague pratos do meio: o link de seleção compartilhada
+ *    (#selecao=) usa a posição de cada prato.
  */
 window.BUFFET_CARDAPIO = [
   {
     id: "petiscos",
     nome: "Petiscos",
     apelido: "Comida de buteco",
-    descricao: "Porções e petiscos para servir durante a festa, do jeitinho de buteco mineiro.",
+    descricao: "Comida de buteco para servir durante a festa.",
     itens: [
       { nome: "Pastel de angu" },
       { nome: "Pastel de feira" },
@@ -80,7 +83,7 @@ window.BUFFET_CARDAPIO = [
     id: "prato-principal",
     nome: "Prato principal",
     apelido: "A refeição do evento",
-    descricao: "Monte a refeição completa: arroz e feijão, carnes, acompanhamentos, massas e saladas.",
+    descricao: "Arroz e feijão, carnes, batatas e escondidinhos, massas, pratos e saladas.",
     itens: [
       { grupo: "Arroz e feijão", nome: "Arroz branco" },
       { grupo: "Arroz e feijão", nome: "Arroz à grega" },
@@ -122,10 +125,10 @@ window.BUFFET_CARDAPIO = [
         ]
       },
 
-      { grupo: "Pratos da casa", nome: "Umbigo de banana", descricao: "Com carne moída, bacon e calabresa." },
-      { grupo: "Pratos da casa", nome: "Strogonoff de frango" },
-      { grupo: "Pratos da casa", nome: "Strogonoff de carne" },
-      { grupo: "Pratos da casa", nome: "Fricassê de frango" },
+      { grupo: "Strogonoff e outros pratos", nome: "Umbigo de banana", descricao: "Com carne moída, bacon e calabresa." },
+      { grupo: "Strogonoff e outros pratos", nome: "Strogonoff de frango" },
+      { grupo: "Strogonoff e outros pratos", nome: "Strogonoff de carne" },
+      { grupo: "Strogonoff e outros pratos", nome: "Fricassê de frango" },
 
       { grupo: "Saladas", nome: "Salpicão" },
       { grupo: "Saladas", nome: "Maionese de legumes" },
@@ -140,8 +143,8 @@ window.BUFFET_CARDAPIO = [
   {
     id: "mesa-de-frios",
     nome: "Mesa de frios",
-    apelido: "Montada para o seu evento",
-    descricao: "A mesa de frios é combinada com a Miriam conforme o tamanho e o estilo da festa.",
+    apelido: "Sob consulta",
+    descricao: "As opções da mesa de frios são combinadas com a Miriam.",
     itens: []
   }
 ];

@@ -8,7 +8,7 @@
   var CARDAPIO = window.BUFFET_CARDAPIO || [];
   var CHAVE_RASCUNHO = 'buffetreal:montador:rascunho:v1';
   var CHAVE_TABELA = 'buffetreal:montador:tabela:v1';
-  var CAMPOS = ['nome','whatsapp','tipo','data','convidados','local','codigo','obsCliente'];
+  var CAMPOS = ['nome','whatsapp','tipo','data','horario','convidados','local','codigo','obsCliente'];
   var EQUIPE = ['Cozinha','Garçons','Portaria','Limpeza'];
 
   function el(tag, classe, texto){
@@ -113,7 +113,7 @@
         var m = /^([^:]+):\s*(.*)$/.exec(limpa);
         if(!m) return;
         var k = normaliza(m[1]);
-        var mapa = { 'nome': 'nome', 'whatsapp': 'whatsapp', 'tipo': 'tipo', 'data': 'data', 'convidados': 'convidados', 'local': 'local' };
+        var mapa = { 'nome': 'nome', 'whatsapp': 'whatsapp', 'tipo': 'tipo', 'data': 'data', 'horario': 'horario', 'convidados': 'convidados', 'local': 'local' };
         if(mapa[k]) est.campos[mapa[k]] = m[2].trim();
         return;
       }
@@ -246,6 +246,7 @@
     var t = '• ' + l.nome + (l.opcoes.length ? ' (' + l.opcoes.join(', ') + ')' : '');
     if(l.detalhe) t += ' · ' + l.detalhe;
     if(estado.mostrarValores && l.valor !== '') t += ' · ' + real(paraNumero(l.valor));
+    else if(estado.mostrarValores && /^Sugestão da Miriam/.test(l.nome)) t += ' · a combinar';
     return t;
   }
 
@@ -255,7 +256,7 @@
     if(c.codigo) L.push('Pedido ' + c.codigo);
     L.push('');
     L.push('Olá' + (c.nome ? ', ' + primeiroNome(c.nome) : '') + '! Segue o orçamento do seu evento.');
-    var ev = [c.tipo, c.data, c.convidados ? c.convidados + ' convidados' : ''].filter(Boolean).join(' · ');
+    var ev = [c.tipo, c.data, c.horario ? 'às ' + c.horario : '', c.convidados ? c.convidados + ' convidados' : ''].filter(Boolean).join(' · ');
     if(ev || c.local){
       L.push('');
       L.push('*Evento*');
@@ -280,7 +281,7 @@
       extras.forEach(function(l){ L.push(linhaTexto(l)); });
     }
     L.push('');
-    L.push('*Total: ' + real(total()) + '*');
+    L.push(total() > 0 ? '*Total: ' + real(total()) + '*' : '*Total: a definir*');
     var f = estado.fecho;
     if(f.validade || f.pagamento || f.obs) L.push('');
     if(f.validade) L.push('Validade: ' + f.validade);
@@ -400,6 +401,10 @@
   });
   Array.prototype.forEach.call(document.querySelectorAll('[data-add-extra]'), function(b){
     b.addEventListener('click', function(){
+      if(b.dataset.addExtra && estado.extras.some(function(x){ return x.nome === b.dataset.addExtra; })){
+        avisa(b.dataset.addExtra + ' já está na lista. Ajuste a quantidade no detalhe.');
+        return;
+      }
       estado.extras.push(preencheDaTabela(novaLinha({ nome: b.dataset.addExtra })));
       desenha();
       if(!b.dataset.addExtra){

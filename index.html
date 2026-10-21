@@ -222,7 +222,7 @@
       border:0;
       transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,border-color .18s ease;
     }
-    .btn:hover{transform:translateY(-2px)}
+    @media (hover:hover){.btn:hover{transform:translateY(-2px)}}
     .btn:active{transform:translateY(0)}
     .btn-whats{
       background:var(--whats);
@@ -299,13 +299,7 @@
       margin-right:auto;
     }
 
-    /* ===== Serviços ===== */
-    .grade-servicos{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1.2rem;
-      margin-top:2.8rem;
-    }
+    /* ===== Cards (equipe) ===== */
     .card-servico{
       display:flex;
       flex-direction:column;
@@ -315,7 +309,7 @@
       padding:1.7rem 1.5rem 1.5rem;
       transition:border-color .2s ease,transform .2s ease;
     }
-    .card-servico:hover{border-color:var(--borda-ouro-forte);transform:translateY(-3px)}
+    @media (hover:hover){.card-servico:hover{border-color:var(--borda-ouro-forte);transform:translateY(-3px)}}
     .card-servico .ico{
       font-size:1.7rem;
       line-height:1;
@@ -358,14 +352,6 @@
       transition:background-color .18s ease,border-color .18s ease;
     }
     .btn-categoria:hover{background:rgba(201,162,75,.12);border-color:var(--ouro)}
-    .nota-servicos{
-      text-align:center;
-      margin-top:2.2rem;
-      font-family:var(--fonte-titulo);
-      font-style:italic;
-      font-size:1.05rem;
-      color:var(--creme-suave);
-    }
 
     /* ===== Confiança ===== */
     .secao-confianca{background:var(--preto-2);border-top:1px solid var(--borda-ouro);border-bottom:1px solid var(--borda-ouro)}
@@ -404,6 +390,8 @@
       font-size:1.05rem;
       background:var(--preto-3);
     }
+    .pilar .ico svg,.ico-rodape svg{width:20px;height:20px;fill:none;stroke:var(--ouro);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .ico-rodape{display:inline-flex;vertical-align:-4px;margin-right:.45rem;font-style:normal}
     .pilar h3{
       font-family:var(--fonte-titulo);
       font-size:1.28rem;
@@ -424,6 +412,7 @@
       text-align:center;
     }
     .passo .num{
+      font-variant-numeric:lining-nums;
       font-family:var(--fonte-titulo);
       font-size:2.4rem;
       font-weight:500;
@@ -596,7 +585,7 @@
     }
     .info-rodape a{color:var(--ouro-claro);text-decoration:none}
     .info-rodape a:hover{text-decoration:underline}
-    .credito{font-size:.72rem;color:rgba(244,236,220,.42);letter-spacing:.06em}
+    .credito{font-size:.72rem;color:rgba(244,236,220,.62);letter-spacing:.06em}
 
     /* ===== Botão flutuante WhatsApp (desktop) ===== */
     .zap-flutuante{
@@ -635,7 +624,6 @@
     /* ===== Responsivo ===== */
     @media (max-width:1000px){
       .grade-trabalhos{grid-template-columns:repeat(3,1fr)}
-      .grade-servicos{grid-template-columns:repeat(2,1fr)}
       .bloco-confianca{grid-template-columns:1fr;gap:2rem}
       .certificado{max-width:420px;margin:0 auto}
     }
@@ -643,16 +631,11 @@
       section{padding:3.6rem 0}
       .hero{min-height:auto;padding:2.6rem 1rem 3rem}
       .grade-trabalhos{grid-template-columns:repeat(2,1fr);gap:.7rem}
-      .grade-servicos{grid-template-columns:1fr}
       .grade-passos{grid-template-columns:1fr;gap:1.8rem}
       .grade-form{grid-template-columns:1fr}
       .hero-ctas{flex-direction:column;max-width:360px}
       .hero-ctas .btn{width:100%}
       .info-rodape{flex-direction:column;gap:.5rem}
-    }
-    @media (max-width:700px){
-      .barra-mobile{display:block}
-      .zap-flutuante{display:none} /* um só CTA fixo no celular, sem poluição */
     }
     @media (max-width:360px){
       .container{width:94%}
@@ -704,7 +687,7 @@
     .cardapio-barra{
       position:sticky;top:0;z-index:20;
       margin:0 -.2rem 1.2rem;
-      padding:.75rem .2rem .8rem;
+      padding:.65rem .2rem;
       background:rgba(19,14,8,.96);
       backdrop-filter:blur(8px);
       -webkit-backdrop-filter:blur(8px);
@@ -731,7 +714,10 @@
       font-size:.68rem;font-weight:700;
     }
     .cardapio-aba[aria-selected="true"] .aba-contador{background:#1a1206;color:var(--ouro-claro)}
-    .busca{position:relative;margin-top:.65rem}
+    .busca{position:relative;margin-bottom:.9rem}
+    .busca input::-webkit-search-cancel-button,
+    .busca input::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
+    html:has(dialog[open]){overflow:hidden}
     .busca input{
       width:100%;min-height:46px;
       padding:.7rem 2.8rem .7rem 2.7rem;
@@ -886,7 +872,7 @@
     .link-discreto:hover{color:var(--ouro-claro)}
 
     .gaveta{
-      margin:auto auto 0;width:100%;max-width:560px;max-height:88vh;
+      margin:auto auto 0;width:100%;max-width:560px;max-height:88vh;max-height:88dvh;overscroll-behavior:contain;
       padding:0;border:0;border-top:1px solid var(--ouro);border-radius:16px 16px 0 0;
       background:var(--preto);color:var(--creme);
     }
@@ -937,6 +923,7 @@
     .resumo-form .mc-lista{max-height:none;margin:.4rem 0 .2rem}
     .resumo-topo{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
     .chip input:disabled ~ .marca-chip{opacity:.85}
+    .dica-campo{font-size:.74rem;color:var(--creme-fraco);margin-top:.5rem}
     .chip:has(input:disabled){cursor:default}
 
     .toast{
@@ -985,8 +972,8 @@
 
   <!-- ===== 1. Hero ===== -->
   <header class="hero" id="topo">
-    <!-- FOTO: img/hero.webp (ou .jpg), some sozinha se o arquivo não existir -->
-    <img class="hero-foto" src="img/hero.webp" alt="" data-opcional="1" fetchpriority="high" width="1600" height="1000">
+    <!-- FOTO: capa ilustrativa do prato principal (troque por foto real em alta quando houver) -->
+    <img class="hero-foto" src="img/cardapio/capa-prato-principal.webp" srcset="img/cardapio/capa-prato-principal-p.webp 800w, img/cardapio/capa-prato-principal.webp 1600w" sizes="100vw" alt="" data-opcional="1" fetchpriority="high" width="1600" height="686">
 
     <svg class="orn" viewBox="0 0 400 46" aria-hidden="true" focusable="false">
       <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
@@ -1081,14 +1068,14 @@
 
         <div class="cardapio-layout">
           <div class="cardapio-principal">
-            <div class="cardapio-barra">
-              <div class="cardapio-abas" id="cardapio-abas" role="tablist" aria-label="Categorias do cardápio"></div>
               <div class="busca">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
                 <label class="sr-only" for="busca-prato">Buscar prato no cardápio</label>
-                <input type="search" id="busca-prato" placeholder="Buscar prato (ex.: bacalhau, strogonoff)" autocomplete="off" enterkeyhint="search">
+                <input type="search" id="busca-prato" placeholder="Buscar prato" autocomplete="off" enterkeyhint="search">
                 <button type="button" class="busca-limpar" id="busca-limpar" aria-label="Limpar busca" hidden>×</button>
               </div>
+            <div class="cardapio-barra">
+              <div class="cardapio-abas" id="cardapio-abas" role="tablist" aria-label="Categorias do cardápio"></div>
             </div>
             <div id="cardapio-paineis"></div>
             <div id="painel-busca" aria-live="polite" hidden></div>
@@ -1101,7 +1088,7 @@
             </div>
             <div class="mc-lista" data-lista-cardapio></div>
             <div class="mc-acoes">
-              <a class="btn btn-whats" href="#orcamento">Pedir orçamento</a>
+              <a class="btn btn-dourado" href="#orcamento">Pedir orçamento</a>
               <div class="mc-mini">
                 <button type="button" class="link-discreto" data-compartilhar-selecao>Enviar para alguém aprovar</button>
                 <button type="button" class="link-discreto" data-limpar>Limpar</button>
@@ -1117,14 +1104,14 @@
       <div class="container">
         <span class="eyebrow">Equipe completa</span>
         <h2 class="titulo-secao" id="titulo-equipe">Quem trabalha no seu evento</h2>
-        <p class="sub-secao">Além da comida, a Miriam leva a equipe que a festa precisar. Marque o que deseja e isso já entra no seu pedido.</p>
+        <p class="sub-secao">Além da comida, você pode pedir equipe para o evento. Marque o que precisa e a Miriam confirma no orçamento.</p>
 
         <div class="grade-equipe">
           <article class="card-servico">
             <span class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 18h14v7H9z"/><path d="M9 18c-3 0-5-2-5-5s2.4-5 5-5c.6-2.6 3.6-4 7-4s6.4 1.4 7 4c2.6 0 5 2 5 5s-2 5-5 5"/><path d="M13 22h6"/></svg></span>
             <h3>Cozinha</h3>
             <hr class="risco">
-            <p>Equipe de cozinha para preparar e finalizar os pratos no evento.</p>
+            <p>Equipe de cozinha para o seu evento.</p>
             <button type="button" class="btn-categoria" data-equipe="Cozinha" aria-pressed="false">Incluir no pedido</button>
           </article>
           <article class="card-servico">
@@ -1145,7 +1132,7 @@
             <span class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M25 20l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/><path d="M7 21l.8 2.2L10 24l-2.2.8L7 27l-.8-2.2L4 24l2.2-.8z"/></svg></span>
             <h3>Limpeza</h3>
             <hr class="risco">
-            <p>Equipe de limpeza para manter o espaço em ordem durante o evento.</p>
+            <p>Equipe de limpeza para o seu evento.</p>
             <button type="button" class="btn-categoria" data-equipe="Limpeza" aria-pressed="false">Incluir no pedido</button>
           </article>
         </div>
@@ -1165,25 +1152,25 @@
       <div class="container">
         <span class="eyebrow">Portfólio</span>
         <h2 class="titulo-secao" id="titulo-trabalhos">Alguns dos nossos trabalhos</h2>
-        <p class="sub-secao">Mesas, petiscos e salgados servidos pelo Buffet Real em eventos de verdade.</p>
+        <p class="sub-secao">Mesas, petiscos e salgados servidos pelo Buffet Real em eventos.</p>
 
         <!-- FOTOS: img/trabalho-0X.webp (ou .jpg). Sem o arquivo, o quadro mostra a moldura de espera. -->
         <div class="grade-trabalhos" id="grade-trabalhos">
           <figure class="trabalho">
-            <img src="img/trabalho-02.webp" alt="Mesa farta montada ao ar livre, com tábuas de frios, pães e frutas" loading="lazy" width="722" height="542" data-opcional="1" data-espera="Mesa de frios">
-            <figcaption>Mesa de frios</figcaption>
+            <img src="img/trabalho-02.webp" alt="Mesa de buffet montada ao ar livre em evento atendido pelo Buffet Real" loading="lazy" width="722" height="542" data-opcional="1" data-espera="Mesa de frios">
+            <figcaption>Mesa montada</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-03.webp" alt="Buffet servido ao ar livre com mini sanduíches, batata frita e porções em gamelas" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Salgados">
+            <img src="img/trabalho-03.webp" alt="Salgados, batata frita e porções servidos em gamelas num evento ao ar livre" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Salgados">
             <figcaption>Salgados e porções</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-04.webp" alt="Travessa com torresmo, mandioca frita, linguiça e queijo coalho" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Petiscos">
+            <img src="img/trabalho-04.webp" alt="Travessa de petiscos com torresmo e mandioca frita" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Petiscos">
             <figcaption>Petiscos de buteco</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-05.webp" alt="Gamela de madeira com porção quente servida em evento" loading="lazy" width="722" height="736" data-opcional="1" data-espera="Porções">
-            <figcaption>Porções quentes</figcaption>
+            <img src="img/trabalho-05.webp" alt="Gamela de madeira com porção servida em evento" loading="lazy" width="722" height="736" data-opcional="1" data-espera="Porções">
+            <figcaption>Porções</figcaption>
           </figure>
         </div>
 
@@ -1206,27 +1193,27 @@
         <div class="bloco-confianca">
           <!-- FOTO: img/certificado.webp, o bloco nasce oculto e só aparece quando a imagem carregar -->
           <figure class="certificado" id="bloco-certificado" data-oculta-se-falhar="1" hidden>
-            <img src="img/certificado.webp" alt="Certificado de reconhecimento empresarial recebido pelo Buffet Real" width="900" height="1200" loading="lazy" data-opcional="1">
+            <img src="img/certificado.webp" alt="Certificado de reconhecimento empresarial recebido pelo Buffet Real" width="900" height="1200" data-opcional="1">
             <figcaption>Reconhecimento de Alta Performance Empresarial 2026, recebido pelo Buffet Real em Itabirito-MG</figcaption>
           </figure>
 
           <ul class="pilares">
             <li class="pilar">
-              <span class="ico" aria-hidden="true">📍</span>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
               <div>
-                <h3>Reconhecido em Itabirito</h3>
-                <p>Certificado como a empresa mais recomendada no segmento de buffet para eventos na cidade, pelo atendimento.</p>
+                <h3>Reconhecimento em Itabirito</h3>
+                <p>Recebeu o Reconhecimento de Alta Performance Empresarial 2026 pelo atendimento no segmento de buffet para eventos.</p>
               </div>
             </li>
             <li class="pilar">
-              <span class="ico" aria-hidden="true">💬</span>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span>
               <div>
                 <h3>Atendimento da própria Miriam</h3>
-                <p>Quem responde e monta o orçamento é a Miriam. Cada pedido é conversado, ajustado e confirmado antes do evento.</p>
+                <p>Quem responde e monta o orçamento é a própria Miriam, a partir do cardápio que você escolheu.</p>
               </div>
             </li>
             <li class="pilar">
-              <span class="ico" aria-hidden="true">📷</span>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></span>
               <div>
                 <h3>Trabalhos reais, à vista de todos</h3>
                 <p>O dia a dia do buffet fica publicado no perfil <a href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">@buffetreal_miriammarinho</a>.</p>
@@ -1253,11 +1240,11 @@
           </details>
           <details>
             <summary>Vocês levam equipe para o evento?</summary>
-            <p>Sim. Você pode pedir equipe de cozinha, garçons, portaria e limpeza. É só marcar no pedido e a Miriam inclui no orçamento.</p>
+            <p>Você pode pedir equipe de cozinha, garçons, portaria e limpeza. É só marcar no pedido e a Miriam confirma no orçamento.</p>
           </details>
           <details>
             <summary>O que o Buffet Real oferece?</summary>
-            <p>A comida do evento: petiscos, salgados, prato principal e mesa de frios, com a equipe para servir. É nisso que a Miriam é especialista, e é isso que entra no orçamento.</p>
+            <p>A comida do evento: petiscos, salgados, prato principal e mesa de frios, além de equipe de cozinha, garçons, portaria e limpeza. É isso que entra no orçamento.</p>
           </details>
           <details>
             <summary>Atendem fora de Itabirito?</summary>
@@ -1328,8 +1315,6 @@
                   <option value="Casamento">Casamento</option>
                   <option value="Confraternização">Confraternização</option>
                   <option value="Evento corporativo">Evento corporativo</option>
-                  <option value="Batizado">Batizado</option>
-                  <option value="Formatura">Formatura</option>
                   <option value="Outro">Outro</option>
                 </select>
                 <p class="erro-campo" id="erro-tipo" hidden></p>
@@ -1348,6 +1333,11 @@
               </div>
 
               <div class="campo">
+                <label for="horario">Horário de início <span class="opcional">(opcional)</span></label>
+                <input type="time" id="horario" name="horario">
+              </div>
+
+              <div class="campo campo-cheio">
                 <label for="local">Local do evento <span class="opcional">(opcional)</span></label>
                 <input type="text" id="local" name="local" placeholder="Cidade, bairro ou salão">
               </div>
@@ -1355,6 +1345,7 @@
               <fieldset class="campo-cheio grupo-categorias">
                 <legend class="legenda-grupo">Categorias de interesse <span class="opcional">(marque para receber sugestões)</span></legend>
                 <div class="chips" id="chips-categorias"></div>
+                <p class="dica-campo">Categorias com pratos escolhidos já vão marcadas.</p>
               </fieldset>
 
               <fieldset class="campo-cheio grupo-categorias">
@@ -1379,6 +1370,7 @@
                   Enviar pedido pelo WhatsApp
                 </button>
                 <p class="dica-form">Você será direcionado ao WhatsApp com o pedido pronto. É só conferir e tocar em enviar.</p>
+                <p class="dica-form" id="pedido-copiar" hidden>O WhatsApp não abriu? <button type="button" class="link-discreto" id="btn-copiar-pedido">Copiar o pedido</button> e cole na conversa com a Miriam: (31) 98021-7336.</p>
               </div>
             </form>
           </div>
@@ -1392,9 +1384,9 @@
     <div class="container">
       <span class="marca-rodape" aria-hidden="true">Buffet Real</span>
       <div class="info-rodape">
-        <span>📱 <a href="https://wa.me/5531980217336" target="_blank" rel="noopener">(31) 98021-7336</a></span>
-        <span>📷 <a href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">@buffetreal_miriammarinho</a></span>
-        <span>📍 Itabirito-MG e região</span>
+        <span><i class="ico-rodape" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg></i><a href="https://wa.me/5531980217336" target="_blank" rel="noopener">(31) 98021-7336</a></span>
+        <span><i class="ico-rodape" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></i><a href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">@buffetreal_miriammarinho</a></span>
+        <span><i class="ico-rodape" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i>Itabirito-MG e região</span>
       </div>
       <p class="credito">Buffet Real · Miriam Marinho · Itabirito-MG · página por WLS Studio</p>
     </div>
@@ -1409,7 +1401,7 @@
   <div class="barra-mobile" id="barra-mobile">
     <div class="barra-interna">
       <button type="button" class="btn btn-ouro" id="abre-gaveta" hidden>Meu cardápio <span class="bolha" id="bolha-total">0</span></button>
-      <a class="btn btn-whats" href="#orcamento" id="barra-cta">Pedir orçamento</a>
+      <a class="btn btn-dourado" href="#cardapio" id="barra-cta">Montar meu cardápio</a>
     </div>
   </div>
 
@@ -1423,7 +1415,7 @@
       <p class="mc-total" data-total-texto>Nenhum item</p>
       <div class="mc-lista" data-lista-cardapio></div>
       <div class="mc-acoes">
-        <a class="btn btn-whats" href="#orcamento" data-fecha-gaveta>Pedir orçamento</a>
+        <a class="btn btn-dourado" href="#orcamento" data-fecha-gaveta>Pedir orçamento</a>
         <div class="mc-mini">
           <button type="button" class="link-discreto" data-compartilhar-selecao>Enviar para alguém aprovar</button>
           <button type="button" class="link-discreto" data-limpar>Limpar</button>

@@ -9,7 +9,7 @@
   var WHATSAPP = '5531980217336';
   var CHAVE = 'buffetreal:pedido:v1';
   var CARDAPIO = window.BUFFET_CARDAPIO || [];
-  var CAMPOS = ['nome','whatsapp','tipo','data','convidados','local','detalhes'];
+  var CAMPOS = ['nome','whatsapp','tipo','data','horario','convidados','local','detalhes'];
   var OBRIGATORIOS = ['nome','whatsapp','tipo','data','convidados'];
 
   var SVG_MAIS = '<svg class="ic-mais" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3v10M3 8h10"/></svg>';
@@ -252,8 +252,8 @@
     var box = el('div', 'sugestao' + (destaque ? ' sugestao--destaque' : ''));
     var texto = el('div');
     if(destaque){
-      texto.appendChild(el('strong', '', 'Mesa de frios sob medida'));
-      texto.appendChild(el('p', '', 'As opções são combinadas direto com a Miriam, de acordo com o tamanho e o estilo do seu evento. Inclua no pedido e ela apresenta as sugestões.'));
+      texto.appendChild(el('strong', '', 'Mesa de frios'));
+      texto.appendChild(el('p', '', 'As opções são combinadas direto com a Miriam. Inclua no pedido e ela apresenta as sugestões.'));
     } else {
       texto.appendChild(el('strong', '', 'Ficou em dúvida?'));
       texto.appendChild(el('p', '', 'Peça para a Miriam sugerir ' + cat.nome.toLowerCase() + ' que combinam com o seu evento.'));
@@ -396,8 +396,10 @@
       painelBusca.hidden = true;
       painelBusca.replaceChildren();
       paineis.hidden = false;
+      Array.prototype.forEach.call(abas.children, function(aba){ aba.setAttribute('aria-selected', String(aba.dataset.cat === abaAtiva)); });
       return;
     }
+    Array.prototype.forEach.call(abas.children, function(aba){ aba.setAttribute('aria-selected', 'false'); });
     var achados = [];
     CARDAPIO.forEach(function(cat){
       (cat.itens || []).forEach(function(item){
@@ -512,6 +514,13 @@
     var marcados = total + (total ? 0 : estado.interesse.length);
     bolha.textContent = total || estado.interesse.length;
     abre.hidden = marcados === 0;
+    var cta = document.getElementById('barra-cta');
+    cta.textContent = marcados ? 'Pedir orçamento' : 'Montar meu cardápio';
+    cta.setAttribute('href', marcados ? '#orcamento' : '#cardapio');
+    var barraFixa = document.getElementById('barra-mobile');
+    if(window.getComputedStyle(barraFixa).display !== 'none'){
+      document.documentElement.style.setProperty('--barra-mobile', barraFixa.offsetHeight + 'px');
+    }
   }
 
   function atualizaFormulario(){
@@ -521,7 +530,6 @@
       var temPratos = itensDaCategoria(cat).length > 0;
       inp.checked = temPratos || temInteresse(cat.id);
       inp.disabled = temPratos;
-      inp.closest('.chip').title = temPratos ? 'Você já escolheu pratos desta categoria' : '';
     });
     Array.prototype.forEach.call(document.querySelectorAll('#chips-equipe input[name="equipe"]'), function(inp){
       inp.checked = estado.equipe.indexOf(inp.value) > -1;
@@ -599,15 +607,20 @@
   var barra = document.getElementById('barra-mobile');
   function ajustaEspacoRodape(){
     var visivel = window.getComputedStyle(barra).display !== 'none';
-    document.documentElement.style.setProperty('--barra-mobile', visivel ? '76px' : '0px');
+    document.documentElement.style.setProperty('--barra-mobile', visivel ? barra.offsetHeight + 'px' : '0px');
   }
   ajustaEspacoRodape();
   window.addEventListener('resize', ajustaEspacoRodape);
   var secaoOrcamento = document.getElementById('orcamento');
+  // a barra some no topo (o hero já tem os botões) e dentro do formulário
+  var naTela = { topo: true, orcamento: false };
   if('IntersectionObserver' in window){
-    new IntersectionObserver(function(entradas){
-      barra.dataset.oculta = entradas[0].isIntersecting ? '1' : '0';
-    }, { threshold: 0.12 }).observe(secaoOrcamento);
+    var observa = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){ naTela[en.target.id === 'topo' ? 'topo' : 'orcamento'] = en.isIntersecting; });
+      barra.dataset.oculta = naTela.topo || naTela.orcamento ? '1' : '0';
+    }, { threshold: 0.12 });
+    observa.observe(document.getElementById('topo'));
+    observa.observe(secaoOrcamento);
   }
 
   /* ==========================================================
@@ -646,6 +659,17 @@
     });
     return sel;
   }
+  // abre em nova aba sem depender do retorno do window.open (que é null com noopener)
+  function abreLink(url){
+    var a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
   function enderecoBase(){ return window.location.href.split('#')[0]; }
 
   function compartilha(url, titulo, texto){
@@ -659,7 +683,7 @@
     copiar.then(function(){
       avisa('Link copiado. É só colar no WhatsApp.');
     }).catch(function(){
-      window.open('https://wa.me/?text=' + encodeURIComponent(texto + ' ' + url), '_blank', 'noopener');
+      abreLink('https://wa.me/?text=' + encodeURIComponent(texto + ' ' + url));
     });
   }
 
@@ -710,7 +734,8 @@
   });
 
   function trataEndereco(){
-    var h = decodeURIComponent(window.location.hash || '');
+    var h = window.location.hash || '';
+    try{ h = decodeURIComponent(h); }catch(err){ return; }
     if(h.indexOf('#selecao=') === 0){
       trataSelecaoRecebida(h.slice(9));
       if(history.replaceState) history.replaceState(null, '', '#cardapio');
@@ -835,6 +860,7 @@
     L.push('WhatsApp: ' + formataTelefone(valor('whatsapp')));
     L.push('Tipo: ' + valor('tipo'));
     L.push('Data: ' + dataBR(valor('data')));
+    if(valor('horario')) L.push('Horário: ' + valor('horario'));
     L.push('Convidados: ' + valor('convidados'));
     if(valor('local')) L.push('Local: ' + valor('local'));
 
@@ -881,12 +907,20 @@
     return L.join('\n');
   }
 
+  var ultimaMensagem = '';
+  document.getElementById('btn-copiar-pedido').addEventListener('click', function(){
+    var texto = ultimaMensagem || montarMensagem();
+    var copiar = navigator.clipboard && window.isSecureContext ? navigator.clipboard.writeText(texto) : Promise.reject();
+    copiar.then(function(){ avisa('Pedido copiado. Cole na conversa com a Miriam.'); })
+      .catch(function(){ avisa('Não consegui copiar. Toque em enviar de novo.'); });
+  });
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!validar()) return;
-    var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(montarMensagem());
-    var janela = window.open(url, '_blank', 'noopener');
-    if(!janela) window.location.href = url;
+    ultimaMensagem = montarMensagem();
+    abreLink('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(ultimaMensagem));
+    document.getElementById('pedido-copiar').hidden = false;
     avisa('Pedido aberto no WhatsApp. Confira e toque em enviar.');
   });
 

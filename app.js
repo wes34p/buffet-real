@@ -88,6 +88,18 @@
       INDICE[item.id] = { item: item, cat: cat, ci: ci, ii: ii };
     });
   });
+  // imagens ilustrativas (cardapio-imagens.js, gerado pelo importador)
+  var IMAGENS = window.BUFFET_IMAGENS || { capas: {}, itens: {} };
+  var temImagens = false;
+  CARDAPIO.forEach(function(cat){
+    cat.capa = cat.capa || (IMAGENS.capas || {})[cat.id];
+    (cat.itens || []).forEach(function(item){
+      item.imagem = item.imagem || (IMAGENS.itens || {})[item.id];
+      if(item.imagem) temImagens = true;
+    });
+    if(cat.capa) temImagens = true;
+  });
+
   function categoriaPorId(id){
     for(var i = 0; i < CARDAPIO.length; i++) if(CARDAPIO[i].id === id) return CARDAPIO[i];
     return null;
@@ -185,9 +197,25 @@
     var botao = el('button', 'prato-botao');
     botao.type = 'button';
     botao.setAttribute('aria-pressed', 'false');
-    if(mostrarCategoria) botao.appendChild(el('span', 'prato-cat', cat.nome));
-    botao.appendChild(el('span', 'prato-nome', item.nome));
-    if(item.descricao) botao.appendChild(el('span', 'prato-desc', item.descricao));
+    if(item.imagem){
+      li.classList.add('prato--foto');
+      var moldura = el('span', 'prato-foto');
+      var img = el('img');
+      img.src = item.imagem;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.width = 720;
+      img.height = 540;
+      img.addEventListener('error', function(){ moldura.remove(); li.classList.remove('prato--foto'); });
+      moldura.appendChild(img);
+      botao.appendChild(moldura);
+    }
+    var texto = el('span', 'prato-texto');
+    if(mostrarCategoria) texto.appendChild(el('span', 'prato-cat', cat.nome));
+    texto.appendChild(el('span', 'prato-nome', item.nome));
+    if(item.descricao) texto.appendChild(el('span', 'prato-desc', item.descricao));
+    botao.appendChild(texto);
     var marca = el('span', 'prato-marca');
     marca.innerHTML = SVG_MAIS + SVG_OK;
     botao.appendChild(marca);
@@ -264,7 +292,22 @@
       var cabeca = el('div', 'painel-cabeca');
       cabeca.appendChild(el('h3', '', cat.nome));
       if(cat.apelido) cabeca.appendChild(el('span', 'painel-apelido', cat.apelido));
-      painel.appendChild(cabeca);
+      if(cat.capa){
+        var capa = el('div', 'painel-capa');
+        var imgCapa = el('img');
+        imgCapa.src = cat.capa;
+        imgCapa.alt = '';
+        imgCapa.loading = i === 0 ? 'eager' : 'lazy';
+        imgCapa.decoding = 'async';
+        imgCapa.width = 1600;
+        imgCapa.height = 686;
+        imgCapa.addEventListener('error', function(){ capa.replaceWith(cabeca); });
+        capa.appendChild(imgCapa);
+        capa.appendChild(cabeca);
+        painel.appendChild(capa);
+      } else {
+        painel.appendChild(cabeca);
+      }
       if(cat.descricao) painel.appendChild(el('p', 'painel-desc', cat.descricao));
 
       var itens = cat.itens || [];
@@ -879,6 +922,7 @@
   /* ==========================================================
      Início
      ========================================================== */
+  document.getElementById('nota-ilustrativa').hidden = !temImagens;
   carrega();
   CAMPOS.forEach(function(id){ if(estado.campos[id]) document.getElementById(id).value = estado.campos[id]; });
   montaPaineis();

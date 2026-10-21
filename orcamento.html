@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ferramenta interna da Miriam: nunca indexar, mesmo depois do go-live -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Montador de orçamento · Buffet Real</title>
+  <meta name="theme-color" content="#0b0806">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%235a2e1f'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='32' text-anchor='middle' fill='%23e8c78a'%3EBR%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --preto:#0b0806;
+      --preto-2:#130e08;
+      --preto-3:#1a130a;
+      --ouro:#c9a24b;
+      --ouro-claro:#f0dda4;
+      --creme:#f4ecdc;
+      --creme-suave:rgba(244,236,220,.76);
+      --creme-fraco:rgba(244,236,220,.5);
+      --borda-ouro:rgba(201,162,75,.26);
+      --borda-ouro-forte:rgba(201,162,75,.5);
+      --whats:#25d366;
+      --erro:#ff9d8a;
+      --fonte-marca:'Great Vibes', cursive;
+      --fonte-titulo:'Cormorant Garamond', Georgia, serif;
+      --fonte-texto:'Montserrat', Arial, sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--preto);color:var(--creme);font-family:var(--fonte-texto);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+    [hidden]{display:none!important}
+    a{color:var(--ouro-claro)}
+    button,input,select,textarea{font:inherit;color:inherit}
+    :focus-visible{outline:2px solid var(--ouro-claro);outline-offset:3px}
+
+    .topo{padding:1.6rem 1rem 1.2rem;text-align:center;border-bottom:1px solid var(--borda-ouro);background:radial-gradient(ellipse 80% 80% at 50% 0%,rgba(201,162,75,.14),transparent 70%)}
+    .topo .marca{font:400 2.6rem/1.1 var(--fonte-marca);color:var(--ouro-claro)}
+    .topo h1{font:500 1.5rem/1.2 var(--fonte-titulo);margin-top:.2rem}
+    .topo p{font-size:.82rem;color:var(--creme-suave);margin-top:.3rem}
+
+    .pagina{width:min(860px,100%);margin:0 auto;padding:1.2rem 1rem 6rem}
+    .bloco{border:1px solid var(--borda-ouro);border-radius:12px;background:var(--preto-2);padding:1.2rem 1.1rem;margin-top:1rem}
+    .bloco h2{display:flex;align-items:center;gap:.6rem;font:600 1.35rem/1.2 var(--fonte-titulo);color:var(--ouro-claro);margin-bottom:.8rem}
+    .bloco h2 .n{width:28px;height:28px;border-radius:50%;background:var(--ouro);color:#1a1206;font:700 .8rem var(--fonte-texto);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .ajuda{font-size:.8rem;color:var(--creme-suave);margin-bottom:.8rem}
+
+    label.rot{display:block;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:.3rem}
+    input[type=text],input[type=tel],input[type=date],input[type=number],select,textarea{
+      width:100%;min-height:46px;padding:.65rem .8rem;
+      background:#080604;border:1px solid var(--borda-ouro);border-radius:8px;
+      font-size:1rem;color-scheme:dark;
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--ouro);outline:none}
+    textarea{min-height:120px;resize:vertical}
+    .grade{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .cheio{grid-column:1 / -1}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:46px;padding:.7rem 1.2rem;border-radius:8px;border:1px solid var(--borda-ouro-forte);background:transparent;color:var(--ouro-claro);font-weight:700;font-size:.88rem;cursor:pointer;text-decoration:none}
+    .btn:hover{border-color:var(--ouro);background:rgba(201,162,75,.08)}
+    .btn-dourado{background:linear-gradient(180deg,#e6c878,var(--ouro));border-color:var(--ouro);color:#1a1206}
+    .btn-dourado:hover{background:linear-gradient(180deg,#f0d690,#d6b25c)}
+    .btn-whats{background:var(--whats);border-color:var(--whats);color:#06281a}
+    .btn-whats:hover{background:#31e274}
+    .acoes{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+    .acoes .btn{flex:1 1 180px}
+
+    .cat-titulo{margin:1.1rem 0 .4rem;font:600 .68rem var(--fonte-texto);letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
+    .linha{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) 130px 44px;gap:.5rem;align-items:center;padding:.4rem 0;border-bottom:1px solid rgba(201,162,75,.12)}
+    .linha input{min-height:42px;padding:.5rem .65rem;font-size:.95rem}
+    .linha .valor{text-align:right}
+    .remover{width:44px;height:42px;border-radius:8px;border:1px solid transparent;background:none;color:var(--creme-fraco);font-size:1.2rem;cursor:pointer}
+    .remover:hover{color:var(--erro);border-color:rgba(255,157,138,.4)}
+    .cabeca-linhas{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) 130px 44px;gap:.5rem;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--creme-fraco);padding:0 0 .2rem}
+    .vazio{font-size:.85rem;color:var(--creme-suave);padding:.5rem 0}
+    .adicionar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;margin-top:.8rem}
+
+    .total{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:1rem;padding:1rem 1.1rem;border:1px solid var(--ouro);border-radius:10px;background:rgba(201,162,75,.08)}
+    .total span{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro-claro)}
+    .total strong{font:600 1.9rem var(--fonte-titulo);color:var(--creme)}
+
+    .opcao-linha{display:flex;align-items:center;gap:.6rem;min-height:44px;font-size:.88rem;color:var(--creme-suave);cursor:pointer}
+    .opcao-linha input{width:20px;height:20px;accent-color:var(--ouro)}
+    .previa{white-space:pre-wrap;font:.88rem/1.55 var(--fonte-texto);background:#080604;border:1px solid var(--borda-ouro);border-radius:8px;padding:1rem;max-height:420px;overflow:auto;color:var(--creme)}
+    .rodape-nota{font-size:.74rem;color:var(--creme-fraco);text-align:center;margin-top:1.6rem}
+
+    .toast{position:fixed;left:50%;bottom:1.2rem;transform:translateX(-50%);z-index:20;max-width:92vw;padding:.75rem 1.1rem;background:var(--creme);color:#1a1206;border-radius:8px;font-size:.85rem;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+
+    @media (max-width:640px){
+      .grade{grid-template-columns:1fr}
+      .cabeca-linhas{display:none}
+      .linha{grid-template-columns:minmax(0,1fr) 112px 44px;grid-template-areas:"nome nome rem" "det valor valor"}
+      .linha .nome{grid-area:nome}
+      .linha .detalhe{grid-area:det}
+      .linha .valor{grid-area:valor}
+      .linha .remover{grid-area:rem}
+    }
+
+    /* ===== Documento para imprimir / salvar em PDF ===== */
+    .documento{display:none}
+    @media print{
+      @page{size:A4;margin:16mm 15mm}
+      body{background:#fff;color:#1d160c}
+      .tela,.toast{display:none!important}
+      .documento{display:block;font-family:var(--fonte-texto);font-size:10.5pt;line-height:1.5}
+      .doc-topo{text-align:center;border-bottom:1.5px solid #c9a24b;padding-bottom:10pt;margin-bottom:14pt}
+      .doc-marca{font:400 30pt/1 var(--fonte-marca);color:#8a6a2a}
+      .doc-sub{font-size:8.5pt;letter-spacing:.2em;text-transform:uppercase;color:#6d5a3a;margin-top:4pt}
+      .doc-titulo{font:600 18pt var(--fonte-titulo);margin:0 0 4pt}
+      .doc-meta{display:grid;grid-template-columns:1fr 1fr;gap:2pt 18pt;font-size:9.5pt;margin-bottom:12pt;color:#3a2f1e}
+      .doc-cat{font-size:8pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8a6a2a;margin:12pt 0 4pt}
+      .doc-tabela{width:100%;border-collapse:collapse}
+      .doc-tabela td{padding:4pt 0;border-bottom:.5pt solid #e4d6b4;vertical-align:top}
+      .doc-tabela td.v{text-align:right;white-space:nowrap;width:28%}
+      .doc-tabela small{color:#6d5a3a}
+      .doc-total{display:flex;justify-content:space-between;margin-top:14pt;padding:8pt 10pt;border:1pt solid #c9a24b;font:600 14pt var(--fonte-titulo)}
+      .doc-notas{margin-top:12pt;font-size:9.5pt;color:#3a2f1e}
+      .doc-notas p{margin-top:3pt}
+      .doc-rodape{margin-top:22pt;text-align:center;font-size:8.5pt;color:#6d5a3a;border-top:.5pt solid #e4d6b4;padding-top:8pt}
+    }
+  </style>
+</head>
+<body>
+  <div class="tela">
+    <header class="topo">
+      <p class="marca">Buffet Real</p>
+      <h1>Montador de orçamento</h1>
+      <p>Uso da Miriam. Os valores ficam só neste aparelho.</p>
+    </header>
+
+    <main class="pagina">
+      <!-- 1. Pedido -->
+      <section class="bloco" aria-labelledby="t1">
+        <h2 id="t1"><span class="n">1</span>Pedido do cliente</h2>
+        <p class="ajuda">Copie a mensagem do pedido que chegou no WhatsApp e cole aqui. Se o cliente pediu por áudio ou conversa, comece em branco e adicione os pratos.</p>
+        <label class="rot" for="pedido-colado">Mensagem do pedido</label>
+        <textarea id="pedido-colado" placeholder="Cole aqui a mensagem que começa com “PEDIDO DE ORÇAMENTO · BUFFET REAL”"></textarea>
+        <div class="acoes">
+          <button type="button" class="btn btn-dourado" id="ler-pedido">Ler pedido</button>
+          <button type="button" class="btn" id="em-branco">Começar em branco</button>
+        </div>
+      </section>
+
+      <div id="area-orcamento" hidden>
+        <!-- 2. Evento -->
+        <section class="bloco" aria-labelledby="t2">
+          <h2 id="t2"><span class="n">2</span>Cliente e evento</h2>
+          <div class="grade">
+            <div><label class="rot" for="c-nome">Cliente</label><input type="text" id="c-nome" data-campo="nome"></div>
+            <div><label class="rot" for="c-whatsapp">WhatsApp do cliente</label><input type="tel" id="c-whatsapp" data-campo="whatsapp" placeholder="(31) 90000-0000"></div>
+            <div><label class="rot" for="c-tipo">Tipo de evento</label><input type="text" id="c-tipo" data-campo="tipo"></div>
+            <div><label class="rot" for="c-data">Data</label><input type="text" id="c-data" data-campo="data" placeholder="dd/mm/aaaa"></div>
+            <div><label class="rot" for="c-horario">Horário</label><input type="text" id="c-horario" data-campo="horario" placeholder="19:00"></div>
+            <div><label class="rot" for="c-convidados">Convidados</label><input type="text" id="c-convidados" data-campo="convidados" inputmode="numeric"></div>
+            <div><label class="rot" for="c-local">Local</label><input type="text" id="c-local" data-campo="local"></div>
+            <div class="cheio"><label class="rot" for="c-codigo">Código do pedido</label><input type="text" id="c-codigo" data-campo="codigo"></div>
+            <div class="cheio"><label class="rot" for="c-obs">Observações do cliente</label><textarea id="c-obs" data-campo="obsCliente" style="min-height:70px"></textarea></div>
+          </div>
+        </section>
+
+        <!-- 3. Cardápio -->
+        <section class="bloco" aria-labelledby="t3">
+          <h2 id="t3"><span class="n">3</span>Cardápio e valores</h2>
+          <p class="ajuda">Em “Quantidade ou detalhe” escreva como você cobra (ex.: 100 unidades, 3 kg, travessa). Em “Valor” coloque o total daquele item.</p>
+          <div class="cabeca-linhas" aria-hidden="true"><span>Item</span><span>Quantidade ou detalhe</span><span>Valor (R$)</span><span></span></div>
+          <div id="linhas-cardapio"></div>
+          <div class="adicionar">
+            <select id="add-prato" aria-label="Adicionar prato do cardápio"><option value="">+ Adicionar prato do cardápio…</option></select>
+            <button type="button" class="btn" id="add-livre">+ Item livre</button>
+          </div>
+        </section>
+
+        <!-- 4. Equipe e outros -->
+        <section class="bloco" aria-labelledby="t4">
+          <h2 id="t4"><span class="n">4</span>Equipe e outros</h2>
+          <p class="ajuda">Equipe, vasilhames, deslocamento ou qualquer outro valor do evento.</p>
+          <div class="cabeca-linhas" aria-hidden="true"><span>Item</span><span>Quantidade ou detalhe</span><span>Valor (R$)</span><span></span></div>
+          <div id="linhas-extras"></div>
+          <div class="acoes">
+            <button type="button" class="btn" data-add-extra="Cozinha">+ Cozinha</button>
+            <button type="button" class="btn" data-add-extra="Garçons">+ Garçons</button>
+            <button type="button" class="btn" data-add-extra="Portaria">+ Portaria</button>
+            <button type="button" class="btn" data-add-extra="Limpeza">+ Limpeza</button>
+            <button type="button" class="btn" data-add-extra="Vasilhames">+ Vasilhames</button>
+            <button type="button" class="btn" data-add-extra="">+ Outro</button>
+          </div>
+        </section>
+
+        <!-- 5. Fechamento -->
+        <section class="bloco" aria-labelledby="t5">
+          <h2 id="t5"><span class="n">5</span>Fechamento</h2>
+          <div class="grade">
+            <div><label class="rot" for="f-validade">Validade do orçamento</label><input type="text" id="f-validade" data-fecho="validade" placeholder="Ex.: 7 dias"></div>
+            <div><label class="rot" for="f-pagamento">Condições de pagamento</label><input type="text" id="f-pagamento" data-fecho="pagamento" placeholder="Ex.: 50% na reserva e 50% na véspera"></div>
+            <div class="cheio"><label class="rot" for="f-obs">Observações</label><textarea id="f-obs" data-fecho="obs" placeholder="O que está incluso, horário de serviço, retirada dos vasilhames…"></textarea></div>
+          </div>
+          <label class="opcao-linha"><input type="checkbox" id="mostrar-valores" checked> Mostrar o valor de cada item para o cliente (desmarque para mandar só o total)</label>
+          <label class="opcao-linha"><input type="checkbox" id="lembrar" checked> Lembrar meus valores neste aparelho (eles voltam preenchidos; confira antes de enviar)</label>
+          <div class="total"><span>Total do orçamento</span><strong id="total">R$ 0,00</strong></div>
+        </section>
+
+        <!-- 6. Enviar -->
+        <section class="bloco" aria-labelledby="t6">
+          <h2 id="t6"><span class="n">6</span>Enviar ao cliente</h2>
+          <div class="previa" id="previa" aria-live="polite"></div>
+          <div class="acoes">
+            <button type="button" class="btn btn-whats" id="enviar">Enviar no WhatsApp do cliente</button>
+            <button type="button" class="btn" id="copiar">Copiar texto</button>
+            <button type="button" class="btn" id="imprimir">Salvar PDF / imprimir</button>
+          </div>
+          <div class="acoes">
+            <button type="button" class="btn" id="link-cardapio">Copiar link do cardápio com estes pratos</button>
+            <button type="button" class="btn" id="novo">Novo orçamento</button>
+          </div>
+          <p class="ajuda" style="margin-top:.8rem">O link do cardápio abre o site com os pratos já marcados. Serve para mandar uma sugestão para o cliente aprovar ou ajustar.</p>
+        </section>
+      </div>
+
+      <p class="rodape-nota">Buffet Real · ferramenta interna · nada daqui aparece no site</p>
+    </main>
+  </div>
+
+  <article class="documento" id="documento" aria-hidden="true"></article>
+  <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
+
+  <script src="cardapio-data.js"></script>
+  <script src="orcamento.js"></script>
+</body>
+</html>

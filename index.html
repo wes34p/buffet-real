@@ -13,7 +13,7 @@
   <meta property="og:title" content="Buffet Real · Monte o cardápio do seu evento">
   <meta property="og:description" content="Petiscos de buteco, salgados, prato principal e mesa de frios em Itabirito e região. Escolha os pratos e receba o orçamento da Miriam pelo WhatsApp.">
   <meta property="og:site_name" content="Buffet Real">
-  <meta name="theme-color" content="#0b0806">
+  <meta name="theme-color" content="#faf6ee">
 
   <!-- O cardápio (hasMenu) é acrescentado pelo app.js a partir do cardapio-data.js -->
   <script type="application/ld+json" id="ld-negocio">
@@ -45,23 +45,27 @@
 
   <style>
     :root{
-      --preto:#0b0806;
-      --preto-2:#130e08;
-      --preto-3:#1a130a;
-      --ouro:#c9a24b;
-      --ouro-claro:#f0dda4;
-      --ouro-escuro:#8a6a2a;
-      --creme:#f4ecdc;
-      --creme-suave:rgba(244,236,220,.76);
-      --creme-fraco:rgba(244,236,220,.5);
-      --borda-ouro:rgba(201,162,75,.26);
-      --borda-ouro-forte:rgba(201,162,75,.5);
+      /* Paleta clara pedida pela Miriam (21/10). Os nomes vêm da versão escura:
+         --preto* agora são os fundos claros e --creme* o texto escuro. */
+      --preto:#faf6ee;
+      --preto-2:#f3ecdd;
+      --preto-3:#ffffff;
+      --ouro:#8f6d24;
+      --ouro-claro:#5e4413;
+      --ouro-escuro:#7a5b1c;
+      --ouro-brilho:#d9b862;
+      --creme:#2b2118;
+      --creme-suave:rgba(43,33,24,.76);
+      --creme-fraco:rgba(43,33,24,.58);
+      --borda-ouro:rgba(143,109,36,.24);
+      --borda-ouro-forte:rgba(143,109,36,.5);
+      --sombra:0 12px 34px rgba(80,58,20,.12);
       --whats:#25d366;
-      --erro:#ff9d8a;
+      --erro:#b3261e;
       --fonte-marca:'Great Vibes', cursive;
       --fonte-titulo:'Cormorant Garamond', Georgia, serif;
       --fonte-texto:'Montserrat', Arial, sans-serif;
-      --barra-mobile:0px; /* vira 76px quando a barra fixa aparece */
+      --barra-mobile:0px; /* vira a altura da barra fixa quando ela aparece */
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
@@ -82,7 +86,7 @@
     }
 
     img{max-width:100%;display:block}
-    ::selection{background:var(--ouro);color:var(--preto)}
+    ::selection{background:var(--ouro-brilho);color:var(--creme)}
     a{color:var(--ouro-claro)}
     a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
       outline:2px solid var(--ouro-claro);
@@ -130,55 +134,25 @@
       justify-content:center;
       align-items:center;
       text-align:center;
-      padding:3.5rem 1rem 4rem;
-      min-height:min(660px,86vh);
-      overflow:hidden;
+      padding:3rem 1rem 3.6rem;
       background:
-        radial-gradient(ellipse 85% 55% at 50% 0%, rgba(201,162,75,.14), transparent 62%),
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(217,184,98,.22), transparent 65%),
         var(--preto);
     }
-    .hero-foto{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      z-index:0;
-      transform:scale(1.06); /* esconde a borda suavizada do desfoque */
+    /* o "cartãozinho" preto e dourado da marca é o destaque da página */
+    .hero-logo{
+      width:min(300px,64vw);
+      height:auto;
+      border-radius:18px;
+      box-shadow:0 22px 48px rgba(60,40,10,.28);
+      margin-bottom:1.8rem;
     }
-    /* Véu escuro: garante leitura do texto sobre qualquer foto */
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:1;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 42%, rgba(6,4,3,.55), rgba(6,4,3,.8) 100%),
-        linear-gradient(180deg,rgba(6,4,3,.7) 0%,rgba(6,4,3,.5) 42%,rgba(6,4,3,.94) 100%);
-      pointer-events:none;
-    }
-    .hero > *:not(.hero-foto){position:relative;z-index:2}
-
-    .marca{
-      font-family:var(--fonte-marca);
-      font-weight:400;
-      font-size:clamp(3.2rem,12vw,6rem);
-      line-height:1.2;
-      background:linear-gradient(170deg,#fdf3d4 22%,var(--ouro-claro) 48%,var(--ouro) 72%,var(--ouro-escuro) 100%);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      filter:drop-shadow(0 2px 18px rgba(201,162,75,.35));
-      padding:0 .35em .1em; /* respiro para o traço do script não cortar */
-    }
-    .hero .orn{margin:.4rem auto 1.4rem}
-    .hero .orn:first-of-type{margin:0 auto 1rem}
     .titulo-hero{
       font-family:var(--fonte-titulo);
       font-weight:500;
       font-size:clamp(1.5rem,4.6vw,2.35rem);
       color:var(--creme);
-      line-height:1.3;
+      line-height:1.25;
       max-width:20ch;
       margin:0 auto;
     }
@@ -201,7 +175,7 @@
       letter-spacing:.06em;
       color:var(--ouro-claro);
       margin-bottom:1.9rem;
-      background:rgba(11,8,6,.5);
+      background:var(--preto-3);
     }
     .hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;width:100%;max-width:520px}
 
@@ -269,8 +243,8 @@
       font-size:.76rem;
       font-weight:600;
       letter-spacing:.04em;
-      color:var(--creme);
-      background:linear-gradient(180deg,transparent,rgba(6,4,3,.9));
+      color:#fff;
+      background:linear-gradient(180deg,transparent,rgba(6,4,3,.82));
     }
     /* Moldura de espera: aparece só enquanto a foto real não existe */
     .moldura-espera{
@@ -301,6 +275,7 @@
 
     /* ===== Cards (equipe) ===== */
     .card-servico{
+      box-shadow:0 6px 18px rgba(80,58,20,.06);
       display:flex;
       flex-direction:column;
       background:linear-gradient(180deg,var(--preto-2),var(--preto));
@@ -367,7 +342,7 @@
       border-radius:8px;
       padding:.5rem;
       background:linear-gradient(180deg,var(--preto-3),var(--preto));
-      box-shadow:0 18px 46px rgba(0,0,0,.45);
+      box-shadow:var(--sombra);
     }
     .certificado img{border-radius:4px;width:100%;height:auto}
     .certificado figcaption{
@@ -390,6 +365,7 @@
       font-size:1.05rem;
       background:var(--preto-3);
     }
+    .ico-rodape svg{stroke:#c9a24b!important}
     .pilar .ico svg,.ico-rodape svg{width:20px;height:20px;fill:none;stroke:var(--ouro);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
     .ico-rodape{display:inline-flex;vertical-align:-4px;margin-right:.45rem;font-style:normal}
     .pilar h3{
@@ -439,7 +415,7 @@
       border:1px solid var(--ouro);
       border-radius:6px;
       padding:.5rem;
-      box-shadow:0 20px 60px rgba(0,0,0,.5);
+      box-shadow:var(--sombra);
     }
     .convite-interno{
       border:1px solid var(--borda-ouro);
@@ -472,7 +448,7 @@
     .campo input,
     .campo select,
     .campo textarea{
-      background:#080604;
+      background:#fff;
       border:1px solid var(--borda-ouro);
       border-radius:6px;
       color:var(--creme);
@@ -482,11 +458,11 @@
       padding:.8rem .9rem;
       width:100%;
       max-width:100%;
-      color-scheme:dark; /* ícones nativos (calendário) legíveis no fundo escuro */
+      color-scheme:light;
       transition:border-color .18s ease;
     }
     .campo input::placeholder,
-    .campo textarea::placeholder{color:rgba(244,236,220,.34)}
+    .campo textarea::placeholder{color:rgba(43,33,24,.4)}
     .campo input:focus,
     .campo select:focus,
     .campo textarea:focus{border-color:var(--ouro)}
@@ -512,7 +488,7 @@
       padding:.55rem 1rem;
       border:1px solid var(--borda-ouro);
       border-radius:999px;
-      background:#080604;
+      background:#fff;
       color:var(--creme-suave);
       font-size:.85rem;
       cursor:pointer;
@@ -537,7 +513,7 @@
       transition:background-color .18s ease;
     }
     .chip:hover{border-color:var(--borda-ouro-forte)}
-    .chip input:checked ~ .marca-chip{background:var(--ouro);border-color:var(--ouro)}
+    .chip input:checked ~ .marca-chip{background:var(--ouro);border-color:var(--ouro);color:#fff}
     .chip input:checked ~ .marca-chip::after{content:"✓"}
     .chip:has(input:checked){border-color:var(--ouro);color:var(--creme);background:rgba(201,162,75,.1)}
     .chip:has(input:focus-visible){outline:2px solid var(--ouro-claro);outline-offset:3px}
@@ -555,7 +531,7 @@
       grid-column:1 / -1;
       border:1px solid var(--erro);
       border-radius:6px;
-      background:rgba(255,157,138,.08);
+      background:rgba(179,38,30,.06);
       color:var(--erro);
       font-size:.83rem;
       padding:.75rem 1rem;
@@ -563,14 +539,16 @@
 
     /* ===== Rodapé ===== */
     footer{
-      border-top:1px solid var(--borda-ouro);
+      background:#0b0806;
+      color:#f4ecdc;
+      border-top:3px solid #c9a24b;
       padding:3.2rem 0 calc(3rem + var(--barra-mobile));
       text-align:center;
     }
     footer .marca-rodape{
       font-family:var(--fonte-marca);
       font-size:2.3rem;
-      color:var(--ouro-claro);
+      color:#f0dda4;
       display:block;
       margin-bottom:1rem;
     }
@@ -580,12 +558,12 @@
       justify-content:center;
       gap:.5rem 2rem;
       font-size:.87rem;
-      color:var(--creme-suave);
+      color:rgba(244,236,220,.82);
       margin-bottom:1.4rem;
     }
-    .info-rodape a{color:var(--ouro-claro);text-decoration:none;display:inline-block;padding:.65rem 0}
+    .info-rodape a{color:#f0dda4;text-decoration:none;display:inline-block;padding:.65rem 0}
     .info-rodape a:hover{text-decoration:underline}
-    .credito{font-size:.72rem;color:rgba(244,236,220,.62);letter-spacing:.06em}
+    .credito{font-size:.72rem;color:rgba(244,236,220,.66);letter-spacing:.06em}
 
     /* ===== Botão flutuante WhatsApp (desktop) ===== */
     .zap-flutuante{
@@ -613,7 +591,8 @@
       left:0;right:0;bottom:0;
       z-index:60;
       padding:.7rem .9rem calc(.7rem + env(safe-area-inset-bottom,0px));
-      background:rgba(8,6,4,.94);
+      background:rgba(250,246,238,.96);
+      box-shadow:0 -6px 20px rgba(80,58,20,.08);
       backdrop-filter:blur(8px);
       border-top:1px solid var(--borda-ouro);
       transition:transform .25s ease,opacity .25s ease;
@@ -647,11 +626,11 @@
 
     /* ===== Botão principal dourado ===== */
     .btn-dourado{
-      background:linear-gradient(180deg,#e6c878,var(--ouro));
-      color:#1a1206;
+      background:linear-gradient(180deg,#e9cd82,#c9a24b);
+      color:#2b1d07;
       box-shadow:0 8px 28px rgba(201,162,75,.28);
     }
-    .btn-dourado:hover{background:linear-gradient(180deg,#f0d690,#d6b25c);box-shadow:0 10px 34px rgba(201,162,75,.38)}
+    .btn-dourado:hover{background:linear-gradient(180deg,#f0d690,#d2ad55);box-shadow:0 10px 34px rgba(201,162,75,.38)}
 
     /* ===== Como funciona (logo após o hero) ===== */
     .secao-passos{padding:3.6rem 0 3.2rem}
@@ -688,7 +667,7 @@
       position:sticky;top:0;z-index:20;
       margin:0 -.2rem 1.2rem;
       padding:.65rem .2rem;
-      background:rgba(19,14,8,.96);
+      background:rgba(243,236,221,.96);
       backdrop-filter:blur(8px);
       -webkit-backdrop-filter:blur(8px);
       border-bottom:1px solid var(--borda-ouro);
@@ -706,14 +685,14 @@
       transition:border-color .18s ease,background-color .18s ease,color .18s ease;
     }
     .cardapio-aba:hover{border-color:var(--borda-ouro-forte);color:var(--creme)}
-    .cardapio-aba[aria-selected="true"]{background:var(--ouro);border-color:var(--ouro);color:#1a1206}
+    .cardapio-aba[aria-selected="true"]{background:var(--ouro);border-color:var(--ouro);color:#fff}
     .aba-contador{
       min-width:1.35rem;height:1.35rem;padding:0 .35rem;
       display:inline-flex;align-items:center;justify-content:center;
-      border-radius:999px;background:var(--ouro);color:#1a1206;
+      border-radius:999px;background:var(--ouro);color:#fff;
       font-size:.68rem;font-weight:700;
     }
-    .cardapio-aba[aria-selected="true"] .aba-contador{background:#1a1206;color:var(--ouro-claro)}
+    .cardapio-aba[aria-selected="true"] .aba-contador{background:#1a1206;color:#f3e2b3}
     .busca{position:relative;margin-bottom:.9rem}
     .busca input::-webkit-search-cancel-button,
     .busca input::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
@@ -721,11 +700,11 @@
     .busca input{
       width:100%;min-height:46px;
       padding:.7rem 2.8rem .7rem 2.7rem;
-      background:#080604;color:var(--creme);
+      background:#fff;color:var(--creme);
       border:1px solid var(--borda-ouro);border-radius:999px;
       font:1rem var(--fonte-texto);
     }
-    .busca input::placeholder{color:rgba(244,236,220,.38)}
+    .busca input::placeholder{color:rgba(43,33,24,.42)}
     .busca input:focus{border-color:var(--ouro);outline:none}
     .busca > svg{position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--ouro);fill:none;stroke-width:1.8;pointer-events:none}
     .busca-limpar{
@@ -784,7 +763,7 @@
     }
     .prato-marca svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
     .prato-marca .ic-ok{display:none}
-    .prato[data-escolhido="1"] .prato-marca{background:var(--ouro);border-color:var(--ouro);color:#1a1206;animation:pulso .32s ease}
+    .prato[data-escolhido="1"] .prato-marca{background:var(--ouro);border-color:var(--ouro);color:#fff;animation:pulso .32s ease}
     .prato[data-escolhido="1"] .ic-mais{display:none}
     .prato[data-escolhido="1"] .ic-ok{display:block}
     @keyframes pulso{0%{transform:scale(.7)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
@@ -803,7 +782,7 @@
     .sugestao p{font-size:.84rem;color:var(--creme-suave);max-width:48ch}
     .sugestao--destaque{border-style:solid;border-color:var(--ouro);background:linear-gradient(180deg,rgba(201,162,75,.1),transparent);padding:1.6rem 1.4rem}
     .btn-alterna{width:auto;min-width:200px}
-    .btn-alterna[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#1a1206}
+    .btn-alterna[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#fff}
     .busca-info{font-size:.85rem;color:var(--creme-suave);margin-bottom:.4rem}
 
     /* ===== Imagens ilustrativas do cardápio ===== */
@@ -816,6 +795,8 @@
         linear-gradient(90deg,rgba(6,4,3,.86) 0%,rgba(6,4,3,.35) 55%,transparent 100%),
         linear-gradient(0deg,rgba(6,4,3,.75) 0%,transparent 55%);
     }
+    .painel-capa h3{color:#f7ecd0}
+    .painel-capa .painel-apelido{color:#e6c878}
     .painel-capa .painel-cabeca{position:absolute;z-index:1;left:clamp(1rem,3vw,1.8rem);bottom:clamp(.8rem,2.5vw,1.4rem);flex-direction:column;align-items:flex-start;gap:0}
     .prato--foto{position:relative}
     .prato--foto .prato-botao{grid-template-columns:84px minmax(0,1fr) auto;column-gap:.85rem}
@@ -824,7 +805,7 @@
     @media (min-width:700px){
       .prato--foto .prato-botao{grid-template-columns:minmax(0,1fr);row-gap:0;padding:0 1rem 1rem;align-items:start}
       .prato--foto .prato-foto{width:auto;margin:0 -1rem .8rem;aspect-ratio:4/3;border-radius:9px 9px 0 0}
-      .prato--foto .prato-marca{position:absolute;top:.7rem;right:.7rem;width:36px;height:36px;background:rgba(11,8,6,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+      .prato--foto .prato-marca{position:absolute;top:.7rem;right:.7rem;width:36px;height:36px;color:#f0dda4;border-color:rgba(240,221,164,.6);background:rgba(11,8,6,.62);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
       .prato--foto:hover .prato-foto img{transform:scale(1.04)}
     }
     @media (max-width:640px){
@@ -837,7 +818,7 @@
       padding:1.35rem 1.3rem 1.2rem;
       background:var(--preto);
       border:1px solid var(--ouro);border-radius:12px;
-      box-shadow:0 18px 46px rgba(0,0,0,.45);
+      box-shadow:var(--sombra);
     }
     .mc-cabeca{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
     .mc-cabeca h3{font:500 1.65rem/1.2 var(--fonte-titulo);color:var(--ouro-claro)}
@@ -859,7 +840,7 @@
       font-size:1.15rem;line-height:1;cursor:pointer;
       transition:color .18s ease,border-color .18s ease;
     }
-    .mc-remover:hover{color:var(--erro);border-color:rgba(255,157,138,.4)}
+    .mc-remover:hover{color:var(--erro);border-color:rgba(179,38,30,.35)}
     .mc-vazio{font-size:.86rem;color:var(--creme-suave);padding:.6rem 0 .2rem;line-height:1.6}
     .mc-acoes{display:flex;flex-direction:column;gap:.5rem}
     .mc-acoes .btn{width:100%}
@@ -898,7 +879,7 @@
     /* ===== Equipe ===== */
     .grade-equipe{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.6rem}
     .card-servico .ico svg{width:30px;height:30px;stroke:var(--ouro);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-    .card-servico .btn-categoria[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#1a1206}
+    .card-servico .btn-categoria[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#fff}
     .vasilhames{max-width:820px;margin:1.4rem auto 0}
 
     /* ===== Perguntas frequentes ===== */
@@ -918,7 +899,7 @@
     /* ===== Resumo no formulário ===== */
     .resumo-form{
       border:1px solid var(--borda-ouro-forte);border-radius:8px;
-      background:#080604;padding:1rem 1.1rem;
+      background:#fff;padding:1rem 1.1rem;
     }
     .resumo-form .mc-lista{max-height:none;margin:.4rem 0 .2rem}
     .resumo-topo{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
@@ -930,7 +911,7 @@
       position:fixed;left:50%;bottom:calc(1.2rem + var(--barra-mobile));z-index:80;
       transform:translateX(-50%);
       max-width:min(92vw,420px);padding:.75rem 1.1rem;
-      background:var(--creme);color:#1a1206;border-radius:8px;
+      background:var(--creme);color:#faf6ee;border-radius:8px;
       font-size:.85rem;font-weight:600;text-align:center;
       box-shadow:0 10px 30px rgba(0,0,0,.4);
     }
@@ -941,7 +922,7 @@
     .bolha{
       min-width:1.5rem;height:1.5rem;padding:0 .4rem;border-radius:999px;
       display:inline-flex;align-items:center;justify-content:center;
-      background:var(--ouro);color:#1a1206;font-size:.75rem;
+      background:var(--ouro);color:#fff;font-size:.75rem;
     }
 
     @media (max-width:999px){
@@ -972,42 +953,8 @@
 
   <!-- ===== 1. Hero ===== -->
   <header class="hero" id="topo">
-    <!-- FOTO: img/hero.webp, imagem ilustrativa (troque por foto real em alta quando houver) -->
-    <img class="hero-foto" src="img/hero.webp" srcset="img/hero-p.webp 800w, img/hero.webp 1600w" sizes="100vw" alt="" data-opcional="1" fetchpriority="high" width="1600" height="900">
+    <img class="hero-logo" src="img/logo-buffet-real.webp" srcset="img/logo-buffet-real-p.webp 360w, img/logo-buffet-real.webp 640w" sizes="(max-width: 640px) 64vw, 300px" alt="Logotipo do Buffet Real" width="640" height="640" fetchpriority="high">
 
-    <svg class="orn" viewBox="0 0 400 46" aria-hidden="true" focusable="false">
-      <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <path d="M200 23h-46"/>
-        <path d="M154 23c-10 0-14-9-24-9s-15 7-15 12 5 9 11 9 10-4 10-9-4-8-9-8-8 3-8 7"/>
-        <path d="M150 18c-8-8-20-12-32-9-11 3-17 12-28 12-7 0-12-4-12-9"/>
-        <path d="M150 28c-8 8-20 12-32 9-11-3-17-12-28-12-7 0-12 4-12 9"/>
-        <path d="M78 22c-6-4-14-5-21-2"/>
-        <path d="M78 24c-6 4-14 5-21 2"/>
-      </g>
-      <g fill="currentColor">
-        <circle cx="200" cy="23" r="3.6"/>
-        <circle cx="185" cy="23" r="1.5"/>
-        <circle cx="57" cy="20" r="1.6"/>
-        <circle cx="57" cy="26" r="1.6"/>
-      </g>
-      <g transform="translate(400,0) scale(-1,1)">
-        <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-          <path d="M200 23h-46"/>
-          <path d="M154 23c-10 0-14-9-24-9s-15 7-15 12 5 9 11 9 10-4 10-9-4-8-9-8-8 3-8 7"/>
-          <path d="M150 18c-8-8-20-12-32-9-11 3-17 12-28 12-7 0-12-4-12-9"/>
-          <path d="M150 28c-8 8-20 12-32 9-11-3-17-12-28-12-7 0-12 4-12 9"/>
-          <path d="M78 22c-6-4-14-5-21-2"/>
-          <path d="M78 24c-6 4-14 5-21 2"/>
-        </g>
-        <g fill="currentColor">
-          <circle cx="185" cy="23" r="1.5"/>
-          <circle cx="57" cy="20" r="1.6"/>
-          <circle cx="57" cy="26" r="1.6"/>
-        </g>
-      </g>
-    </svg>
-
-    <p class="marca">Buffet Real</p>
     <h1 class="titulo-hero">Monte o cardápio do seu evento e receba o orçamento da Miriam.</h1>
     <p class="texto-hero">Petiscos de buteco, salgados, prato principal e mesa de frios, com equipe completa para servir. Em Itabirito e região.</p>
     <p class="badge-horario"><span>Itabirito-MG e região</span><span aria-hidden="true">·</span><span>Orçamento pelo que você escolhe</span></p>
@@ -1152,25 +1099,55 @@
       <div class="container">
         <span class="eyebrow">Portfólio</span>
         <h2 class="titulo-secao" id="titulo-trabalhos">Alguns dos nossos trabalhos</h2>
-        <p class="sub-secao">Mesas, petiscos e salgados servidos pelo Buffet Real em eventos.</p>
-
-        <!-- FOTOS: img/trabalho-0X.webp (ou .jpg). Sem o arquivo, o quadro mostra a moldura de espera. -->
+        <p class="sub-secao">Fotos de eventos atendidos pelo Buffet Real.</p>
         <div class="grade-trabalhos" id="grade-trabalhos">
           <figure class="trabalho">
-            <img src="img/trabalho-02.webp" alt="Mesa de buffet montada ao ar livre em evento atendido pelo Buffet Real" loading="lazy" width="722" height="542" data-opcional="1" data-espera="Mesa de frios">
-            <figcaption>Mesa montada</figcaption>
+            <img src="img/trabalhos/evento-01.webp" srcset="img/trabalhos/evento-01-p.webp 420w, img/trabalhos/evento-01.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Mesa de saladas e massas montada pelo Buffet Real" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Mesa de saladas">
+            <figcaption>Mesa de saladas</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-03.webp" alt="Salgados, batata frita e porções servidos em gamelas num evento ao ar livre" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Salgados">
-            <figcaption>Salgados e porções</figcaption>
+            <img src="img/trabalhos/evento-02.webp" srcset="img/trabalhos/evento-02-p.webp 420w, img/trabalhos/evento-02.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Mesa de frios com tábuas, queijos e frutas em evento" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Mesa de frios">
+            <figcaption>Mesa de frios</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-04.webp" alt="Travessa de petiscos com torresmo e mandioca frita" loading="lazy" width="722" height="1280" data-opcional="1" data-espera="Petiscos">
-            <figcaption>Petiscos de buteco</figcaption>
+            <img src="img/trabalhos/evento-03.webp" srcset="img/trabalhos/evento-03-p.webp 420w, img/trabalhos/evento-03.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Bandejas de salgados, com quibes e bolinhas" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Salgados">
+            <figcaption>Salgados</figcaption>
           </figure>
           <figure class="trabalho">
-            <img src="img/trabalho-05.webp" alt="Gamela de madeira com porção servida em evento" loading="lazy" width="722" height="736" data-opcional="1" data-espera="Porções">
+            <img src="img/trabalhos/evento-04.webp" srcset="img/trabalhos/evento-04-p.webp 420w, img/trabalhos/evento-04.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Porções individuais com batata frita e almôndegas" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Porções">
             <figcaption>Porções</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalhos/evento-05.webp" srcset="img/trabalhos/evento-05-p.webp 420w, img/trabalhos/evento-05.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Prato de salgados servido à mesa" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Salgados à mesa">
+            <figcaption>Salgados à mesa</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalhos/evento-06.webp" srcset="img/trabalhos/evento-06-p.webp 420w, img/trabalhos/evento-06.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Panela com carne ao molho servida em evento" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Carnes">
+            <figcaption>Carnes</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalhos/evento-07.webp" srcset="img/trabalhos/evento-07-p.webp 420w, img/trabalhos/evento-07.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Buffet com saladas e acompanhamentos coloridos" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Buffet colorido">
+            <figcaption>Buffet colorido</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalhos/evento-08.webp" srcset="img/trabalhos/evento-08-p.webp 420w, img/trabalhos/evento-08.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Travessas de saladas e pratos montadas no buffet" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Saladas e pratos">
+            <figcaption>Saladas e pratos</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalhos/evento-09.webp" srcset="img/trabalhos/evento-09-p.webp 420w, img/trabalhos/evento-09.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Bandeja redonda com espetinhos" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Espetinhos">
+            <figcaption>Espetinhos</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalhos/evento-10.webp" srcset="img/trabalhos/evento-10-p.webp 420w, img/trabalhos/evento-10.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Travessas de petiscos com batata, linguiça e salgados" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Petiscos">
+            <figcaption>Petiscos</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalhos/evento-11.webp" srcset="img/trabalhos/evento-11-p.webp 420w, img/trabalhos/evento-11.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Duas travessas de porções com batata frita e pastéis" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Porções">
+            <figcaption>Porções</figcaption>
+          </figure>
+          <figure class="trabalho">
+            <img src="img/trabalhos/evento-12.webp" srcset="img/trabalhos/evento-12-p.webp 420w, img/trabalhos/evento-12.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 270px" alt="Rechauds com pratos quentes do buffet" loading="lazy" width="800" height="1000" data-opcional="1" data-espera="Pratos quentes">
+            <figcaption>Pratos quentes</figcaption>
           </figure>
         </div>
 
@@ -1388,7 +1365,7 @@
         <span><i class="ico-rodape" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></i><a href="https://www.instagram.com/buffetreal_miriammarinho" target="_blank" rel="noopener">@buffetreal_miriammarinho</a></span>
         <span><i class="ico-rodape" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i>Itabirito-MG e região</span>
       </div>
-      <p class="credito">Imagens de pratos e do topo da página são ilustrativas.</p>
+      <p class="credito">As fotos dos pratos no cardápio são ilustrativas. As fotos dos eventos são do Buffet Real.</p>
       <p class="credito">Buffet Real · Miriam Marinho · Itabirito-MG · página por WLS Studio</p>
     </div>
   </footer>
